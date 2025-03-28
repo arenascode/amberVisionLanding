@@ -1,0 +1,102 @@
+@import "../../styles/scss/base";
+
+#product {
+  position: relative;
+  @include desktop {
+    padding: 0.01rem 5rem 0rem;
+  }
+  @include mobile {
+    // padding-top: 3.5rem;
+  }
+
+  .banner {
+    position: sticky;
+    z-index: 9;
+    top: 0;
+    font-weight: 300;
+    @include desktop {
+      min-width: 100vw;
+      position: absolute;
+      right: 0;
+      top: 0;
+      // margin-bottom: 2rem;
+    }
+  }
+}
+.productImagesContainer {
+  // margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.347); /* Adjust the values as needed */
+  border-radius: 20px;
+  padding: 15px;
+  padding-top: 2rem;
+  background: linear-gradient(to bottom right, #f3f4f6, #1e1e1e, #6a7282);
+
+  height: 100%;
+
+  //* Desktop
+  @include mobile {
+    gap: 0.8rem;
+    flex-direction: column;
+    padding: 10px;
+    padding-top: 0.5rem;
+  }
+  @include tablet {
+    margin: 1rem;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+  }
+  @include desktop {
+    margin-top: 5rem;
+  }
+  //* Mobile
+
+  .imgContainer {
+    flex: 1;
+    max-width: 400px;
+    height: 100%;
+    align-items: center;
+
+    @include mobile {
+      flex: 1;
+      max-width: 100%;
+      height: auto;
+      // max-height: 350px;
+      justify-content: center;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      @include mobile {
+        // height: 380px;
+      }
+    }
+    .miniImgsContainer {
+      display: flex;
+      width: 100%;
+      gap: 0.5rem;
+      @include tablet {
+        margin-top: 0.8rem;
+      }
+      .miniImg {
+        flex: 1;
+        height: 60px;
+        width: 60px;
+        border-radius: 5px;
+        overflow: hidden;
+        border-color: #697172;
+        cursor: pointer;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+        @include tablet {
+          width: 100px;
+          height: auto;
+        }
+      }
+    }
+  }
+}
