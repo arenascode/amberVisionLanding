@@ -84,22 +84,35 @@ export default function TestimonialCarousel() {
     <div className="relative">
       <div className="grid gap-6 md:grid-cols-3">
         {currentTestimonials.map((testimonial) => (
-          <Card key={testimonial.id} className="border-none shadow-md">
+          <Card
+            key={testimonial.id}
+            className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10"
+          >
             <CardContent className="p-6">
-              <div className="flex mb-4">
+              <div className="flex mb-4 xl:gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-4 w-4 ${i < testimonial.rating ? "fill-primary text-primary" : "text-muted"}`}
+                    className={`h-4 w-4 ${
+                      i < testimonial.rating
+                        ? "fill-[#FFD700] text-sidebar-primary-foreground  stroke-[#FFD700]"
+                        : "text-sidebar-primary-foreground"
+                    }`}
                   />
                 ))}
               </div>
-              <p className="text-muted-foreground mb-4">"{testimonial.content}"</p>
+              <p className="text-sidebar-primary-foreground mb-6">
+                "{testimonial.content}"
+              </p>
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-muted-foreground/20"></div>
+                {/* <div className="h-10 w-10 rounded-full bg-muted-foreground/20"></div> */}
                 <div>
-                  <p className="font-medium">{testimonial.name}</p>
-                  <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                  <p className="font-medium text-sidebar-primary-foreground">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-xs text-sidebar-primary-foreground">
+                    {testimonial.role}
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -108,7 +121,12 @@ export default function TestimonialCarousel() {
       </div>
 
       <div className="flex justify-center gap-2 mt-6">
-        <Button variant="outline" size="icon" className="h-8 w-8 rounded-full" onClick={prevPage}>
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-8 w-8 rounded-full"
+          onClick={prevPage}
+        >
           <ChevronLeft className="h-4 w-4" />
           <span className="sr-only">Previous</span>
         </Button>
@@ -123,12 +141,17 @@ export default function TestimonialCarousel() {
             <span className="sr-only">Page {i + 1}</span>
           </Button>
         ))}
-        <Button variant="outline" size="icon" className="h-8 w-8 rounded-full" onClick={nextPage}>
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-8 w-8 rounded-full"
+          onClick={nextPage}
+        >
           <ChevronRight className="h-4 w-4" />
           <span className="sr-only">Next</span>
         </Button>
       </div>
     </div>
-  )
+  );
 }
 

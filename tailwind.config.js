@@ -14,9 +14,13 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+    },
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px", // Ensure this breakpoint exists
+      "2xl": "1536px",
     },
     extend: {
       fontFamily: {
@@ -27,7 +31,7 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        // background: "hsl(var(--background))",
+        background_gradient: "hsl(var(--color-background-gradient))",
         foreground: "hsl(var(--foreground))",
         nav_footer: "hsl(var(--nav-footer))",
         textNavFooter: "hsl(var(--text-nav-footer))",

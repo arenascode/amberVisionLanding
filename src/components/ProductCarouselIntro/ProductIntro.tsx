@@ -16,9 +16,11 @@ const ProductIntro = () => {
     
     const targetSlide = document.getElementById(slideId);
     if (targetSlide) {
+      console.log({targetSlide});
+      
       targetSlide.scrollIntoView({ block: "nearest", inline: "center" });
     }
-    const miniImgs = document.querySelectorAll(".miniImg");
+    const miniImgs = document.querySelectorAll(".miniImg") as NodeList
     miniImgs.forEach((img) => (img.style.borderColor = "#697172"));
     miniImgs.forEach((img) => {
       if (img.dataset.img == slideId) {
@@ -43,7 +45,7 @@ const ProductIntro = () => {
           <div className="imgContainer">
             <div
               id="carouselImgs"
-              className="w-full carousel rounded-box h-[inherit]"
+              className="w-full carousel rounded-box xl:h-[450px]"
             >
               <div id="slide1" className="carousel-item relative w-full h-full">
                 <img

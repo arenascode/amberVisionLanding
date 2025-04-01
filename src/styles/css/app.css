@@ -1,18 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 @plugin "daisyui";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
   --radius: 0.625rem;
-  --background: radial-gradient(circle, #2c2c2c, #1f1f1f, #000000, #ff8c00);
+  --color-background-gradient: radial-gradient(circle, #2c2c2c, #1f1f1f, #000000, #ff8c00);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -48,7 +46,7 @@
    --brand-two: #FFAC57;
   --brand-light: RGB(255, 244, 225);
   --brand-dark: 	#AB4A09;
-  --fire: #D47609;
+  --fire: #ce910d;
   --nav-footer: #000000;
   --fire-dark: #83440B;
   --text: #352D2B;
@@ -98,7 +96,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
+  --color-background-gradient: var(--background_gr);
   --color-text-nav-footer: var(--white-text);
   --color-nav-footer: var(--nav-footer);
   --color-foreground: var(--foreground);
@@ -132,6 +130,9 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-fire-btn: var(--brand-two);
+  --color-fire-btn-dark: var(--brand-dark);
+  --color-bg-gradient: var(--color-background-gradient);
+  --color-alert-bg: var(--fire);
   --font-title: var(--font-garamond);
   --font-body: var(--font-inter);
 }
@@ -139,10 +140,9 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    /* @apply border-border outline-ring/50; */
   }
   body {
-    @apply bg-background text-foreground;
+    /* @apply bg-background text-foreground; */
   }
 }
-

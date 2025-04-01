@@ -34,27 +34,35 @@ export default function CountdownTimer() {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className="flex items-center gap-2 text-muted-foreground mb-2">
+      <div className="flex items-center gap-2 text-sidebar-primary-foreground">
         <Clock className="h-4 w-4" />
-        <span className="text-sm font-medium">Oferta Limitada: 20% Off Termina En</span>
+        <span className="text-sm font-medium">
+          Oferta Limitada: 20% Off Termina En
+        </span>
       </div>
-      <div className="flex gap-2 text-center">
-        <div className="bg-primary text-primary-foreground rounded-md px-3 py-2 min-w-[64px]">
-          <div className="text-2xl font-bold">{formatTime(timeLeft.hours)}</div>
+      <div className="flex gap-2 text-center xl:mt-4">
+        <div className="bg-primary text-primary-foreground rounded-md px-3 py-2 min-w-[64px] xl:min-w-[84px] xl:h-auto">
+          <div className="text-2xl xl:text-3xl font-bold ">
+            {formatTime(timeLeft.hours)}
+          </div>
           <div className="text-xs uppercase">Horas</div>
         </div>
         <div className="text-xl font-bold pt-2">:</div>
-        <div className="bg-primary text-primary-foreground rounded-md px-3 py-2 min-w-[64px]">
-          <div className="text-2xl font-bold">{formatTime(timeLeft.minutes)}</div>
+        <div className="bg-primary text-primary-foreground rounded-md px-3 py-2 min-w-[64px] xl:min-w-[84px] xl:h-auto">
+          <div className="text-2xl xl:text-3xl font-bold">
+            {formatTime(timeLeft.minutes)}
+          </div>
           <div className="text-xs uppercase">Minutos</div>
         </div>
         <div className="text-xl font-bold pt-2">:</div>
-        <div className="bg-primary text-primary-foreground rounded-md px-3 py-2 min-w-[64px]">
-          <div className="text-2xl font-bold">{formatTime(timeLeft.seconds)}</div>
+        <div className="bg-primary text-primary-foreground rounded-md px-3 py-2 min-w-[64px] xl:min-w-[84px] xl:h-auto">
+          <div className="text-2xl xl:text-3xl font-bold">
+            {formatTime(timeLeft.seconds)}
+          </div>
           <div className="text-xs uppercase">Segundos</div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
