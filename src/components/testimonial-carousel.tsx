@@ -135,7 +135,7 @@ export default function TestimonialCarousel() {
             key={i}
             variant={i === currentPage ? "default" : "outline"}
             size="icon"
-            className="h-2 w-2 rounded-full p-0"
+            className={`h-2 w-2 rounded-full p-0 ${i === currentPage ? "bg-white" : " bg-none"}`}
             onClick={() => setCurrentPage(i)}
           >
             <span className="sr-only">Page {i + 1}</span>

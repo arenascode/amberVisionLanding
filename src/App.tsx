@@ -29,8 +29,23 @@ import TestimonialCarousel from "@/components/testimonial-carousel";
 import ProductIntro from "./components/ProductCarouselIntro/ProductIntro";
 import { HamburgerButton } from "./components/ui/hamburguerBtn";
 import AnnouncementCarousel from "./components/ui/annoouncement-carousel";
+import { useEffect, useState } from "react";
 
 export default function App() {
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const windowWidth = window.innerWidth;
+    console.log(windowWidth);
+    if (windowWidth <= 480) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, []);
+
+  console.log({ isMobile });
+
   return (
     <div className="flex min-h-screen flex-col relative">
       {/* Header/Navigation */}
@@ -90,23 +105,23 @@ export default function App() {
         {/* Single fixed gradient background */}
         <div className="fixed inset-0 z-[-1] bg-black">
           {/* Main radial gradient with orange accents */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,#ff8c00_0%,transparent_50%),radial-gradient(ellipse_at_bottom_left,#ff8c00_0%,transparent_50%),radial-gradient(circle_at_center,#2c2c2c_0%,#1f1f1f_30%,#000000_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,140,0,0.7)_10%,transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(255,140,0,0.7)_10%,transparent_50%),radial-gradient(circle_at_center,#2c2c2c_0%,#1f1f1f_35%,#000000_70%)] md:bg-[radial-gradient(ellipse_at_top_right,#ff8c00_0%,transparent_50%),radial-gradient(ellipse_at_bottom_left,#ff8c00_0%,transparent_50%),radial-gradient(circle_at_center,#2c2c2c_0%,#1f1f1f_30%,#000000_70%)]"></div>
 
           {/* Optional subtle noise texture overlay */}
           <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')]"></div>
         </div>
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-20 lg:py-10 items-center lg:flex justify-center xl:mt-24">
+        <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-20 lg:py-10 items-center lg:flex justify-center mt-16 xl:mt-24">
           <div className="container px-4 md:px-6 lg:px-2 lg:w-full justify-center">
             <div className="flex flex-col gap-8 md:gap-10 lg:flex-row items-center xl:gap-20 xl:w-full xl:px-10">
-              <div className="flex flex-col justify-between xl:gap-9">
+              <div className="flex flex-col justify-between gap-5 xl:gap-9">
                 <Badge
                   className="w-fit border-1 border-white xl:text-sm text-white"
                   variant="outline"
                 >
                   Protección Premium para tus Ojos
                 </Badge>
-                <h1 className="text-2xl font-bold tracking-wide sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.5rem] font-body uppercase">
+                <h1 className="text-2xl font-bold tracking-wider sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.5rem] font-body uppercase">
                   Protege tu vista, mejora tu descanso — <br />
                   descubre el poder de los Lentes Ambar
                 </h1>
@@ -114,7 +129,9 @@ export default function App() {
                   Bloquea la luz azul artificial, reduce la fatiga visual y
                   disfruta de un sueño más profundo cada noche.
                 </p>
-                <div className="lg:hidden mobile">{/* <ProductIntro /> */}</div>
+                <div className="lg:hidden mobile">
+                  {isMobile && <ProductIntro />}
+                </div>
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-3 pt-1">
                   <Button
                     size="default"
@@ -144,9 +161,11 @@ export default function App() {
                   </span>
                 </div>
               </div>
-              <div className="hidden lg:flex xl:h-[600px] w-[70%]">
-                <ProductIntro />
-              </div>
+              {!isMobile && (
+                <div className="hidden lg:flex xl:h-[600px] w-[70%]">
+                  <ProductIntro />
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -232,7 +251,7 @@ export default function App() {
                   </h3>
                   <ul className="space-y-8">
                     <li className="flex items-start gap-2">
-                      <Check className="h-5 w-10 text-fire-btn mt-0.5" />
+                      <Check className="h-5 w-10 text-success mt-0.5" />
                       <div className="xl:flex xl:flex-col xl:gap-2">
                         <span className="font-semibold xl:text-lg">
                           Bloquean el 99% de la luz azul dañina
@@ -244,7 +263,7 @@ export default function App() {
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-5 w-10 text-fire-btn mt-0.5" />
+                      <Check className="h-5 w-10 text-success mt-0.5" />
                       <div className="xl:flex xl:flex-col xl:gap-2">
                         <span className="font-semibold xl:text-lg">
                           Favorecen un sueño reparador
@@ -257,7 +276,7 @@ export default function App() {
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
-                      <Check className="h-5 w-10 text-fire-btn mt-0.5" />
+                      <Check className="h-5 w-10 text-success mt-0.5" />
                       <div className="xl:flex xl:flex-col xl:gap-2">
                         <span className="font-semibold xl:text-lg">
                           Reducen la fatiga ocular y las migrañas
@@ -276,10 +295,10 @@ export default function App() {
         </section>
 
         {/* Product Benefits & Features */}
-        <section id="features" className="py-16 md:py-14">
+        <section id="features" className="py-10 md:py-14">
           <div className="container px-2 md:px-6">
             {/* Encabezado principal */}
-            <div className="flex flex-col items-center text-center gap-4 mb-12">
+            <div className="w-full flex flex-col items-center text-center text-wrap gap-4 mb-12">
               <h2 className="text-3xl xl:text-4xl font-bold tracking-tight xl:mb-5">
                 Antes y Después de Usarlas
               </h2>
@@ -290,20 +309,20 @@ export default function App() {
             </div>
 
             {/* Comparación de efectos */}
-            <div className="grid gap-8 md:grid-cols-2 mb-16 xl:px-20">
+            <div className="grid gap-8 md:grid-cols-2 mb-16 xl:px-20 max-w-full">
               {/* Sin protección */}
-              <div className="rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:flex xl:flex-col xl:place-items-center">
-                <h3 className="text-xl font-bold mb-4 text-center text-red-500">
-                  Sin Protección: Estrés Visual Constante
+              <div className="max-w-full place-items-center rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:flex xl:flex-col xl:place-items-center">
+                <h3 className="w-max text-xl font-bold mb-4 text-center text-red-500">
+                  Sin Protección: <br /> Estrés Visual Constante
                 </h3>
-                <div className="relative h-[380px] xl:h-[400px] w-[380px] xl:w-[400px] rounded-lg overflow-hidden mb-4">
+                <div className="relative h-[380px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
                   <img
                     src="/assets/img/tiredMan.webp"
                     alt="Persona con ojos cansados e irritados"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <ul className="space-y-2 xl:grid xl:grid-cols-2 xl:gap-4 xl:p-4">
+                <ul className="w-full space-y-2 xl:grid xl:grid-cols-2 xl:gap-4 xl:p-4">
                   {[
                     "Vista cansada e irritada",
                     "Dificultad para dormir",
@@ -312,7 +331,7 @@ export default function App() {
                   ].map((item, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-white xl:text-lg"
+                      className="w-full flex items-start gap-2 text-white text-lg xl:text-lg"
                     >
                       <X className="h-5 w-5 text-red-500 xl:h-7 xl:w-7" />
                       {item}
@@ -323,10 +342,10 @@ export default function App() {
 
               {/* Con protección */}
               <div className="rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border-white/10 border xl:flex xl:flex-col xl:place-items-center">
-                <h3 className="text-xl font-bold mb-4 text-center text-success">
-                  Con Protección: Comodidad y Descanso Total
+                <h3 className="text-xl font-bold mb-4 text-center text-green-600">
+                  Con Protección: <br /> Comodidad y Descanso Total
                 </h3>
-                <div className="relative h-[380px] xl:h-[400px] w-[380px] xl:w-[400px] rounded-lg overflow-hidden mb-4">
+                <div className="relative h-[380px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
                   <img
                     src="/assets/img/comfortableMan.webp"
                     alt="Persona con visión relajada y enfocada"
@@ -342,7 +361,7 @@ export default function App() {
                   ].map((item, index) => (
                     <li
                       key={index}
-                      className="flex items-start gap-2 text-white xl:text-lg"
+                      className="flex items-start gap-2 text-white text-lg xl:text-lg"
                     >
                       <Check className="h-5 w-5 xl:h-7 xl:w-7 text-success" />
                       {item}
@@ -356,25 +375,33 @@ export default function App() {
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {[
                 {
-                  icon: <Eye className="h-6 w-6 text-primary" />,
+                  icon: (
+                    <Eye className="h-6 w-6 text-sidebar-primary-foreground" />
+                  ),
                   title: "Filtran el 99% de la luz azul",
                   description:
                     "Protege tu vista y reduce la fatiga ocular en cualquier entorno.",
                 },
                 {
-                  icon: <Moon className="h-6 w-6 text-primary" />,
+                  icon: (
+                    <Moon className="h-6 w-6 text-sidebar-primary-foreground" />
+                  ),
                   title: "Sueño más reparador",
                   description:
                     "Mejoran tu ciclo circadiano para que descanses mejor cada noche.",
                 },
                 {
-                  icon: <Sun className="h-6 w-6 text-primary" />,
+                  icon: (
+                    <Sun className="h-6 w-6 text-sidebar-primary-foreground" />
+                  ),
                   title: "Ligeras y cómodas",
                   description:
                     "Diseñadas para largas jornadas sin molestias ni presión en el rostro.",
                 },
                 {
-                  icon: <Book className="h-6 w-6 text-primary" />,
+                  icon: (
+                    <Book className="h-6 w-6 text-sidebar-primary-foreground" />
+                  ),
                   title: "Ideales para pantallas",
                   description:
                     "Perfectas para trabajar, leer o ver TV sin afectar tu bienestar.",
@@ -385,13 +412,13 @@ export default function App() {
                   className="border-none shadow-md backdrop-blur-lg bg-white/10 border-white/10"
                 >
                   <CardContent className="p-6 flex flex-col items-center text-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center">
+                    <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center text-sidebar-primary-foreground">
                       {feature.icon}
                     </div>
-                    <h3 className="font-bold text-sidebar-primary-foreground xl:text-xl">
+                    <h3 className="font-bold text-sidebar-primary-foreground text-lg xl:text-xl">
                       {feature.title}
                     </h3>
-                    <p className="text-sm xl:text-lg text-sidebar-primary-foreground">
+                    <p className="xl:text-lg text-sidebar-primary-foreground">
                       {feature.description}
                     </p>
                   </CardContent>
@@ -402,7 +429,7 @@ export default function App() {
         </section>
 
         {/* Social Proof & Testimonials */}
-        <section id="testimonials" className="py-16 md:py-24">
+        <section id="testimonials" className="py-10 md:py-16">
           <div className="container px-4 md:px-6">
             {/* Section Heading */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
@@ -419,7 +446,7 @@ export default function App() {
             <TestimonialCarousel />
 
             {/* Featured Testimonial */}
-            <div className="mt-16 rounded-xl p-8 flex flex-col md:flex-row gap-8 items-center shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:mt-28">
+            <div className="mt-16 rounded-xl p-2 flex flex-col md:flex-row gap-8 items-center shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:mt-28">
               {/* Video Testimonial */}
               <div className="md:w-1/2 ">
                 <div className="relative h-[300px] rounded-lg overflow-hidden">
@@ -457,7 +484,7 @@ export default function App() {
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-full bg-muted-foreground/20"></div>
                   <div>
-                    <p className="font-medium">Sarah Johnson</p>
+                    <p className="font-medium">Rodrigo Garcia</p>
                     <p className="text-sm text-sidebar-primary-foreground">
                       Desarrollador Web
                     </p>
@@ -472,7 +499,7 @@ export default function App() {
           <div className="container px-4 md:px-6">
             {/* Urgency & Headline */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
-              <Badge className="px-3 py-1 bg-success xl:text-sm">
+              <Badge className="px-3 py-1 bg-green-600 xl:text-sm">
                 Oferta por Tiempo Limitado ⏳
               </Badge>
               <h2 className="text-3xl font-bold tracking-tight xl:mt-2">
@@ -545,7 +572,7 @@ export default function App() {
                       $300.000
                     </span>
                   </div>
-                  <p className="text-green-600 font-semibold mb-4">
+                  <p className="text-white font-semibold mb-4 bg-green-600 rounded-lg p-1 text-center">
                     ¡Ahorra $80.000 y paga solo $109.999 por cada par!
                   </p>
                   <ul className="space-y-2 mb-6">
@@ -606,7 +633,7 @@ export default function App() {
 
             {/* Additional Benefits */}
             <div className="flex justify-center mt-8">
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1 xl:gap-4 text-sm text-muted-foreground text-pretty">
                 {[
                   {
                     icon: Shield,
@@ -619,7 +646,7 @@ export default function App() {
                     key={index}
                     className="flex items-center gap-1 xl:gap-3 font-bold text-sidebar-primary-foreground"
                   >
-                    <benefit.icon className="h-7 w-7 xl:h-10 xl:w-10" />
+                    <benefit.icon className="h-8 w-8 xl:h-10 xl:w-10" />
                     <span>{benefit.text}</span>
                   </div>
                 ))}
@@ -630,22 +657,24 @@ export default function App() {
         {/* Nota Personal del Fundador */}
         <section className="py-6 md:py-24 xl:py-5">
           <div className="container px-4 md:px-6 ">
-            <div className="max-w-[800px] mx-auto shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl">
+            <div className="max-w-[800px] p-2 mx-auto shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl">
               <div className="flex flex-col gap-6 xl:py-6">
                 <div className="h-16 w-16 rounded-full mx-auto"></div>
                 <h2 className="text-2xl font-bold text-center">
                   Un Mensaje de Nuestro Fundador
                 </h2>
                 <p className="text-sidebar-primary-foreground text-center xl:text-lg">
-                  "Creé estas gafas después de años sufriendo de migrañas e
-                  insomnio. Como desarrollador de software, pasaba más de 12
-                  horas al día frente a pantallas, sin darme cuenta del daño que
-                  la luz azul estaba causando a mi salud. Después de investigar
-                  sus efectos, diseñé estas lentes con filtro ambar que lo
-                  cambiaron todo. Hoy, mi misión es ayudar a más personas a
-                  proteger su vista y mejorar su descanso. Estas gafas no son
-                  solo un accesorio, sino una inversión en tu bienestar y
-                  calidad de vida en esta era digital."
+                  "Después de años lidiando con migrañas e insomnio por pasar
+                  más de 12 horas al día frente a pantallas, descubrí el impacto
+                  de la luz azul en mi salud. Decidí crear estas gafas con
+                  filtro ámbar, y el cambio fue increíble: descanso mejor, se
+                  acabaron los dolores de cabeza y la fatiga ocular desapareció.
+                </p>
+                <p className="text-sidebar-primary-foreground text-center xl:text-lg">
+                  Hoy, mi misión es ayudar a más personas a proteger su vista y
+                  mejorar su descanso. Estas gafas no son solo un accesorio,
+                  sino una inversión en tu bienestar y calidad de vida en esta
+                  era digital."
                 </p>
                 <div className="text-center">
                   <p className="font-medium xl:text-lg">Miguel Arenas</p>
@@ -659,7 +688,7 @@ export default function App() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-7 md:py-24">
+        <section id="faq" className="py-12 md:py-24">
           <div className="container px-4 md:px-6">
             {/* Section Title */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
@@ -681,7 +710,7 @@ export default function App() {
               >
                 {/* Pregunta 1 */}
                 <AccordionItem value="item-1">
-                  <AccordionTrigger className="underline">
+                  <AccordionTrigger className="text-left underline">
                     ¿Puedo usar estas gafas para conducir?
                   </AccordionTrigger>
                   <AccordionContent className="xl:text-lg flex flex-col gap-3">
@@ -712,7 +741,7 @@ export default function App() {
 
                 {/* Pregunta 2 */}
                 <AccordionItem value="item-2">
-                  <AccordionTrigger className="underline">
+                  <AccordionTrigger className="text-left underline">
                     ¿Estas gafas tienen aumento o graduación visual?
                   </AccordionTrigger>
                   <AccordionContent className="xl:text-lg flex flex-col gap-3">
@@ -734,15 +763,15 @@ export default function App() {
 
                 {/* Pregunta 3 */}
                 <AccordionItem value="item-3">
-                  <AccordionTrigger className="underline">
+                  <AccordionTrigger className="text-left underline">
                     ¿Son cómodas para usarlas por varias horas?
                   </AccordionTrigger>
                   <AccordionContent className="xl:text-lg flex flex-col gap-3">
                     <p>
-                      ¡Absolutamente! Nuestras gafas están diseñadas pensando en
-                      tu comodidad. Las monturas son ligeras y ergonómicas, lo
-                      que evita la presión en la cabeza y las orejas, incluso
-                      después de horas de uso.
+                      <strong>¡Absolutamente!</strong> Nuestras gafas están
+                      diseñadas pensando en tu comodidad. Las monturas son
+                      ligeras y ergonómicas, lo que evita la presión en la
+                      cabeza y las orejas, incluso después de horas de uso.
                     </p>
 
                     <p>
@@ -756,7 +785,7 @@ export default function App() {
 
                 {/* Pregunta 4 */}
                 <AccordionItem value="item-4">
-                  <AccordionTrigger className="underline">
+                  <AccordionTrigger className="text-left underline">
                     ¿Cuándo debo usar estas gafas?
                   </AccordionTrigger>
                   <AccordionContent className="xl:text-lg flex flex-col gap-3">
@@ -784,7 +813,7 @@ export default function App() {
 
                 {/* Pregunta 5 */}
                 <AccordionItem value="item-5">
-                  <AccordionTrigger className="underline">
+                  <AccordionTrigger className="text-left underline">
                     ¿Cómo debo limpiar y cuidar mis gafas?
                   </AccordionTrigger>
                   <AccordionContent>
@@ -836,7 +865,7 @@ export default function App() {
         </section>
 
         {/* More Social Proof */}
-        <section className="py-8 md:py-16 xl:py-10">
+        <section className="py-6 md:py-16 xl:py-10">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center gap-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tight">
@@ -914,7 +943,7 @@ export default function App() {
         {/* Final CTA */}
         <section className="py-8 md:py-24 ">
           <div className="container px-4 md:px-6 ">
-            <div className="max-w-[800px] mx-auto rounded-xl p-8 text-center border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
+            <div className="max-w-[800px] mx-auto rounded-xl p-4 text-center border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
               <h2 className="text-3xl font-bold tracking-tight mb-4">
                 ¿Listo para Transformar tu Descanso?
               </h2>
@@ -924,19 +953,19 @@ export default function App() {
                 bloqueadoras de luz azul.
               </p>
               <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-white font-semibold mb-4 xl:text-lg"
+                size={isMobile ? "default" : "lg"}
+                className="bg-primary hover:bg-primary/90 text-white font-semibold mb-4 text-sm xl:text-lg"
               >
                 ¡Ordena Ahora – Stock Limitado!
-                <ShoppingCart className="ml-2 h-4 w-4" />
+                <ShoppingCart className="ml-2 h-5 w-5" />
               </Button>
-              <div className="flex justify-center gap-4 text-sm ">
-                <div className="flex items-center gap-1 ">
-                  <Shield className="h-4 w-4" />
+              <div className="flex flex-col items-center lg:flex-row justify-center gap-4 text-sm">
+                <div className="flex flex-col lg:flex-row items-center gap-1 ">
+                  <Shield className="h-6 w-6" />
                   <span>Garantía de Devolución de Dinero por 30 Días</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Truck className="h-4 w-4" />
+                <div className="flex flex-col lg:flex-row items-center gap-1">
+                  <Truck className="h-6 w-6" />
                   <span>Envío Gratis</span>
                 </div>
               </div>
