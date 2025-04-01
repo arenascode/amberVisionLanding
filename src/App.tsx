@@ -30,6 +30,7 @@ import ProductIntro from "./components/ProductCarouselIntro/ProductIntro";
 import { HamburgerButton } from "./components/ui/hamburguerBtn";
 import AnnouncementCarousel from "./components/ui/annoouncement-carousel";
 import { useEffect, useState } from "react";
+import FadeIn from "./components/ui/fadeIn";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
@@ -105,13 +106,13 @@ export default function App() {
         {/* Single fixed gradient background */}
         <div className="fixed inset-0 z-[-1] bg-black">
           {/* Main radial gradient with orange accents */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,140,0,0.7)_10%,transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(255,140,0,0.7)_10%,transparent_50%),radial-gradient(circle_at_center,#2c2c2c_0%,#1f1f1f_35%,#000000_70%)] md:bg-[radial-gradient(ellipse_at_top_right,#ff8c00_0%,transparent_50%),radial-gradient(ellipse_at_bottom_left,#ff8c00_0%,transparent_50%),radial-gradient(circle_at_center,#2c2c2c_0%,#1f1f1f_30%,#000000_70%)]"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,140,0,0.7)_10%,transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(255,140,0,0.7)_10%,transparent_50%),radial-gradient(circle_at_center,#2c2c2c_0%,#1f1f1f_5%,#000000_60%)] md:bg-[radial-gradient(ellipse_at_top_right,#ff8c00_0%,transparent_45%),radial-gradient(ellipse_at_bottom_left,#ff8c00_0%,transparent_45%),radial-gradient(circle_at_center,#2c2c2c_0%,#1f1f1f_0%,#000000_70%)]"></div>
 
           {/* Optional subtle noise texture overlay */}
           <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')]"></div>
         </div>
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-20 lg:py-10 items-center lg:flex justify-center mt-16 xl:mt-24">
+        <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-20 lg:py-10 items-center lg:flex justify-center mt-22 xl:mt-24">
           <div className="container px-4 md:px-6 lg:px-2 lg:w-full justify-center">
             <div className="flex flex-col gap-8 md:gap-10 lg:flex-row items-center xl:gap-20 xl:w-full xl:px-10">
               <div className="flex flex-col justify-between gap-5 xl:gap-9">
@@ -121,10 +122,11 @@ export default function App() {
                 >
                   Protección Premium para tus Ojos
                 </Badge>
-                <h1 className="text-2xl font-bold tracking-wider sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.5rem] font-body uppercase">
+                <h1 className="text-2xl font-bold tracking-wider sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.5rem] font-body uppercase fade-in-up">
                   Protege tu vista, mejora tu descanso — <br />
                   descubre el poder de los Lentes Ambar
                 </h1>
+
                 <p className="text-sidebar-primary-foreground font-body md:text-xl lg:text-xl">
                   Bloquea la luz azul artificial, reduce la fatiga visual y
                   disfruta de un sueño más profundo cada noche.
@@ -178,9 +180,12 @@ export default function App() {
           <div className="container px-4 md:px-6">
             {/* Encabezado principal */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
-                Protege tus Ojos y Mejora tu Descanso
-              </h2>
+              <FadeIn delay={200}>
+                <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
+                  Protege tus Ojos y Mejora tu Descanso
+                </h2>
+              </FadeIn>
+
               <p className="text-sidebar-prymary-foreground md:text-lg max-w-[800px]">
                 La luz azul de las pantallas afecta tu vista y tu ciclo de
                 sueño. Descubre cómo reducir el daño y recuperar tu bienestar.
@@ -189,50 +194,58 @@ export default function App() {
 
             {/* Beneficios clave */}
             <div className="grid gap-8 md:grid-cols-3">
-              <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
-                <CardContent className="p-6 flex flex-col items-center text-center gap-4">
-                  <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center">
-                    <Eye className="text-sidebar-primary-foreground h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white">
-                    Menos Fatiga Visual
-                  </h3>
-                  <p className="text-sidebar-primary-foreground">
-                    La exposición prolongada a pantallas causa cansancio,
-                    sequedad e irritación en los ojos. Nuestras lentes protegen
-                    tu vista desde el primer uso.
-                  </p>
-                </CardContent>
-              </Card>
+              <FadeIn delay={100}>
+                <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
+                  <CardContent className="p-6 flex flex-col items-center text-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center">
+                      <Eye className="text-sidebar-primary-foreground h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">
+                      Menos Fatiga Visual
+                    </h3>
+                    <p className="text-sidebar-primary-foreground">
+                      La exposición prolongada a pantallas causa cansancio,
+                      sequedad e irritación en los ojos. Nuestras lentes
+                      protegen tu vista desde el primer uso.
+                    </p>
+                  </CardContent>
+                </Card>
+              </FadeIn>
 
-              <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
-                <CardContent className="p-6 flex flex-col items-center text-center gap-4">
-                  <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center">
-                    <Moon className="text-white h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white">Duerme Mejor</h3>
-                  <p className="text-sidebar-primary-foreground">
-                    La luz azul interfiere con la producción de melatonina,
-                    afectando tu descanso. Usa nuestras gafas antes de dormir y
-                    despierta renovado.
-                  </p>
-                </CardContent>
-              </Card>
+              <FadeIn delay={200}>
+                <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
+                  <CardContent className="p-6 flex flex-col items-center text-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center">
+                      <Moon className="text-white h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">
+                      Duerme Mejor
+                    </h3>
+                    <p className="text-sidebar-primary-foreground">
+                      La luz azul interfiere con la producción de melatonina,
+                      afectando tu descanso. Usa nuestras gafas antes de dormir
+                      y despierta renovado.
+                    </p>
+                  </CardContent>
+                </Card>
+              </FadeIn>
 
-              <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
-                <CardContent className="p-6 flex flex-col items-center text-center gap-4">
-                  <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center">
-                    <AlertTriangle className="text-white h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white">
-                    Menos Dolores de Cabeza
-                  </h3>
-                  <p className="text-sidebar-primary-foreground">
-                    Reduce la tensión ocular y evita las migrañas provocadas por
-                    la luz azul. Trabaja y estudia sin molestias.
-                  </p>
-                </CardContent>
-              </Card>
+              <FadeIn delay={300}>
+                <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 xl:h-full">
+                  <CardContent className="p-6 flex flex-col items-center text-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center">
+                      <AlertTriangle className="text-white h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">
+                      Menos Dolores de Cabeza
+                    </h3>
+                    <p className="text-sidebar-primary-foreground">
+                      Reduce la tensión ocular y evita las migrañas provocadas
+                      por la luz azul. Trabaja y estudia sin molestias.
+                    </p>
+                  </CardContent>
+                </Card>
+              </FadeIn>
             </div>
 
             {/* Sección de solución con imagen */}
@@ -295,13 +308,16 @@ export default function App() {
         </section>
 
         {/* Product Benefits & Features */}
-        <section id="features" className="py-10 md:py-14">
+        <section id="features" className="py-6 md:py-14">
           <div className="container px-2 md:px-6">
             {/* Encabezado principal */}
             <div className="w-full flex flex-col items-center text-center text-wrap gap-4 mb-12">
-              <h2 className="text-3xl xl:text-4xl font-bold tracking-tight xl:mb-5">
-                Antes y Después de Usarlas
-              </h2>
+              <FadeIn delay={100}>
+                <h2 className="text-3xl xl:text-4xl font-bold tracking-tight xl:mb-5">
+                  Antes y Después de Usarlas
+                </h2>
+              </FadeIn>
+
               <p className="text-sidebar-primary-foreground md:text-lg xl:text-xl max-w-[800px]">
                 Descubre cómo nuestras gafas de bloqueo de luz azul pueden
                 transformar tu día y mejorar tu descanso.
@@ -342,7 +358,7 @@ export default function App() {
 
               {/* Con protección */}
               <div className="rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border-white/10 border xl:flex xl:flex-col xl:place-items-center">
-                <h3 className="text-xl font-bold mb-4 text-center text-green-600">
+                <h3 className="text-xl font-bold mb-4 text-center text-success">
                   Con Protección: <br /> Comodidad y Descanso Total
                 </h3>
                 <div className="relative h-[380px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
@@ -407,35 +423,40 @@ export default function App() {
                     "Perfectas para trabajar, leer o ver TV sin afectar tu bienestar.",
                 },
               ].map((feature, index) => (
-                <Card
-                  key={index}
-                  className="border-none shadow-md backdrop-blur-lg bg-white/10 border-white/10"
-                >
-                  <CardContent className="p-6 flex flex-col items-center text-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center text-sidebar-primary-foreground">
-                      {feature.icon}
-                    </div>
-                    <h3 className="font-bold text-sidebar-primary-foreground text-lg xl:text-xl">
-                      {feature.title}
-                    </h3>
-                    <p className="xl:text-lg text-sidebar-primary-foreground">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
+                <FadeIn delay={100}>
+                  <Card
+                    key={index}
+                    className="border-none shadow-md backdrop-blur-lg bg-white/10 border-white/10 h-full"
+                  >
+                    <CardContent className="p-6 flex flex-col items-center text-center gap-4">
+                      <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center text-sidebar-primary-foreground">
+                        {feature.icon}
+                      </div>
+                      <h3 className="font-bold text-sidebar-primary-foreground text-lg xl:text-xl">
+                        {feature.title}
+                      </h3>
+                      <p className="xl:text-lg text-sidebar-primary-foreground">
+                        {feature.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </FadeIn>
               ))}
             </div>
           </div>
         </section>
 
         {/* Social Proof & Testimonials */}
-        <section id="testimonials" className="py-10 md:py-16">
-          <div className="container px-4 md:px-6">
+        <section id="testimonials" className="py-10 md:py-16 overflow-hidden">
+          <div className="container px-4 md:px-6 overflow-hidden">
             {/* Section Heading */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
-              <h2 className="text-3xl font-bold tracking-tight">
-                Lo Que Dicen Nuestros Clientes
-              </h2>
+              <FadeIn delay={100}>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Lo Que Dicen Nuestros Clientes
+                </h2>
+              </FadeIn>
+
               <p className="text-sidebar-primary-foreground md:text-lg max-w-[800px]">
                 Más de 300 personas han mejorado su sueño y reducido la fatiga
                 ocular con nuestras gafas.
@@ -446,52 +467,54 @@ export default function App() {
             <TestimonialCarousel />
 
             {/* Featured Testimonial */}
-            <div className="mt-16 rounded-xl p-2 flex flex-col md:flex-row gap-8 items-center shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:mt-28">
-              {/* Video Testimonial */}
-              <div className="md:w-1/2 ">
-                <div className="relative h-[300px] rounded-lg overflow-hidden">
-                  <img
-                    src="/placeholder.svg?height=600&width=600"
-                    alt="Video testimonial thumbnail"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="h-16 w-16 rounded-full bg-primary/90 flex items-center justify-center cursor-pointer hover:bg-primary transition-colors">
-                      <Play className="h-6 w-6 text-white" fill="white" />
+            <FadeIn delay={100}>
+              <div className="mt-16 rounded-xl p-2 flex flex-col md:flex-row gap-8 items-center shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:mt-28">
+                {/* Video Testimonial */}
+                <div className="md:w-1/2 ">
+                  <div className="relative h-[300px] rounded-lg overflow-hidden">
+                    <img
+                      src="/placeholder.svg?height=600&width=600"
+                      alt="Video testimonial thumbnail"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="h-16 w-16 rounded-full bg-primary/90 flex items-center justify-center cursor-pointer hover:bg-primary transition-colors">
+                        <Play className="h-6 w-6 text-white" fill="white" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Written Testimonial */}
+                <div className="md:w-1/2">
+                  <div className="flex mb-4 gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className="h-5 w-5 fill-[#FFD700] stroke-[#FFD700]"
+                      />
+                    ))}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-sidebar-primary-foreground">
+                    "Estas gafas cambiaron mi vida. ¡Duermo mejor que nunca!"
+                  </h3>
+                  <p className="text-sidebar-primary-foreground mb-4">
+                    Después de años de insomnio, dudaba que unas gafas pudieran
+                    ayudarme. Pero en solo una semana, comencé a dormir más
+                    rápido y despertar con más energía cada mañana.
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full bg-muted-foreground/20"></div>
+                    <div>
+                      <p className="font-medium">Rodrigo Garcia</p>
+                      <p className="text-sm text-sidebar-primary-foreground">
+                        Desarrollador Web
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Written Testimonial */}
-              <div className="md:w-1/2">
-                <div className="flex mb-4 gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 fill-[#FFD700] stroke-[#FFD700]"
-                    />
-                  ))}
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-sidebar-primary-foreground">
-                  "Estas gafas cambiaron mi vida. ¡Duermo mejor que nunca!"
-                </h3>
-                <p className="text-sidebar-primary-foreground mb-4">
-                  Después de años de insomnio, dudaba que unas gafas pudieran
-                  ayudarme. Pero en solo una semana, comencé a dormir más rápido
-                  y despertar con más energía cada mañana.
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-muted-foreground/20"></div>
-                  <div>
-                    <p className="font-medium">Rodrigo Garcia</p>
-                    <p className="text-sm text-sidebar-primary-foreground">
-                      Desarrollador Web
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </FadeIn>
           </div>
         </section>
         {/* Urgency & Call-href-Action */}
@@ -502,9 +525,12 @@ export default function App() {
               <Badge className="px-3 py-1 bg-green-600 xl:text-sm">
                 Oferta por Tiempo Limitado ⏳
               </Badge>
-              <h2 className="text-3xl font-bold tracking-tight xl:mt-2">
-                Descuento Especial de Lanzamiento
-              </h2>
+              <FadeIn delay={100}>
+                <h2 className="text-3xl font-bold tracking-tight xl:mt-2">
+                  Descuento Especial de Lanzamiento
+                </h2>
+              </FadeIn>
+
               <p className="text-sidebar-primary-foreground md:text-lg max-w-[800px]">
                 Aprovecha nuestro precio exclusivo antes de que desaparezca
               </p>
@@ -519,83 +545,87 @@ export default function App() {
               className="grid gap-8 xl:gap-12 md:grid-cols-2 max-w-[1000px] mx-auto"
             >
               {/* Basic Package - 1 Pair */}
-              <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 relative overflow-hidden">
-                <div className="p-6">
-                  <h3 className="text-xl xl:text-2xl font-bold mb-2 text-sidebar-primary-foreground">
-                    1 Par de Gafas Amber Vision
-                  </h3>
-                  <p className="text-sidebar-primary-foreground mb-4 xl:text-lg">
-                    Protege tu vista y mejora tu descanso con un par de gafas
-                    Amber Vision.
-                  </p>
-                  <div className="flex items-end gap-1 mb-4 text-sidebar-primary-foreground">
-                    <span className="text-3xl font-bold">$119.999</span>
-                    <span className="italic line-through">$150.000</span>
+              <FadeIn delay={100}>
+                <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 relative overflow-hidden h-full">
+                  <div className="p-6">
+                    <h3 className="text-xl xl:text-2xl font-bold mb-2 text-sidebar-primary-foreground">
+                      1 Par de Gafas Amber Vision
+                    </h3>
+                    <p className="text-sidebar-primary-foreground mb-4 xl:text-lg">
+                      Protege tu vista y mejora tu descanso con un par de gafas
+                      Amber Vision.
+                    </p>
+                    <div className="flex items-end gap-1 mb-4 text-sidebar-primary-foreground">
+                      <span className="text-3xl font-bold">$119.999</span>
+                      <span className="italic line-through">$150.000</span>
+                    </div>
+                    <ul className="space-y-2 mb-6">
+                      {[
+                        "Lentes Amber Vision",
+                        "Montura ligera y cómoda",
+                        "Estuche protector rígido",
+                        "Estuche de tela para evitar rayones",
+                        "Paño de microfibra para limpieza",
+                        "Tester de luz azul para comprobar su eficacia",
+                        "Garantía de 6 meses por defectos de fábrica*",
+                      ].map((item, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <Check className="h-4 w-4 text-success" />
+                          <span className="text-sm xl:text-lg text-sidebar-primary-foreground">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full xl:text-lg">Elegir</Button>
                   </div>
-                  <ul className="space-y-2 mb-6">
-                    {[
-                      "Lentes Amber Vision",
-                      "Montura ligera y cómoda",
-                      "Estuche protector rígido",
-                      "Estuche de tela para evitar rayones",
-                      "Paño de microfibra para limpieza",
-                      "Tester de luz azul para comprobar su eficacia",
-                      "Garantía de 6 meses por defectos de fábrica*",
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 text-success" />
-                        <span className="text-sm xl:text-lg text-sidebar-primary-foreground">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full xl:text-lg">Elegir</Button>
-                </div>
-              </Card>
+                </Card>
+              </FadeIn>
 
-              {/* Best Value - 2 Pairs */}
-              <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-green-600 text-primary-foreground px-3 py-1 text-xs xl:text-sm font-medium rounded-bl-lg">
-                  Mejor Oferta 🔥
-                </div>
-                <div className="p-6 text-sidebar-primary-foreground">
-                  <h3 className="text-xl xl:text-2xl font-bold mb-2">
-                    2 Pares de Gafas Amber Vision
-                  </h3>
-                  <p className="mb-4 font-medium xl:text-lg">
-                    ¡Comparte la protección con alguien especial y ahorra más!
-                  </p>
-                  <div className="flex items-end gap-1 mb-2">
-                    <span className="text-3xl font-bold">$219.999</span>
-                    <span className="text-sidebar-primary-foreground italic line-through">
-                      $300.000
-                    </span>
+              <FadeIn delay={100}>
+                <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 bg-green-600 text-primary-foreground px-3 py-1 text-xs xl:text-sm font-medium rounded-bl-lg">
+                    Mejor Oferta 🔥
                   </div>
-                  <p className="text-white font-semibold mb-4 bg-green-600 rounded-lg p-1 text-center">
-                    ¡Ahorra $80.000 y paga solo $109.999 por cada par!
-                  </p>
-                  <ul className="space-y-2 mb-6">
-                    {[
-                      "2 pares de lentes Amber Vision",
-                      "Monturas ligeras y cómodas",
-                      "2 estuches protectores rígidos",
-                      "2 estuches de tela para evitar rayones",
-                      "2 paños de microfibra para limpieza",
-                      "2 testers de luz azul para comprobar su eficacia",
-                      "Garantía de 6 meses por defectos de fábrica*",
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 text-success" />
-                        <span className="text-sm xl:text-lg">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full bg-primary hover:bg-primary/90 xl:text-lg">
-                    Aprovechar Oferta
-                  </Button>
-                </div>
-              </Card>
+                  <div className="p-6 text-sidebar-primary-foreground">
+                    <h3 className="text-xl xl:text-2xl font-bold mb-2">
+                      2 Pares de Gafas Amber Vision
+                    </h3>
+                    <p className="mb-4 font-medium xl:text-lg">
+                      ¡Comparte la protección con alguien especial y ahorra más!
+                    </p>
+                    <div className="flex items-end gap-1 mb-2">
+                      <span className="text-3xl font-bold">$219.999</span>
+                      <span className="text-sidebar-primary-foreground italic line-through">
+                        $300.000
+                      </span>
+                    </div>
+                    <p className="text-white font-semibold mb-4 bg-green-600 rounded-lg p-1 text-center">
+                      ¡Ahorra $80.000 y paga solo $109.999 por cada par!
+                    </p>
+                    <ul className="space-y-2 mb-6">
+                      {[
+                        "2 pares de lentes Amber Vision",
+                        "Monturas ligeras y cómodas",
+                        "2 estuches protectores rígidos",
+                        "2 estuches de tela para evitar rayones",
+                        "2 paños de microfibra para limpieza",
+                        "2 testers de luz azul para comprobar su eficacia",
+                        "Garantía de 6 meses por defectos de fábrica*",
+                      ].map((item, index) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <Check className="h-4 w-4 text-success" />
+                          <span className="text-sm xl:text-lg">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full bg-primary hover:bg-primary/90 xl:text-lg">
+                      Aprovechar Oferta
+                    </Button>
+                  </div>
+                </Card>
+              </FadeIn>
+              {/* Best Value - 2 Pairs */}
 
               {/* Ultimate Package */}
               {/* <Card className="border shadow-md relative overflow-hidden">
@@ -657,33 +687,36 @@ export default function App() {
         {/* Nota Personal del Fundador */}
         <section className="py-6 md:py-24 xl:py-5">
           <div className="container px-4 md:px-6 ">
-            <div className="max-w-[800px] p-2 mx-auto shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl">
-              <div className="flex flex-col gap-6 xl:py-6">
-                <div className="h-16 w-16 rounded-full mx-auto"></div>
-                <h2 className="text-2xl font-bold text-center">
-                  Un Mensaje de Nuestro Fundador
-                </h2>
-                <p className="text-sidebar-primary-foreground text-center xl:text-lg">
-                  "Después de años lidiando con migrañas e insomnio por pasar
-                  más de 12 horas al día frente a pantallas, descubrí el impacto
-                  de la luz azul en mi salud. Decidí crear estas gafas con
-                  filtro ámbar, y el cambio fue increíble: descanso mejor, se
-                  acabaron los dolores de cabeza y la fatiga ocular desapareció.
-                </p>
-                <p className="text-sidebar-primary-foreground text-center xl:text-lg">
-                  Hoy, mi misión es ayudar a más personas a proteger su vista y
-                  mejorar su descanso. Estas gafas no son solo un accesorio,
-                  sino una inversión en tu bienestar y calidad de vida en esta
-                  era digital."
-                </p>
-                <div className="text-center">
-                  <p className="font-medium xl:text-lg">Miguel Arenas</p>
-                  <p className="text-sm text-sidebar-primary-foreground">
-                    Fundador, Amber Vision
+            <FadeIn delay={100}>
+              <div className="max-w-[800px] p-2 mx-auto shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl">
+                <div className="flex flex-col gap-6 xl:py-6">
+                  <div className="h-16 w-16 rounded-full mx-auto"></div>
+                  <h2 className="text-2xl font-bold text-center">
+                    Un Mensaje de Nuestro Fundador
+                  </h2>
+                  <p className="text-sidebar-primary-foreground text-center xl:text-lg">
+                    "Después de años lidiando con migrañas e insomnio por pasar
+                    más de 12 horas al día frente a pantallas, descubrí el
+                    impacto de la luz azul en mi salud. Decidí crear estas gafas
+                    con filtro ámbar, y el cambio fue increíble: descanso mejor,
+                    se acabaron los dolores de cabeza y la fatiga ocular
+                    desapareció.
                   </p>
+                  <p className="text-sidebar-primary-foreground text-center xl:text-lg">
+                    Hoy, mi misión es ayudar a más personas a proteger su vista
+                    y mejorar su descanso. Estas gafas no son solo un accesorio,
+                    sino una inversión en tu bienestar y calidad de vida en esta
+                    era digital."
+                  </p>
+                  <div className="text-center">
+                    <p className="font-medium xl:text-lg">Miguel Arenas</p>
+                    <p className="text-sm text-sidebar-primary-foreground">
+                      Fundador, Amber Vision
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </section>
 
@@ -692,9 +725,12 @@ export default function App() {
           <div className="container px-4 md:px-6">
             {/* Section Title */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
-              <h2 className="text-3xl font-bold tracking-tight">
-                Preguntas Frecuentes
-              </h2>
+              <FadeIn delay={100}>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Preguntas Frecuentes
+                </h2>
+              </FadeIn>
+
               <p className="text-sidebar-primary-foreground md:text-lg max-w-[800px]">
                 Todo lo que necesitas saber sobre nuestras gafas bloqueadoras de
                 luz azul
@@ -905,36 +941,38 @@ export default function App() {
                   name: "Camila T.",
                 },
               ].map((testimonial, i) => (
-                <Card
-                  key={i}
-                  className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10"
-                >
-                  <CardContent className="p-6">
-                    <div className="flex mb-4 gap-1">
-                      {[...Array(5)].map((_, j) => (
-                        <Star
-                          key={j}
-                          className="h-4 w-4 fill-[#FFD700] text-primary"
-                          stroke="#FFD700"
-                        />
-                      ))}
-                    </div>
-                    <p className="text-sidebar-primary-foreground mb-4">
-                      "{testimonial.review}"
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-full bg-muted-foreground/20"></div>
-                      <div>
-                        <p className="font-medium text-sidebar-primary-foreground">
-                          {testimonial.name}
-                        </p>
-                        <p className="text-xs text-sidebar-primary-foreground">
-                          Comprador Verificado
-                        </p>
+                <FadeIn delay={100}>
+                  <Card
+                    key={i}
+                    className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 h-full"
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex mb-4 gap-1">
+                        {[...Array(5)].map((_, j) => (
+                          <Star
+                            key={j}
+                            className="h-4 w-4 fill-[#FFD700] text-primary"
+                            stroke="#FFD700"
+                          />
+                        ))}
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                      <p className="text-sidebar-primary-foreground mb-4">
+                        "{testimonial.review}"
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 rounded-full bg-muted-foreground/20"></div>
+                        <div>
+                          <p className="font-medium text-sidebar-primary-foreground">
+                            {testimonial.name}
+                          </p>
+                          <p className="text-xs text-sidebar-primary-foreground">
+                            Comprador Verificado
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </FadeIn>
               ))}
             </div>
           </div>
@@ -943,7 +981,8 @@ export default function App() {
         {/* Final CTA */}
         <section className="py-8 md:py-24 ">
           <div className="container px-4 md:px-6 ">
-            <div className="max-w-[800px] mx-auto rounded-xl p-4 text-center border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
+            <FadeIn delay={100}>
+              <div className="max-w-[800px] mx-auto rounded-xl p-4 text-center border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
               <h2 className="text-3xl font-bold tracking-tight mb-4">
                 ¿Listo para Transformar tu Descanso?
               </h2>
@@ -973,6 +1012,8 @@ export default function App() {
                 *Pruébalas por 30 días – ¡Ámalas o te devolvemos tu dinero!
               </p>
             </div>
+            </FadeIn>
+            
           </div>
         </section>
       </main>

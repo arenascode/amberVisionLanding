@@ -23,6 +23,14 @@ const testimonials = [
     rating: 5,
   },
   {
+    id: 5,
+    name: "Sebastián Torres",
+    role: "Analista Financiero",
+    content:
+      "Después de años luchando contra el insomnio, estas gafas han hecho una diferencia notable. Me duermo más rápido y me despierto mucho más descansado.",
+    rating: 5,
+  },
+  {
     id: 3,
     name: "Juan Camilo Rodríguez",
     role: "Ingeniero de Software",
@@ -38,14 +46,7 @@ const testimonials = [
       "Estas gafas han cambiado completamente mi rutina nocturna. Ahora puedo editar videos hasta tarde sin sufrir fatiga visual ni afectar mi sueño.",
     rating: 5,
   },
-  {
-    id: 5,
-    name: "Sebastián Torres",
-    role: "Analista Financiero",
-    content:
-      "Después de años luchando contra el insomnio, estas gafas han hecho una diferencia notable. Me duermo más rápido y me despierto mucho más descansado.",
-    rating: 5,
-  },
+
   {
     id: 6,
     name: "Laura Castillo",

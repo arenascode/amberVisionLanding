@@ -190,7 +190,7 @@ export default function AnnouncementCarousel() {
   const currentAnnouncement = announcements[currentIndex];
 
   return (
-    <div className="fixed bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-primary-foreground py-2 overflow-hidden z-10 xl:top-16 w-full ">
+    <div className="fixed bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-primary-foreground py-2 overflow-hidden z-10 top-15 xl:top-16 w-full ">
       <div className="container px-4 md:px-6 flex items-center justify-between ">
         <button
           onClick={prevAnnouncement}
