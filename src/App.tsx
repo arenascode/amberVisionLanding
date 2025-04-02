@@ -70,7 +70,6 @@ export default function App() {
     }
   }, []);
 
-
   const openCheckout = (productId: string) => {
     const product = products.find((p) => p.id === productId);
     if (product) {
@@ -88,21 +87,20 @@ export default function App() {
           <div className="flex items-center gap-2 font-bold text-2xl tracking-widest font-title uppercase p-2 ml-1">
             <a href="#" className="flex items-center gap-1">
               <span className="bg-gradient-to-r from-gray-100 via-gray-500 to-gray-100 bg-clip-text text-transparent">
-              Amber
-            </span>
+                Amber
+              </span>
 
-            <span className="bg-gradient-to-r from-gray-100 via-gray-500 to-gray-100 bg-clip-text text-transparent">
-              Vision
-            </span>
-            <img
-              src="./assets/logo_AV.webp"
-              alt="Brand Logo"
-              width={60}
+              <span className="bg-gradient-to-r from-gray-100 via-gray-500 to-gray-100 bg-clip-text text-transparent">
+                Vision
+              </span>
+              <img
+                src="./assets/logo_AV.webp"
+                alt="Brand Logo"
+                width={60}
                 style={{ marginLeft: "-0.7rem" }}
                 className="lg:ml-1"
-            />
+              />
             </a>
-            
           </div>
           <nav className="hidden md:flex gap-6 xl:gap-10">
             <a
@@ -176,8 +174,10 @@ export default function App() {
                     size="default"
                     className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2"
                   >
-                    <ShoppingCart className="h-5 w-5" />
-                    Cuida Tus Ojos y Duerme Mejor
+                    <a href="#pricing" className="flex items-center gap-3">
+                      Cuida Tus Ojos y Duerme Mejor
+                      <ShoppingCart className="h-5 w-5" />
+                    </a>
                   </Button>
 
                   <div className="flex items-center gap-2 text-sm lg:text-lg text-sidebar-primary-foreground">
@@ -1040,8 +1040,10 @@ export default function App() {
                   size={isMobile ? "default" : "lg"}
                   className="bg-primary hover:bg-primary/90 text-white font-semibold mb-4 text-sm xl:text-lg"
                 >
-                  ¡Ordena Ahora – Stock Limitado!
-                  <ShoppingCart className="ml-2 h-5 w-5" />
+                  <a href="#pricing" className="flex items-center">
+                    ¡Ordena Ahora – Stock Limitado!
+                    <ShoppingCart className="ml-2 h-5 w-5" />
+                  </a>
                 </Button>
                 <div className="flex flex-col items-center lg:flex-row justify-center gap-4 text-sm">
                   <div className="flex flex-col lg:flex-row items-center gap-1 ">

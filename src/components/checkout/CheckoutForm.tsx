@@ -44,19 +44,19 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
   const total = subtotal + shippingCost;
 
   return (
-    <div className="container max-w-6xl px-4 py-4">
+    <div className="container max-w-6xl lg:px-4 lg:py-4">
       <div className="grid gap-8 md:grid-cols-3">
         {/* Order Summary */}
         <Card className="md:col-span-1 bg-gray-300 xl:px-1">
           <CardHeader>
-            <CardTitle className="tracking-wide">
+            <CardTitle className="text-center tracking-wide">
               Resumen de tu compra
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Product */}
             <div className="flex flex-col items-center gap-4">
-              <div className="h-20 w-20 xl:h-60 xl:w-62 rounded-md border bg-muted flex items-center justify-center overflow-hidden">
+              <div className="h-40 w-40 xl:h-60 xl:w-62 rounded-md border bg-muted flex items-center justify-center overflow-hidden">
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
@@ -64,13 +64,13 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
                 />
               </div>
               <div className="flex-1">
-                <h3 className="font-medium">{product.name}</h3>
+                <h3 className="font-medium text-center">{product.name}</h3>
                 {product.variant && (
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground text-center">
                     {product.variant}
                   </p>
                 )}
-                <p className="mt-1 font-medium">
+                <p className="mt-1 font-medium text-center">
                   $
                   {product.price.toLocaleString("es-CO", {
                     minimumFractionDigits: 2,
@@ -97,7 +97,7 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
               <div className="flex justify-between text-sm">
                 <span>Envío</span>
                 <span>
-                  <strong>GRATIS</strong>
+                  <strong className="text-green-600">GRATIS</strong>
                 </span>
               </div>
               <Separator className="my-2" />
@@ -278,7 +278,7 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
 
               <Button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold cursor-pointer"
+                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold cursor-pointer tracking-wider"
               >
                 Completar Compra
               </Button>
