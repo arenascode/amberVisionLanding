@@ -125,7 +125,7 @@ export default function TestimonialCarousel() {
         <Button
           variant="outline"
           size="icon"
-          className="h-8 w-8 rounded-full"
+          className="h-8 w-8 rounded-full cursor-pointer"
           onClick={prevPage}
         >
           <ChevronLeft className="h-4 w-4" />
@@ -136,7 +136,7 @@ export default function TestimonialCarousel() {
             key={i}
             variant={i === currentPage ? "default" : "outline"}
             size="icon"
-            className={`h-2 w-2 rounded-full p-0 ${i === currentPage ? "bg-white" : " bg-none"}`}
+            className={`h-2 w-2 rounded-full p-0 ${i === currentPage ? "bg-white" : " bg-none"} cursor-pointer`}
             onClick={() => setCurrentPage(i)}
           >
             <span className="sr-only">Page {i + 1}</span>
@@ -145,7 +145,7 @@ export default function TestimonialCarousel() {
         <Button
           variant="outline"
           size="icon"
-          className="h-8 w-8 rounded-full"
+          className="h-8 w-8 rounded-full cursor-pointer"
           onClick={nextPage}
         >
           <ChevronRight className="h-4 w-4" />

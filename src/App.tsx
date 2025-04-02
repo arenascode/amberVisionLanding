@@ -31,9 +31,34 @@ import { HamburgerButton } from "./components/ui/hamburguerBtn";
 import AnnouncementCarousel from "./components/ui/annoouncement-carousel";
 import { useEffect, useState } from "react";
 import FadeIn from "./components/ui/fadeIn";
+import CheckoutModal from "./components/checkout/CheckoutModal";
+import { Product } from "./components/checkout/CheckoutForm";
+import amberLensesSingle from "/assets/product/amberLensesSingle.webp";
+import amberLensesPairPromo from "/assets/product/AmberLensesPair.webp";
+
+const products = [
+  {
+    id: "basic",
+    name: "1 Par de Gafas Amber Vision con filtro de luz azul",
+    price: 119999,
+    image: amberLensesSingle,
+    variant:
+      "+ Estuche Carcasa Dura + Estuche Tela + Paño Microfibra + Tarjeta de Prueba Anti Luz Azul",
+  },
+  {
+    id: "promo",
+    name: "2 Pares de Gafas Amber Vision con filtro de luz azul",
+    price: 219999,
+    image: amberLensesPairPromo,
+    variant:
+      "(+ Estuche Carcasa Dura + Estuche Tela + Paño Microfibra + Tarjeta de Prueba Anti Luz Azul) X 2",
+  },
+];
 
 export default function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     const windowWidth = window.innerWidth;
@@ -45,6 +70,14 @@ export default function App() {
     }
   }, []);
 
+
+  const openCheckout = (productId: string) => {
+    const product = products.find((p) => p.id === productId);
+    if (product) {
+      setSelectedProduct(product);
+      setIsCheckoutOpen(true);
+    }
+  };
   console.log({ isMobile });
 
   return (
@@ -53,7 +86,8 @@ export default function App() {
       <header className="fixed z-50 w-full bg-nav-footer text-white backdrop-blur supports-[backdrop-filter] lg:px-5">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2 font-bold text-2xl tracking-widest font-title uppercase p-2 ml-1">
-            <span className="bg-gradient-to-r from-gray-100 via-gray-500 to-gray-100 bg-clip-text text-transparent">
+            <a href="#" className="flex items-center gap-1">
+              <span className="bg-gradient-to-r from-gray-100 via-gray-500 to-gray-100 bg-clip-text text-transparent">
               Amber
             </span>
 
@@ -64,35 +98,38 @@ export default function App() {
               src="./assets/logo_AV.webp"
               alt="Brand Logo"
               width={60}
-              style={{ marginLeft: "-1.1rem" }}
+                style={{ marginLeft: "-0.7rem" }}
+                className="lg:ml-1"
             />
+            </a>
+            
           </div>
           <nav className="hidden md:flex gap-6 xl:gap-10">
             <a
               href="#benefits"
-              className="text-sm font-medium hover:text-primary"
+              className="text-sm font-medium hover:text-fire-btn"
             >
               Beneficios
             </a>
             <a
               href="#features"
-              className="text-sm font-medium hover:text-primary"
+              className="text-sm font-medium hover:text-fire-btn"
             >
               Carácteristicas
             </a>
             <a
               href="#testimonials"
-              className="text-sm font-medium hover:text-primary"
+              className="text-sm font-medium hover:text-fire-btn"
             >
               Testimonios
             </a>
             <a
               href="#pricing"
-              className="text-sm font-medium hover:text-primary"
+              className="text-sm font-medium hover:text-fire-btn"
             >
               Oferta
             </a>
-            <a href="#faq" className="text-sm font-medium hover:text-primary">
+            <a href="#faq" className="text-sm font-medium hover:text-fire-btn">
               FAQ
             </a>
           </nav>
@@ -577,7 +614,12 @@ export default function App() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full xl:text-lg">Elegir</Button>
+                    <Button
+                      className="w-full xl:text-lg cursor-pointer"
+                      onClick={() => openCheckout("basic")}
+                    >
+                      Elegir
+                    </Button>
                   </div>
                 </Card>
               </FadeIn>
@@ -619,7 +661,10 @@ export default function App() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full bg-primary hover:bg-primary/90 xl:text-lg">
+                    <Button
+                      className="w-full bg-primary hover:bg-primary/90 xl:text-lg cursor-pointer"
+                      onClick={() => openCheckout("promo")}
+                    >
                       Aprovechar Oferta
                     </Button>
                   </div>
@@ -983,41 +1028,39 @@ export default function App() {
           <div className="container px-4 md:px-6 ">
             <FadeIn delay={100}>
               <div className="max-w-[800px] mx-auto rounded-xl p-4 text-center border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
-              <h2 className="text-3xl font-bold tracking-tight mb-4">
-                ¿Listo para Transformar tu Descanso?
-              </h2>
-              <p className="text-sidebar-primary-foreground mb-6 md:text-lg">
-                Únete a cientos de clientes que han mejorado la calidad de su
-                sueño y han reducido la fatiga ocular gracias a nuestras gafas
-                bloqueadoras de luz azul.
-              </p>
-              <Button
-                size={isMobile ? "default" : "lg"}
-                className="bg-primary hover:bg-primary/90 text-white font-semibold mb-4 text-sm xl:text-lg"
-              >
-                ¡Ordena Ahora – Stock Limitado!
-                <ShoppingCart className="ml-2 h-5 w-5" />
-              </Button>
-              <div className="flex flex-col items-center lg:flex-row justify-center gap-4 text-sm">
-                <div className="flex flex-col lg:flex-row items-center gap-1 ">
-                  <Shield className="h-6 w-6" />
-                  <span>Garantía de Devolución de Dinero por 30 Días</span>
+                <h2 className="text-3xl font-bold tracking-tight mb-4">
+                  ¿Listo para Transformar tu Descanso?
+                </h2>
+                <p className="text-sidebar-primary-foreground mb-6 md:text-lg">
+                  Únete a cientos de clientes que han mejorado la calidad de su
+                  sueño y han reducido la fatiga ocular gracias a nuestras gafas
+                  bloqueadoras de luz azul.
+                </p>
+                <Button
+                  size={isMobile ? "default" : "lg"}
+                  className="bg-primary hover:bg-primary/90 text-white font-semibold mb-4 text-sm xl:text-lg"
+                >
+                  ¡Ordena Ahora – Stock Limitado!
+                  <ShoppingCart className="ml-2 h-5 w-5" />
+                </Button>
+                <div className="flex flex-col items-center lg:flex-row justify-center gap-4 text-sm">
+                  <div className="flex flex-col lg:flex-row items-center gap-1 ">
+                    <Shield className="h-6 w-6" />
+                    <span>Garantía de Devolución de Dinero por 30 Días</span>
+                  </div>
+                  <div className="flex flex-col lg:flex-row items-center gap-1">
+                    <Truck className="h-6 w-6" />
+                    <span>Envío Gratis</span>
+                  </div>
                 </div>
-                <div className="flex flex-col lg:flex-row items-center gap-1">
-                  <Truck className="h-6 w-6" />
-                  <span>Envío Gratis</span>
-                </div>
+                <p className="text-xs xl:text-sm mt-4">
+                  *Pruébalas por 30 días – ¡Ámalas o te devolvemos tu dinero!
+                </p>
               </div>
-              <p className="text-xs xl:text-sm mt-4">
-                *Pruébalas por 30 días – ¡Ámalas o te devolvemos tu dinero!
-              </p>
-            </div>
             </FadeIn>
-            
           </div>
         </section>
       </main>
-
       {/* Footer */}
       <footer className="border-t  bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)]">
         <div className="container px-4 py-8 md:px-6">
@@ -1220,6 +1263,14 @@ export default function App() {
           </p>
         </div>
       </footer>
+      {/*Checkout Modal*/}
+      {
+        <CheckoutModal
+          product={selectedProduct}
+          isOpen={isCheckoutOpen}
+          onClose={() => setIsCheckoutOpen(false)}
+        />
+      }
     </div>
   );
 }
