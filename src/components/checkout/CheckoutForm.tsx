@@ -1,47 +1,154 @@
 "use client";
 import { useState } from "react";
-import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import { makeRequest } from "../../utils/axios";
+import { FormErrors, ValidationRules } from "@/types/rulesValidationForm";
+import { validateForm } from "@/utils/validationForm";
 
 // Define the product type
 export type Product = {
-  id: string
-  name: string
-  price: number
-  image: string
-  variant?: string
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  variant?: string;
+};
+export interface CheckOutFormProps {
+  product: Product;
+  setSuccessPage: React.Dispatch<React.SetStateAction<boolean>>;
+  handleOrderNumberFromChild: (data: string) => void
 }
 
-export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
+const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({ product, setSuccessPage, handleOrderNumberFromChild }) => {
   const [formData, setFormData] = useState({
-    name: "",
+    nombre: "",
     email: "",
-    phone: "",
-    idNumber: "",
-    city: "",
-    state: "",
-    address: "",
-    additionalInfo: "",
+    telefono: "",
+    cedula: "",
+    ciudad: "",
+    departamento: "",
+    direccion: "",
+    aditionalData: "",
+    kit: product.id,
+    valorCompra: (product.price).toString(),
+    numero_orden: `AV-${Math.floor(100000 + Math.random() * 900000)}`
   });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [someError, setSomeError] = useState<boolean>(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "",
+    }));
+    setSomeError(false);
+  };
+  console.log({ formData });
+
+  const validationRules: Record<string, ValidationRules> = {
+    nombre: {
+      required: true,
+      minLength: 3,
+      messageRequired:
+        "¡Hey! No seas tímido, cuéntanos tu nombre para poder enviarte el pedido.",
+    },
+    email: {
+      required: true,
+      minLength: 3,
+      pattern: /\S+@\S+\.\S+/,
+      messageInvalid:
+        "¿Eso era un correo? 🤔 Revisa el formato, parece que algo falta.",
+      messageRequired:
+        "Necesitamos tu correo para enviarte la guía y mantenerte al tanto. ¡Prometemos no enviarte memes! (bueno, quizás uno o dos).",
+    },
+    cedula: {
+      required: true,
+      minLength: 5,
+      pattern: /^(\d{5,10}|[a-zA-Z0-9]{6,12})$/,
+      messageRequired:
+        "Necesitamos tu número de documento para que la transportadora no se pierda. ¡No querrás que tu paquete viaje solo!",
+      messageInvalid:
+        "Parece que el número de documento se tomó el día libre. Revisa que esté bien.",
+      messageLength:
+        "El número de documento debe tener al menos 5 caracteres. ¡Dale un poco más de personalidad!",
+    },
+    direccion: {
+      required: true,
+      minLength: 5,
+      messageRequired:
+        "¿Sin dirección? ¡Eso sí que es una misión imposible para la transportadora! Ayúdanos a llevarlo a tu puerta.",
+      messageLength: "Es una dirección muy corta, danos un poco más de detalle."
+    },
+    telefono: {
+      required: true,
+      minLength: 7,
+      pattern:
+        /^\+?[1-9]\d{0,2}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
+      messageInvalid:
+        "Mmm... ese número no parece de este planeta. ¡Revisa otra vez!",
+      messageRequired:
+        "Necesitamos tu número para avisarte cuando el pedido esté en camino. ¡Nada de llamadas molestas, lo prometemos!",
+    },
+    departamento: {
+      required: true,
+      minLength: 3,
+      messageRequired:
+        "¿Dónde vives? ¡El departamento no puede faltar para que el pedido llegue bien!",
+    },
+    ciudad: {
+      required: true,
+      minLength: 3,
+      messageRequired:
+        "La ciudad es fundamental para que el paquete no termine de vacaciones en otro lado. ¡Dinos dónde estás!",
+    },
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted with data:", formData);
-    alert("Order submitted successfully!");
+      const validationErrors = validateForm(formData, validationRules);
+      console.log({validationErrors});
+      
+    if (Object.keys(validationErrors).length > 0) {
+        console.log('enter here?');
+        
+        setErrors(validationErrors)
+        setSomeError(true)
+      } else {
+        try {
+          await makeRequest
+            .post("/purchase/newPurchase", formData)
+            .then((res) => {
+              console.log({ res });
+
+              if (res.status === 201) {
+                handleOrderNumberFromChild(formData.numero_orden)
+               setSuccessPage(true) 
+              //navigate to thanks page!
+              } else if (res.status === 400) {
+                console.log({ res });
+                alert(res.data.message);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              alert(err.response.data.message);
+            });
+        } catch (err: unknown) {
+          if (err instanceof Error) {
+            alert(err.message);
+          }
+        }
+      }
   };
 
   // Calculate totals
   const subtotal = product.price;
-  const total = subtotal + shippingCost;
 
   return (
     <div className="container max-w-6xl lg:px-4 lg:py-4">
@@ -116,27 +223,31 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
         </Card>
 
         {/* Customer Information Form */}
-        <Card className="md:col-span-2 bg-gray-200">
+        <Card className="md:col-span-2 bg-gray-300">
           <CardHeader>
             <CardTitle className="tracking-wide">
               Información para tu envío
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 ">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <label className="text-sm font-medium">
                     Nombre Y Apellido
                   </label>
                   <Input
-                    name="name"
-                    value={formData.name}
+                    name="nombre"
+                    value={formData.nombre}
                     onChange={handleChange}
                     placeholder="Tu nombre completo"
-                    required
-                    className="border-b-gray-700 rounded-none"
+                    className="border-b-gray-700 placeholder-gray-400"
                   />
+                  {errors.nombre && (
+                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                      {errors.nombre}
+                    </span>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -145,13 +256,17 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
                   </label>
                   <Input
                     name="email"
-                    type="email"
+                    type="text"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="tucorreo@ejemplo.com"
-                    required
-                    className="border-b-gray-700 rounded-none"
+                    className="border-b-gray-700"
                   />
+                  {errors.email && (
+                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                      {errors.email}
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -161,13 +276,17 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
                     Telefono / WhatsApp
                   </label>
                   <Input
-                    name="phone"
-                    value={formData.phone}
+                    name="telefono"
+                    value={formData.telefono}
                     onChange={handleChange}
                     placeholder="320 123 4567"
-                    required
-                    className="border-b-gray-700 rounded-none"
+                    className="border-b-gray-700 "
                   />
+                  {errors.telefono && (
+                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                      {errors.telefono}
+                    </span>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -175,13 +294,17 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
                     Documento <small>(Solo para la transportadora)</small>
                   </label>
                   <Input
-                    name="idNumber"
-                    value={formData.idNumber}
+                    name="cedula"
+                    value={formData.cedula}
                     onChange={handleChange}
                     placeholder="123456789"
-                    className="border-b-gray-700 rounded-none"
-                    required
+                    className="border-b-gray-700 "
                   />
+                  {errors.cedula && (
+                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                      {errors.cedula}
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -189,31 +312,35 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Ciudad</label>
                   <Input
-                    name="city"
-                    value={formData.city}
+                    name="ciudad"
+                    value={formData.ciudad}
                     onChange={handleChange}
                     placeholder="Tu Ciudad"
-                    required
-                    className="border-b-gray-700 rounded-none"
+                    className="border-b-gray-700 "
                   />
+                  {errors.ciudad && (
+                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                      {errors.ciudad}
+                    </span>
+                  )}
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Departamento</label>
                   <select
-                    name="state"
-                    value={formData.state}
+                    name="departamento"
+                    value={formData.departamento}
                     onChange={handleChange}
-                    className="flex h-10 w-full rounded-md border-b-gray-700 bg-background px-3 py-2 text-sm"
-                    required
+                    className="flex h-10 w-full rounded-md border border-gray-500 bg-background px-3 py-2 text-gray-700 shadow-sm transition-all duration-300 focus:outline-none focus:bg-gray-500 focus:text-white focus:shadow-lg disabled:cursor-not-allowed disabled:opacity-50 font-semibold"
                   >
-                    <option value="" className="border-b-gray-700">
+                    <option value="" className="">
                       Selecciona tu departamento
                     </option>
                     <option value="Amazonas">Amazonas</option>
                     <option value="Antioquia">Antioquia</option>
                     <option value="Arauca">Arauca</option>
                     <option value="Atlántico">Atlántico</option>
+                    <option value="Bogotá">Bogotá</option>
                     <option value="Bolívar">Bolívar</option>
                     <option value="Boyacá">Boyacá</option>
                     <option value="Caldas">Caldas</option>
@@ -248,34 +375,46 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
                     <option value="Vichada">Vichada</option>
                     {/* Add other states as needed */}
                   </select>
+                  {errors.departamento && (
+                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                      {errors.departamento}
+                    </span>
+                  )}
                 </div>
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-medium">Dirección</label>
                 <Input
-                  name="address"
-                  value={formData.address}
+                  name="direccion"
+                  value={formData.direccion}
                   onChange={handleChange}
                   placeholder="Calle xxx, barrio, cerca a..."
-                  required
                   className="border-b-gray-700
-                  rounded-none"
+                  "
                 />
+                {errors.direccion && (
+                  <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                    {errors.direccion}
+                  </span>
+                )}
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-medium">Datos Adicionales</label>
                 <Textarea
-                  name="additionalInfo"
-                  value={formData.additionalInfo}
+                  name="aditionalData"
+                  value={formData.aditionalData}
                   onChange={handleChange}
                   placeholder="Instrucciones de entrega, localidad, barrio, municipio cercano, area suburbana o cualquier información adicional que consideres necesaria."
-                  className="min-h-[100px] border-gray-700
-                  rounded-md"
+                  className="min-h-[100px] flex h-10 w-full border-input rounded-md px-3 bg-gray-200 py-2 text-base shadow-sm shadow-gray-800 transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-gray-400 focus:placeholder:text-gray-100 focus:outline-none focus:shadow-md focus:bg-gray-500 focus:text-white disabled:cursor-not-allowed disabled:opacity-50"
                 />
               </div>
-
+              {someError && (
+                <span className="someError text-red-500 text-[12px] text-center mt-[-0.5rem]">
+                  Revisa todos los campos, hubo un error o faltó alguno
+                </span>
+              )}
               <Button
                 type="submit"
                 className="w-full bg-primary hover:bg-primary/90 text-white font-semibold cursor-pointer tracking-wider"
@@ -288,4 +427,6 @@ export default function SimpleCheckoutForm({ product, shippingCost = 10 }) {
       </div>
     </div>
   );
-}
+};
+
+export default SimpleCheckoutForm;

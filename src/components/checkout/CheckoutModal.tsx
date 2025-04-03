@@ -11,20 +11,17 @@ interface CheckoutModalProps {
   product: Product | null;
   isOpen: boolean;
   onClose: () => void;
+  setSuccessPage: React.Dispatch<React.SetStateAction<boolean>>;
+  handleOrderNumberFromChild: (data: string) => void
 }
 
 export default function CheckoutModal({
   product,
   isOpen,
   onClose,
+  setSuccessPage,
+  handleOrderNumberFromChild
 }: CheckoutModalProps) {
-
-  const handleFormSubmit = (values: any) => {
-    console.log("Form submitted with values:", values);
-    alert("Order submitted successfully!");
-    onClose();
-  };
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
@@ -32,9 +29,10 @@ export default function CheckoutModal({
 "
       >
         <DialogHeader className="flex flex-col items-center justify-between px-4 xl:px-10 xl:gap-4">
-          <h2 className="text-sidebar-primary-foreground text-xl xl:text-2xl font-bold tracking-wide text-pretty">
+          <DialogTitle className="text-sidebar-primary-foreground text-xl xl:text-2xl font-bold tracking-wide text-pretty">
             Obten Envío Gratis y Paga Al Recibir
-          </h2>
+          </DialogTitle>
+
           <div>
             <DialogDescription className="text-lg xl:text-xl text-sidebar-primary-foreground text-center mt-2 lg:mt-0">
               Por favor completa el formulario a continuación para que te
@@ -88,20 +86,17 @@ export default function CheckoutModal({
           </button>
         </DialogHeader>
         <div className="flex flex-col justify-center">
-          <span className="text-red-500 text-center xl:text-lg">🚨 Atencion 🚨</span>
+          <span className="text-red-500 text-center xl:text-lg">
+            🚨 Atencion 🚨
+          </span>
           <DialogDescription className="xl:text-sm text-sidebar-primary-foreground text-center w-[80%] lg:w-[50%] mx-auto">
-            Asegúrate de proporcionar la información correcta para el
-            envío de tu pedido. Es crucial incluir un número de teléfono con
-            WhatsApp.
+            Asegúrate de proporcionar la información correcta para el envío de
+            tu pedido. Es crucial incluir un número de teléfono con WhatsApp.
           </DialogDescription>
         </div>
         {product && (
-          <CheckoutForm
-            product={product}
-            shippingCost={10}
-            onSubmit={handleFormSubmit}
-            onCancel={onClose}
-          />
+          <CheckoutForm product={product} setSuccessPage={setSuccessPage}
+            handleOrderNumberFromChild={handleOrderNumberFromChild} />
         )}
       </DialogContent>
     </Dialog>

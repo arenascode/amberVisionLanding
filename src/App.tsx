@@ -35,6 +35,8 @@ import CheckoutModal from "./components/checkout/CheckoutModal";
 import { Product } from "./components/checkout/CheckoutForm";
 import amberLensesSingle from "/assets/product/amberLensesSingle.webp";
 import amberLensesPairPromo from "/assets/product/AmberLensesPair.webp";
+import { API } from "./utils/axios";
+import CheckoutSuccessPage from "./components/checkout/SuccessPurchase";
 
 const products = [
   {
@@ -59,6 +61,8 @@ export default function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [successPage, setSuccessPage] = useState<boolean>(false);
+  const [orderNumber, setOrderNumber] = useState<string>('')
 
   useEffect(() => {
     const windowWidth = window.innerWidth;
@@ -69,14 +73,27 @@ export default function App() {
       setIsMobile(false);
     }
   }, []);
+  console.log(API);
 
   const openCheckout = (productId: string) => {
     const product = products.find((p) => p.id === productId);
+    console.log(product);
     if (product) {
       setSelectedProduct(product);
       setIsCheckoutOpen(true);
     }
   };
+  //effect for closing checkout
+  const handleOrderNumberFromChild = (data) => {
+    setOrderNumber(data)
+  }
+  useEffect(() => {
+
+    if (successPage) {
+      setIsCheckoutOpen(false)
+    }
+
+  }, [successPage])
   console.log({ isMobile });
 
   return (
@@ -290,7 +307,7 @@ export default function App() {
               <div className="grid gap-8 md:grid-cols-2 items-center">
                 <div className="relative h-[300px] xl:h-[450px] rounded-lg overflow-hidden">
                   <img
-                    src="/assets/img/OrangeLensesModel1.webp"
+                    src="/assets/img/manUsingGlasses2.webp"
                     alt="Persona usando gafas con filtro de luz azul"
                     className="object-cover w-full h-full"
                   />
@@ -1271,8 +1288,11 @@ export default function App() {
           product={selectedProduct}
           isOpen={isCheckoutOpen}
           onClose={() => setIsCheckoutOpen(false)}
+          setSuccessPage={setSuccessPage}
+          handleOrderNumberFromChild={handleOrderNumberFromChild}
         />
       }
+      {successPage && <CheckoutSuccessPage setSuccessPage={setSuccessPage} orderNumber={orderNumber} />}
     </div>
   );
 }

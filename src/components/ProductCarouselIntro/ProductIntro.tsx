@@ -1,11 +1,13 @@
 import "./productIntro.scss";
 //*Imgs //
+import manUsingGlasses from "/assets/img/manUsingGlasses.webp";
 import amberLensesSide from "/assets/product/amberLensesSide.webp";
-import amberLensesFront from "/assets/product/amberLensesFront.webp";
 import amberLensesBack from "/assets/product/amberLensesBack.webp";
-import amberLensesSide2 from "/assets/product/amberLensesSideTwo.webp";
-import amberLensesSideMini from "/assets/product/amberLensesSideMini.webp";
+import amberLensesSideTwo from "/assets/product/amberLensesSideTwo.webp";
+import amberLensesFront from "/assets/product/amberLensesFront.webp";
+import manUsingGlassesMini from "/assets/img/manUsingGlassesMini.webp";
 import amberLensesBackMini from "/assets/product/amberLensesBackMini.webp";
+import amberLensesSideMini from "/assets/product/amberLensesSideMini.webp";
 import amberLensesSideTwoMini from "/assets/product/amberLensesSideTwoMini.webp";
 import amberLensesFrontMini from "/assets/product/amberLensesFrontMini.webp";
 
@@ -49,7 +51,7 @@ const ProductIntro = () => {
             >
               <div id="slide1" className="carousel-item relative w-full h-full">
                 <img
-                  src={amberLensesSide}
+                  src={manUsingGlasses}
                   className="w-full"
                   alt="allModels"
                   loading="eager"
@@ -71,7 +73,7 @@ const ProductIntro = () => {
               </div>
               <div id="slide2" className="carousel-item relative w-full">
                 <img
-                  src={amberLensesFront}
+                  src={amberLensesSide}
                   className="w-full slide2"
                   alt="Packaging1"
                 />
@@ -92,7 +94,7 @@ const ProductIntro = () => {
               </div>
               <div id="slide3" className="carousel-item relative w-full ">
                 <img
-                  src={amberLensesBack}
+                  src={amberLensesFront}
                   className="w-full"
                   alt="Tailwind CSS Carousel component"
                 />
@@ -112,7 +114,7 @@ const ProductIntro = () => {
                 </div>
               </div>
               <div id="slide4" className="carousel-item relative w-full">
-                <img src={amberLensesSide2} className="w-full" alt="" />
+                <img src={amberLensesBack} className="w-full" alt="" />
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-0.5 right-5 top-1/2 w-[98%]">
                   <button
                     className="btn btn-circle btn-md text-lg bg-fire-btn/60 border-none text-white"
@@ -130,7 +132,7 @@ const ProductIntro = () => {
               </div>
               <div id="slide5" className="carousel-item relative w-full">
                 <img
-                  src={amberLensesSide}
+                  src={amberLensesSideTwo}
                   className="w-full"
                   alt="strenght levels"
                 />
@@ -156,35 +158,35 @@ const ProductIntro = () => {
                 data-img="slide1"
                 onClick={handleMiniImgs}
               >
-                <img src={amberLensesSideMini} alt="" />
+                <img src={manUsingGlassesMini} alt="" />
               </div>
               <div
                 className="miniImg slide2 border-2"
                 data-img="slide2"
                 onClick={handleMiniImgs}
               >
-                <img src={amberLensesFrontMini} alt="" />
+                <img src={amberLensesSideMini} alt="" />
               </div>
               <div
                 className="miniImg slide3 border-2"
                 data-img="slide3"
                 onClick={handleMiniImgs}
               >
-                <img src={amberLensesBackMini} alt="" />
+                <img src={amberLensesFrontMini} alt="" />
               </div>
               <div
                 className="miniImg slide4 border-2"
                 data-img="slide4"
                 onClick={handleMiniImgs}
               >
-                <img src={amberLensesSideTwoMini} alt="" />
+                <img src={amberLensesBackMini} alt="" />
               </div>
               <div
                 className="miniImg slide5 border-2"
                 data-img="slide5"
                 onClick={handleMiniImgs}
               >
-                <img src={amberLensesFrontMini} alt="" />
+                <img src={amberLensesSideTwoMini} alt="" />
               </div>
             </div>
           </div>
