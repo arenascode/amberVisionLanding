@@ -1,12 +1,16 @@
-import { useState } from "react";
 
-export function HamburgerButton() {
-  const [open, setOpen] = useState(false);
+
+interface HamburguerButtonProps {
+  openMenu: () => void
+  isOpen: boolean
+}
+
+export function HamburgerButton({openMenu, isOpen}: HamburguerButtonProps) {
 
   return (
     <button
-      onClick={() => setOpen(!open)}
-      className="p-2 focus:outline-none transition-all duration-300 ease-in-out"
+      onClick={openMenu}
+      className="p-2 focus:outline-none transition-all duration-300 ease-in-out cursor-pointer"
     >
       <svg
         viewBox="0 0 24 24"
@@ -22,14 +26,14 @@ export function HamburgerButton() {
         </defs>
 
         <rect
-          x={open ? "4.5" : "4"}
-          y={open ? "6" : "6"}
+          x={isOpen ? "4.5" : "4"}
+          y={isOpen ? "6" : "6"}
           width="16"
-          height={open ? "3.5" : "2.5"}
+          height={isOpen ? "3.5" : "2.5"}
           rx="1.25"
           fill="url(#amberGradient)"
           className={`origin-center transition-all duration-300 ${
-            open ? "rotate-45 translate-y-1" : ""
+            isOpen ? "rotate-45 translate-y-1" : ""
           }`}
         />
         <rect
@@ -40,18 +44,18 @@ export function HamburgerButton() {
           rx="1.25"
           fill="url(#amberGradient)"
           className={`origin-center transition-all duration-300 ${
-            open ? "opacity-0" : ""
+            isOpen ? "opacity-0" : ""
           }`}
         />
         <rect
-          x={open ? "3" : "4"}
-          y={open ? "16.5" : "16"}
+          x={isOpen ? "3" : "4"}
+          y={isOpen ? "16.5" : "16"}
           width="16"
-          height={open ? "3.5" : "2.5"}
+          height={isOpen ? "3.5" : "2.5"}
           rx="1.25"
           fill="url(#amberGradient)"
           className={`origin-center transition-all duration-300 ${
-            open ? "-rotate-45 -translate-y-1" : ""
+            isOpen ? "-rotate-45 -translate-y-1" : ""
           }`}
         />
       </svg>

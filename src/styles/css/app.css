@@ -56,6 +56,11 @@
   --font-garamond: "EB Garamond", serif;
   --font-inter: "Inter", sans-serif;
 }
+/*To avoid the header of each section shows behind the navbar*/
+html {
+  scroll-padding-top: 75px;
+  scroll-behavior: smooth; /* Adjust based on your navbar height */
+}
 
 .dark {
   --background: oklch(0.145 0 0);
@@ -90,6 +95,7 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

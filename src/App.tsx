@@ -37,6 +37,7 @@ import amberLensesSingle from "/assets/product/amberLensesSingle.webp";
 import amberLensesPairPromo from "/assets/product/AmberLensesPair.webp";
 import { API } from "./utils/axios";
 import CheckoutSuccessPage from "./components/checkout/SuccessPurchase";
+import NavBarMobile from "./components/navBarMobile/navBarMobile";
 
 const products = [
   {
@@ -60,10 +61,12 @@ const products = [
 export default function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isNavBarMenuOpen, setIsNavBarMenuOpen] = useState<boolean>(false)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [successPage, setSuccessPage] = useState<boolean>(false);
   const [orderNumber, setOrderNumber] = useState<string>('')
-
+  console.log({isNavBarMenuOpen});
+  
   useEffect(() => {
     const windowWidth = window.innerWidth;
     console.log(windowWidth);
@@ -84,9 +87,10 @@ export default function App() {
     }
   };
   //effect for closing checkout
-  const handleOrderNumberFromChild = (data) => {
+  const handleOrderNumberFromChild = (data: string) => {
     setOrderNumber(data)
   }
+
   useEffect(() => {
 
     if (successPage) {
@@ -94,7 +98,6 @@ export default function App() {
     }
 
   }, [successPage])
-  console.log({ isMobile });
 
   return (
     <div className="flex min-h-screen flex-col relative">
@@ -149,7 +152,10 @@ export default function App() {
             </a>
           </nav>
           <div className="lg:hidden">
-            <HamburgerButton />
+            <HamburgerButton
+              openMenu={() => setIsNavBarMenuOpen(!isNavBarMenuOpen)}
+              isOpen={isNavBarMenuOpen}
+            />
           </div>
         </div>
       </header>
@@ -572,7 +578,7 @@ export default function App() {
           </div>
         </section>
         {/* Urgency & Call-href-Action */}
-        <section className="py-6 md:py-14">
+        <section id="pricing" className="py-6 md:py-14">
           <div className="container px-4 md:px-6">
             {/* Urgency & Headline */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
@@ -595,7 +601,7 @@ export default function App() {
 
             {/* Pricing Section */}
             <div
-              id="pricing"
+              
               className="grid gap-8 xl:gap-12 md:grid-cols-2 max-w-[1000px] mx-auto"
             >
               {/* Basic Package - 1 Pair */}
@@ -1282,6 +1288,10 @@ export default function App() {
           </p>
         </div>
       </footer>
+      {/*NavBar Mobile*/}
+      {isMobile && isNavBarMenuOpen && (
+        <NavBarMobile onClose={() => setIsNavBarMenuOpen(false)} />
+      )}
       {/*Checkout Modal*/}
       {
         <CheckoutModal
@@ -1292,7 +1302,12 @@ export default function App() {
           handleOrderNumberFromChild={handleOrderNumberFromChild}
         />
       }
-      {successPage && <CheckoutSuccessPage setSuccessPage={setSuccessPage} orderNumber={orderNumber} />}
+      {successPage && (
+        <CheckoutSuccessPage
+          setSuccessPage={setSuccessPage}
+          orderNumber={orderNumber}
+        />
+      )}
     </div>
   );
 }
