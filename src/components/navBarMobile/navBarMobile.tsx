@@ -10,9 +10,9 @@ const NavBarMobile = ({onClose}: NavBarMobileProps) => {
   window.onclick = function (e) {
     const mobileMenu = document.getElementById("mobileMenu_modal");
     if (e.target === mobileMenu) {
-      mobileMenu.style.opacity = 0;
+      if (mobileMenu) mobileMenu.style.opacity = '0'
       setTimeout(() => {
-        mobileMenu.style.display = "none";
+        if (mobileMenu) mobileMenu.style.display = "none";
         onClose()
       }, 500);
     }
@@ -21,9 +21,6 @@ const NavBarMobile = ({onClose}: NavBarMobileProps) => {
   return (
     <div id="mobileMenu_modal">
       <div className="mobileMenu_content">
-        <button id="closeModalBtn" onClick={onClose}>
-          <img src="/assets/icons/closeModal.webp" alt="" />
-        </button>
         <ul className="links_menu">
           <li className="hover:text-fire-btn">
             <a href="#">Home</a>

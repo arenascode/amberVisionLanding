@@ -38,6 +38,12 @@ import amberLensesPairPromo from "/assets/product/AmberLensesPair.webp";
 import { API } from "./utils/axios";
 import CheckoutSuccessPage from "./components/checkout/SuccessPurchase";
 import NavBarMobile from "./components/navBarMobile/navBarMobile";
+import imageSolution from "/assets/img/manUsingGlasses2.webp";
+import tiredMan from "/assets/img/tiredMan.webp";
+import comfortableMan from "/assets/img/comfortableMan.webp";
+import founderImage from "/assets/img/imgFounder.webp"
+import manCoding from "/assets/img/manCoding.webp";
+import coupleWatchingMovies from "/assets/img/coupleWatchingMovies.webp"
 
 const products = [
   {
@@ -175,12 +181,12 @@ export default function App() {
             <div className="flex flex-col gap-8 md:gap-10 lg:flex-row items-center xl:gap-20 xl:w-full xl:px-10">
               <div className="flex flex-col justify-between gap-5 xl:gap-9">
                 <Badge
-                  className="w-fit border-1 border-white xl:text-sm text-white"
+                  className="w-fit border-1 border-white text-sm xl:text-sm text-white"
                   variant="outline"
                 >
                   Protección Premium para tus Ojos
                 </Badge>
-                <h1 className="text-2xl font-bold tracking-wider sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.5rem] font-body uppercase fade-in-up">
+                <h1 className="text-2xl font-bold tracking-wider  sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.5rem] font-body uppercase fade-in-up">
                   Protege tu vista, mejora tu descanso — <br />
                   descubre el poder de los Lentes Ambar
                 </h1>
@@ -313,7 +319,7 @@ export default function App() {
               <div className="grid gap-8 md:grid-cols-2 items-center">
                 <div className="relative h-[300px] xl:h-[450px] rounded-lg overflow-hidden">
                   <img
-                    src="/assets/img/manUsingGlasses2.webp"
+                    src={imageSolution}
                     alt="Persona usando gafas con filtro de luz azul"
                     className="object-cover w-full h-full"
                   />
@@ -387,13 +393,13 @@ export default function App() {
             {/* Comparación de efectos */}
             <div className="grid gap-8 md:grid-cols-2 mb-16 xl:px-20 max-w-full">
               {/* Sin protección */}
-              <div className="max-w-full place-items-center rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:flex xl:flex-col xl:place-items-center">
-                <h3 className="w-max text-xl font-bold mb-4 text-center text-red-500">
+              <div className="rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:flex xl:flex-col xl:place-items-center">
+                <h3 className="text-xl font-bold mb-4 text-center text-red-500">
                   Sin Protección: <br /> Estrés Visual Constante
                 </h3>
                 <div className="relative h-[380px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
                   <img
-                    src="/assets/img/tiredMan.webp"
+                    src={tiredMan}
                     alt="Persona con ojos cansados e irritados"
                     className="w-full h-full object-cover"
                   />
@@ -423,7 +429,7 @@ export default function App() {
                 </h3>
                 <div className="relative h-[380px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
                   <img
-                    src="/assets/img/comfortableMan.webp"
+                    src={comfortableMan}
                     alt="Persona con visión relajada y enfocada"
                     className="object-cover h-full w-full"
                   />
@@ -600,10 +606,7 @@ export default function App() {
             </div>
 
             {/* Pricing Section */}
-            <div
-              
-              className="grid gap-8 xl:gap-12 md:grid-cols-2 max-w-[1000px] mx-auto"
-            >
+            <div className="grid gap-8 xl:gap-12 md:grid-cols-2 max-w-[1000px] mx-auto">
               {/* Basic Package - 1 Pair */}
               <FadeIn delay={100}>
                 <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 relative overflow-hidden h-full">
@@ -615,7 +618,14 @@ export default function App() {
                       Protege tu vista y mejora tu descanso con un par de gafas
                       Amber Vision.
                     </p>
-                    <div className="flex items-end gap-1 mb-4 text-sidebar-primary-foreground">
+                    <div className="imgContainer container rounded-lg overflow-hidden">
+                      <img
+                        src={manCoding}
+                        alt="man coding"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex items-end gap-1 mb-4 mt-2 text-sidebar-primary-foreground">
                       <span className="text-3xl font-bold">$119.999</span>
                       <span className="italic line-through">$150.000</span>
                     </div>
@@ -631,7 +641,7 @@ export default function App() {
                       ].map((item, index) => (
                         <li key={index} className="flex items-center gap-2">
                           <Check className="h-4 w-4 text-success" />
-                          <span className="text-sm xl:text-lg text-sidebar-primary-foreground">
+                          <span className="text-[16px] xl:text-lg text-sidebar-primary-foreground">
                             {item}
                           </span>
                         </li>
@@ -659,7 +669,14 @@ export default function App() {
                     <p className="mb-4 font-medium xl:text-lg">
                       ¡Comparte la protección con alguien especial y ahorra más!
                     </p>
-                    <div className="flex items-end gap-1 mb-2">
+                    <div className="imgContainer container rounded-lg overflow-hidden">
+                      <img
+                        src={coupleWatchingMovies}
+                        alt="man coding"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex items-end gap-1 mb-2 mt-2">
                       <span className="text-3xl font-bold">$219.999</span>
                       <span className="text-sidebar-primary-foreground italic line-through">
                         $300.000
@@ -680,7 +697,7 @@ export default function App() {
                       ].map((item, index) => (
                         <li key={index} className="flex items-center gap-2">
                           <Check className="h-4 w-4 text-success" />
-                          <span className="text-sm xl:text-lg">{item}</span>
+                          <span className="text-[16px] xl:text-lg">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -756,9 +773,15 @@ export default function App() {
         <section className="py-6 md:py-24 xl:py-5">
           <div className="container px-4 md:px-6 ">
             <FadeIn delay={100}>
-              <div className="max-w-[800px] p-2 mx-auto shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl">
+              <div className="max-w-[800px] p-2 mx-auto shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl items-center">
                 <div className="flex flex-col gap-6 xl:py-6">
-                  <div className="h-16 w-16 rounded-full mx-auto"></div>
+                  <div className="h-28 xl:h-40 w-28 xl:w-4 mt-4 rounded-full mx-auto overflow-hidden">
+                    <img
+                      src={founderImage}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <h2 className="text-2xl font-bold text-center">
                     Un Mensaje de Nuestro Fundador
                   </h2>
@@ -777,7 +800,9 @@ export default function App() {
                     era digital."
                   </p>
                   <div className="text-center">
-                    <p className="font-medium xl:text-lg">Miguel Arenas</p>
+                    <p className="font-medium text-lg xl:text-lg">
+                      Miguel Arenas
+                    </p>
                     <p className="text-sm text-sidebar-primary-foreground">
                       Fundador, Amber Vision
                     </p>
@@ -985,17 +1010,17 @@ export default function App() {
               {[
                 {
                   review:
-                    "No podía creer lo cómodas que son estas gafas. Paso muchas horas frente a la computadora y desde que las uso, ya no sufro de dolor de cabeza ni fatiga visual. ¡Definitivamente una inversión increíble!",
+                    "No podía creer lo cómodas que son estas gafas. Paso muchas horas frente a la computadora y desde que las uso, ya no sufro de dolor de cabeza ni fatiga visual. ¡Definitivamente una gran inversión!",
                   name: "Sofía G.",
                 },
                 {
                   review:
-                    "¡Estoy encantado! Las gafas no solo lucen elegantes, sino que realmente noto la diferencia en la calidad del sueño. Solía despertarme agotado, pero desde que las uso antes de dormir, mi descanso ha mejorado notablemente.",
+                    "No sabía que la luz azul afectaba tanto mi sueño hasta que probé estas gafas. Ahora duermo mucho mejor después de usar el celular o ver TV en la noche. ¡Protegen mis ojos y me ayudan a descansar de verdad! Además, son cómodas y se ven bien.",
                   name: "Luis M.",
                 },
                 {
                   review:
-                    "Tengo problemas de visión y estaba preocupado por usar lentes con prescripción, pero el proceso fue muy sencillo. Mis gafas llegaron perfectas y ahora disfruto de una visión clara y sin molestias oculares. ¡Las recomiendo al 100%!",
+                    "Son ligeras y si siento que me protegen del brillo de las pantallas. Las uso a partir de que la luz del día se comienza a ir (cuando ya hay que prender luces en la casa) y sigo trabajando en la computadora y/o viendo tele. Las uso de corrido hasta la hora de dormir para que también me protege de la luz de los focos de la casa. Mis ojos se cansan mucho menos. ¡Las recomiendo al 100%!",
                   name: "Valentina R.",
                 },
                 {
@@ -1005,7 +1030,7 @@ export default function App() {
                 },
                 {
                   review:
-                    "Me sorprendió lo ligeras que son. A veces olvido que las tengo puestas de lo cómodas que son. Además, el diseño es moderno y recibo muchos cumplidos. ¡Son perfectas para cuidar la vista sin perder el estilo!",
+                    "Me sorprendió lo ligeras que son. A veces olvido que las tengo puestas de lo cómodas que son ya que paso horas frente a la computadora ya que trabajo remoto. Además, me gusta su diseño estilo Rayban.",
                   name: "Camila T.",
                 },
               ].map((testimonial, i) => (
@@ -1271,7 +1296,7 @@ export default function App() {
                   <span>📞</span> +57 316 4278515
                 </li>
                 <li className="flex items-center gap-2 text-sidebar-primary-foreground">
-                  <span>✉️</span> support@ambervision.com
+                  <span>✉️</span> focusfitshop@ambervision.com
                 </li>
                 <li className="flex items-center gap-2 text-sidebar-primary-foreground">
                   <span>📍</span> Bogotá, Colombia.

@@ -11,7 +11,7 @@ const testimonials = [
     name: "Carolina López",
     role: "Diseñadora Gráfica",
     content:
-      "He probado varias gafas con filtro de luz azul, pero estas con lentes ambar están en otro nivel. Mi sueño ha mejorado drásticamente desde que empecé a usarlas 2 horas antes de dormir.",
+      "Estas gafas me sorprendieron. Varias veces sentí dolor en los ojos después de estar frente al computador, me puse las gafas y, en cuestión de minutos, el dolor desapareció. Solo por eso ya valen la pena. Si pasas mucho tiempo frente a pantallas, te recomiendo estas gafas así no sientas molestias todavía. El daño de la luz azul es acumulativo y puede ser permanente. ¡Ojalá hubiera conocido estas gafas antes!",
     rating: 5,
   },
   {
@@ -35,7 +35,7 @@ const testimonials = [
     name: "Juan Camilo Rodríguez",
     role: "Ingeniero de Software",
     content:
-      "Al principio era escéptico, pero después de una semana usándolas en la noche, noté una gran mejora en la calidad de mi sueño y ya no siento la fátiga en los ojos después de horas frente a la pantalla. ¡Las recomiendo totalmente!",
+      "Trabajo muchas horas frente al computador y estas gafas me han ayudado a reducir el cansancio visual y mejorar el sueño. Son cómodas, modernas y bloquean la luz azul. ¡Una gran inversión para quienes pasan mucho tiempo en pantalla, sus ojos se lo agradecerán!",
     rating: 4,
   },
   {
@@ -74,7 +74,7 @@ export default function TestimonialCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       nextPage()
-    }, 5000)
+    }, 6000)
 
     return () => clearInterval(interval)
   }, [currentPage])

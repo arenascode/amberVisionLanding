@@ -22,7 +22,7 @@ const ProductIntro = () => {
       
       targetSlide.scrollIntoView({ block: "nearest", inline: "center" });
     }
-    const miniImgs = document.querySelectorAll(".miniImg") as NodeList
+    const miniImgs = document.querySelectorAll<HTMLImageElement>(".miniImg")
     miniImgs.forEach((img) => (img.style.borderColor = "#697172"));
     miniImgs.forEach((img) => {
       if (img.dataset.img == slideId) {
@@ -32,12 +32,20 @@ const ProductIntro = () => {
   };
 
   const handleMiniImgs = (e: React.MouseEvent<HTMLDivElement>) => {
-    const slideNumber = e.target.parentNode.dataset.img;
-    changeSlide(slideNumber);
-    const miniImgs = document.querySelectorAll(".miniImg");
+    const target = e.target as HTMLElement; // Explicitly cast e.target to HTMLElement
+    const parent = target.parentElement as HTMLElement | null; // Use parentElement (better than parentNode)
+
+    if (!parent) return; // Ensure parent exists before accessing dataset
+
+    const slideNumber = parent.dataset.img;
+    if (slideNumber) changeSlide(slideNumber);
+
+    const miniImgs = document.querySelectorAll<HTMLImageElement>(".miniImg");
     miniImgs.forEach((img) => (img.style.borderColor = "#697172"));
-    e.currentTarget.style.borderColor = "#ff9068";
+
+    (e.currentTarget as HTMLElement).style.borderColor = "#ff9068";
   };
+
 
   return (
     <div>

@@ -32,9 +32,10 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({ product, setSuccessPa
     ciudad: "",
     departamento: "",
     direccion: "",
-    aditionalData: "",
+    datos_adicionales: "",
+    producto: product.name,
     kit: product.id,
-    valorCompra: (product.price).toString(),
+    valor_compra: product.price,
     numero_orden: `AV-${Math.floor(100000 + Math.random() * 900000)}`
   });
   const [errors, setErrors] = useState<FormErrors>({});
@@ -403,8 +404,8 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({ product, setSuccessPa
               <div className="space-y-2">
                 <label className="text-sm font-medium">Datos Adicionales</label>
                 <Textarea
-                  name="aditionalData"
-                  value={formData.aditionalData}
+                  name="datos_adicionales"
+                  value={formData.datos_adicionales}
                   onChange={handleChange}
                   placeholder="Instrucciones de entrega, localidad, barrio, municipio cercano, area suburbana o cualquier información adicional que consideres necesaria."
                   className="min-h-[100px] flex h-10 w-full border-input rounded-md px-3 bg-gray-200 py-2 text-base shadow-sm shadow-gray-800 transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-gray-400 focus:placeholder:text-gray-100 focus:outline-none focus:shadow-md focus:bg-gray-500 focus:text-white disabled:cursor-not-allowed disabled:opacity-50"
