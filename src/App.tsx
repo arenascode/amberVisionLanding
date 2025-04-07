@@ -33,7 +33,6 @@ import CheckoutModal from "./components/checkout/CheckoutModal";
 import { Product } from "./components/checkout/CheckoutForm";
 import amberLensesSingle from "/assets/product/amberLensesSingle.webp";
 import amberLensesPairPromo from "/assets/product/AmberLensesPair.webp";
-import { API } from "./utils/axios";
 import CheckoutSuccessPage from "./components/checkout/SuccessPurchase";
 import NavBarMobile from "./components/navBarMobile/navBarMobile";
 import imageSolution from "/assets/img/manUsingGlasses2.webp";
