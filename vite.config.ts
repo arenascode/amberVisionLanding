@@ -7,7 +7,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "https://arenascode.github.io/amberVisionLanding",
+  // base: "https://arenascode.github.io/amberVisionLanding",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
