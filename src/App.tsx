@@ -2,7 +2,6 @@ import "./styles/css/app.css";
 import {
   Check,
   Star,
-  Play,
   ShoppingCart,
   Clock,
   Shield,
