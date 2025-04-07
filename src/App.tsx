@@ -41,7 +41,7 @@ import NavBarMobile from "./components/navBarMobile/navBarMobile";
 import imageSolution from "/assets/img/manUsingGlasses2.webp";
 import tiredMan from "/assets/img/tiredMan.webp";
 import comfortableMan from "/assets/img/comfortableMan.webp";
-import founderImage from "/assets/img/imgFounder.webp"
+import founderImage from "/assets/img/imageFounder.webp"
 import manCoding from "/assets/img/manCoding.webp";
 import coupleWatchingMovies from "/assets/img/coupleWatchingMovies.webp"
 
@@ -513,7 +513,10 @@ export default function App() {
         </section>
 
         {/* Social Proof & Testimonials */}
-        <section id="testimonials" className="py-10 md:py-16 overflow-hidden">
+        <section
+          id="testimonials"
+          className="py-10 pb-2 md:py-16 overflow-hidden"
+        >
           <div className="container px-4 md:px-6 overflow-hidden">
             {/* Section Heading */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
@@ -536,7 +539,7 @@ export default function App() {
             <FadeIn delay={100}>
               <div className="mt-16 rounded-xl p-2 flex flex-col md:flex-row gap-8 items-center shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:mt-28">
                 {/* Video Testimonial */}
-                <div className="md:w-1/2 ">
+                {/* <div className="md:w-1/2 ">
                   <div className="relative h-[300px] rounded-lg overflow-hidden">
                     <img
                       src="/placeholder.svg?height=600&width=600"
@@ -549,10 +552,10 @@ export default function App() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Written Testimonial */}
-                <div className="md:w-1/2">
+                {/* <div className="md:w-1/2">
                   <div className="flex mb-4 gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
@@ -578,11 +581,12 @@ export default function App() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </FadeIn>
           </div>
         </section>
+
         {/* Urgency & Call-href-Action */}
         <section id="pricing" className="py-6 md:py-14">
           <div className="container px-4 md:px-6">
@@ -769,6 +773,7 @@ export default function App() {
             </div>
           </div>
         </section>
+
         {/* Nota Personal del Fundador */}
         <section className="py-6 md:py-24 xl:py-5">
           <div className="container px-4 md:px-6 ">
@@ -1296,7 +1301,7 @@ export default function App() {
                   <span>📞</span> +57 316 4278515
                 </li>
                 <li className="flex items-center gap-2 text-sidebar-primary-foreground">
-                  <span>✉️</span> focusfitshop@ambervision.com
+                  <span>✉️</span> ventas@focusfitshop.com
                 </li>
                 <li className="flex items-center gap-2 text-sidebar-primary-foreground">
                   <span>📍</span> Bogotá, Colombia.
@@ -1305,11 +1310,11 @@ export default function App() {
             </div>
           </div>
           <p className="text-center text-xs text-sidebar-primary-foreground mt-8">
-            © {new Date().getFullYear()} Amber Vision. Todos los derechos
-            reservados.
+            © {new Date().getFullYear()} Amber Vision es una marca de Focus Fit
+            Shop. Todos los derechos reservados.
           </p>
           <p className="text-center text-xs text-sidebar-primary-foreground mt-2">
-            Designed with ❤️ by the Amber Vision Team.
+            Designed with ❤️ by the Focus Fit Shop Team.
           </p>
         </div>
       </footer>
