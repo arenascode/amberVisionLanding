@@ -24,7 +24,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CountdownTimer from "@/components/countdown-timer";
 import TestimonialCarousel from "@/components/testimonial-carousel";
-// import { useState } from "react";
 import ProductIntro from "./components/ProductCarouselIntro/ProductIntro";
 import { HamburgerButton } from "./components/ui/hamburguerBtn";
 import AnnouncementCarousel from "./components/ui/annoouncement-carousel";
@@ -70,7 +69,6 @@ export default function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [successPage, setSuccessPage] = useState<boolean>(false);
   const [orderNumber, setOrderNumber] = useState<string>('')
-  console.log({isNavBarMenuOpen});
   
   useEffect(() => {
     const windowWidth = window.innerWidth;
@@ -81,11 +79,9 @@ export default function App() {
       setIsMobile(false);
     }
   }, []);
-  console.log(API);
 
   const openCheckout = (productId: string) => {
     const product = products.find((p) => p.id === productId);
-    console.log(product);
     if (product) {
       setSelectedProduct(product);
       setIsCheckoutOpen(true);
@@ -130,29 +126,32 @@ export default function App() {
           <nav className="hidden md:flex gap-6 xl:gap-10">
             <a
               href="#benefits"
-              className="text-sm font-medium hover:text-fire-btn"
+              className="text-sm xl:text-lg font-medium hover:text-fire-btn"
             >
               Beneficios
             </a>
             <a
               href="#features"
-              className="text-sm font-medium hover:text-fire-btn"
+              className="text-sm xl:text-lg font-medium hover:text-fire-btn"
             >
               Carácteristicas
             </a>
             <a
               href="#testimonials"
-              className="text-sm font-medium hover:text-fire-btn"
+              className="text-sm xl:text-lg font-medium hover:text-fire-btn"
             >
               Testimonios
             </a>
             <a
               href="#pricing"
-              className="text-sm font-medium hover:text-fire-btn"
+              className="text-sm xl:text-lg font-medium hover:text-fire-btn"
             >
               Oferta
             </a>
-            <a href="#faq" className="text-sm font-medium hover:text-fire-btn">
+            <a
+              href="#faq"
+              className="text-sm xl:text-lg font-medium hover:text-fire-btn"
+            >
               FAQ
             </a>
           </nav>
@@ -175,12 +174,12 @@ export default function App() {
           <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')]"></div>
         </div>
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-20 lg:py-10 items-center lg:flex justify-center mt-22 xl:mt-24">
+        <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-20 lg:py-10 items-center lg:flex justify-center mt-22 xl:mt-27">
           <div className="container px-4 md:px-6 lg:px-2 lg:w-full justify-center">
             <div className="flex flex-col gap-8 md:gap-10 lg:flex-row items-center xl:gap-20 xl:w-full xl:px-10">
               <div className="flex flex-col justify-between gap-5 xl:gap-9">
                 <Badge
-                  className="w-fit border-1 border-white text-sm xl:text-sm text-white"
+                  className="w-fit border-1 border-white text-sm xl:text-lg text-white"
                   variant="outline"
                 >
                   Protección Premium para tus Ojos
@@ -202,7 +201,7 @@ export default function App() {
                     size="default"
                     className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2"
                   >
-                    <a href="#pricing" className="flex items-center gap-3">
+                    <a href="#pricing" className="flex items-center gap-3 xl:text-lg">
                       Cuida Tus Ojos y Duerme Mejor
                       <ShoppingCart className="h-5 w-5" />
                     </a>
@@ -373,8 +372,8 @@ export default function App() {
         </section>
 
         {/* Product Benefits & Features */}
-        <section id="features" className="py-6 md:py-14">
-          <div className="container px-2 md:px-6">
+        <section id="features" className="py-6 md:py-10">
+          <div className="container px-4 md:px-6">
             {/* Encabezado principal */}
             <div className="w-full flex flex-col items-center text-center text-wrap gap-4 mb-12">
               <FadeIn delay={100}>
@@ -392,11 +391,11 @@ export default function App() {
             {/* Comparación de efectos */}
             <div className="grid gap-8 md:grid-cols-2 mb-16 xl:px-20 max-w-full">
               {/* Sin protección */}
-              <div className="rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:flex xl:flex-col xl:place-items-center">
+              <div className="rounded-xl p-6 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:flex xl:flex-col xl:place-items-center">
                 <h3 className="text-xl font-bold mb-4 text-center text-red-500">
                   Sin Protección: <br /> Estrés Visual Constante
                 </h3>
-                <div className="relative h-[380px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
+                <div className="relative h-[320px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
                   <img
                     src={tiredMan}
                     alt="Persona con ojos cansados e irritados"
@@ -422,11 +421,11 @@ export default function App() {
               </div>
 
               {/* Con protección */}
-              <div className="rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border-white/10 border xl:flex xl:flex-col xl:place-items-center">
+              <div className="rounded-xl p-6 shadow-md backdrop-blur-lg bg-white/10 border-white/10 border xl:flex xl:flex-col xl:place-items-center">
                 <h3 className="text-xl font-bold mb-4 text-center text-success">
                   Con Protección: <br /> Comodidad y Descanso Total
                 </h3>
-                <div className="relative h-[380px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
+                <div className="relative h-[320px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
                   <img
                     src={comfortableMan}
                     alt="Persona con visión relajada y enfocada"
@@ -535,10 +534,10 @@ export default function App() {
             <TestimonialCarousel />
 
             {/* Featured Testimonial */}
-            <FadeIn delay={100}>
+            {/* <FadeIn delay={100}>
               <div className="mt-16 rounded-xl p-2 flex flex-col md:flex-row gap-8 items-center shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:mt-28">
-                {/* Video Testimonial */}
-                {/* <div className="md:w-1/2 ">
+                
+                <div className="md:w-1/2 ">
                   <div className="relative h-[300px] rounded-lg overflow-hidden">
                     <img
                       src="/placeholder.svg?height=600&width=600"
@@ -551,10 +550,10 @@ export default function App() {
                       </div>
                     </div>
                   </div>
-                </div> */}
+                </div>
 
-                {/* Written Testimonial */}
-                {/* <div className="md:w-1/2">
+                
+                <div className="md:w-1/2">
                   <div className="flex mb-4 gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
@@ -580,27 +579,27 @@ export default function App() {
                       </p>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
-            </FadeIn>
+            </FadeIn> */}
           </div>
         </section>
 
         {/* Urgency & Call-href-Action */}
-        <section id="pricing" className="py-6 md:py-14">
+        <section id="pricing" className="py-10 pt-16 md:py-14">
           <div className="container px-4 md:px-6">
             {/* Urgency & Headline */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
-              <Badge className="px-3 py-1 bg-green-600 xl:text-sm">
+              <Badge className="px-3 py-1 bg-green-600 xl:text-lg">
                 Oferta por Tiempo Limitado ⏳
               </Badge>
               <FadeIn delay={100}>
-                <h2 className="text-3xl font-bold tracking-tight xl:mt-2">
+                <h2 className="text-3xl font-bold tracking-tight xl:mt-4 xl:text-4xl">
                   Descuento Especial de Lanzamiento
                 </h2>
               </FadeIn>
 
-              <p className="text-sidebar-primary-foreground md:text-lg max-w-[800px]">
+              <p className="text-sidebar-primary-foreground md:text-lg xl:text-xl max-w-[800px]">
                 Aprovecha nuestro precio exclusivo antes de que desaparezca
               </p>
               <div className="mt-4">
@@ -651,10 +650,10 @@ export default function App() {
                       ))}
                     </ul>
                     <Button
-                      className="w-full xl:text-lg cursor-pointer"
+                      className="w-full text-lg tracking-wider cursor-pointer"
                       onClick={() => openCheckout("basic")}
                     >
-                      Elegir
+                      Elegir <ShoppingCart className="ml-2 h-5 w-5" />
                     </Button>
                   </div>
                 </Card>
@@ -705,10 +704,11 @@ export default function App() {
                       ))}
                     </ul>
                     <Button
-                      className="w-full bg-primary hover:bg-primary/90 xl:text-lg cursor-pointer"
+                      className="w-full bg-primary hover:bg-primary/90 tracking-wider text-lg cursor-pointer"
                       onClick={() => openCheckout("promo")}
                     >
-                      Aprovechar Oferta
+                      Aprovechar Oferta{" "}
+                      <ShoppingCart className="ml-2 h-5 w-5" />
                     </Button>
                   </div>
                 </Card>
@@ -779,10 +779,10 @@ export default function App() {
             <FadeIn delay={100}>
               <div className="max-w-[800px] p-2 mx-auto shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl items-center">
                 <div className="flex flex-col gap-6 xl:py-6">
-                  <div className="h-28 xl:h-40 w-28 xl:w-4 mt-4 rounded-full mx-auto overflow-hidden">
+                  <div className="h-28 lg:h-48 w-28 lg:w-48 mt-4 rounded-full mx-auto overflow-hidden">
                     <img
                       src={founderImage}
-                      alt=""
+                      alt="Fundador de Amber Vision"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -804,10 +804,10 @@ export default function App() {
                     era digital."
                   </p>
                   <div className="text-center">
-                    <p className="font-medium text-lg xl:text-lg">
+                    <p className="font-semibold text-lg xl:text-xl">
                       Miguel Arenas
                     </p>
-                    <p className="text-sm text-sidebar-primary-foreground">
+                    <p className="text-sm xl:text-lg text-sidebar-primary-foreground">
                       Fundador, Amber Vision
                     </p>
                   </div>
@@ -859,6 +859,15 @@ export default function App() {
                       su uso para la conducción nocturna, ya que nuestra
                       preferencia es no recomendarlas específicamente para este
                       propósito.
+                    </p>
+
+                    <p>
+                      <span className="font-semibold">
+                        Y un dato importante:
+                      </span>{" "}
+                      no recomendamos usarlas durante la noche cuando está
+                      lloviendo, ya que las condiciones de visibilidad pueden
+                      reducirse y lo más importante siempre es tu seguridad.
                     </p>
 
                     <p>

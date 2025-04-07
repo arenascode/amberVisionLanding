@@ -14,12 +14,9 @@ import amberLensesFrontMini from "/assets/product/amberLensesFrontMini.webp";
 const ProductIntro = () => {
 
   const changeSlide = (slideId: string) => {
-    console.log({slideId});
     
     const targetSlide = document.getElementById(slideId);
     if (targetSlide) {
-      console.log({targetSlide});
-      
       targetSlide.scrollIntoView({ block: "nearest", inline: "center" });
     }
     const miniImgs = document.querySelectorAll<HTMLImageElement>(".miniImg")
@@ -32,7 +29,7 @@ const ProductIntro = () => {
   };
 
   const handleMiniImgs = (e: React.MouseEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLElement; // Explicitly cast e.target to HTMLElement
+    const target = e.target as HTMLElement;
     const parent = target.parentElement as HTMLElement | null; // Use parentElement (better than parentNode)
 
     if (!parent) return; // Ensure parent exists before accessing dataset
@@ -50,7 +47,6 @@ const ProductIntro = () => {
   return (
     <div>
       <div className="h-full w-full" id="product">
-        {/* <Banner messageOne={`Envío Gratis, Paga Al Recibir`} /> */}
         <div className="productImagesContainer" id="productSlider">
           <div className="imgContainer">
             <div

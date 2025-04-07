@@ -25,11 +25,11 @@ export default function CheckoutModal({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
-        className="max-w-xl xl:max-w-5xl max-h-[90vh] overflow-y-auto bg-[radial-gradient(circle,#4a4a4a,#333333,#1f1f1f)]
+        className="max-w-xl xl:max-w-5xl max-h-[100dvh] overflow-y-auto bg-[radial-gradient(circle,#4a4a4a,#333333,#1f1f1f)] border-none
 "
       >
         <DialogHeader className="flex flex-col items-center justify-between px-4 xl:px-10 xl:gap-4">
-          <DialogTitle className="text-sidebar-primary-foreground text-xl xl:text-2xl font-bold tracking-wide text-pretty">
+          <DialogTitle className="text-sidebar-primary-foreground text-xl xl:text-2xl font-bold tracking-wide text-pretty mt-1">
             Obten Envío Gratis y Paga Al Recibir
           </DialogTitle>
 

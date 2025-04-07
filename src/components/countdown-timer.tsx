@@ -36,7 +36,7 @@ export default function CountdownTimer() {
     <div className="flex flex-col items-center gap-2">
       <div className="flex items-center gap-2 text-sidebar-primary-foreground">
         <Clock className="h-4 w-4" />
-        <span className="text-sm font-medium">
+        <span className="text-sm xl:text-lg font-medium">
           Oferta Limitada: 20% Off Termina En
         </span>
       </div>

@@ -8,8 +8,8 @@ import {
   ChevronRight,
   Tag,
   Clock,
-  Gift,
   HandCoins,
+  Eye,
 } from "lucide-react";
 
 type Announcement = {
@@ -23,107 +23,29 @@ const announcements: Announcement[] = [
   {
     id: 1,
     icon: <Tag className="h-5 w-5" />,
-    message: "20% OFF en tu compra",
+    message: "Hasta 25% OFF en tu compra",
     link: "#pricing",
   },
   {
     id: 2,
     icon: <Clock className="h-5 w-5" />,
     message: "Oferta Limitada: Envío Gratis a todo 🇨🇴",
-    link: "#",
+    link: "#pricing",
   },
   {
     id: 3,
-    icon: <Gift className="h-5 w-5" />,
-    message: "Ahorra hasta $80.000 Llevando Dos Pares",
-    link: "#pricing",
+    icon: <Eye className="h-5 w-5" />,
+    message: "Protege Tus Ojos y Duerme Mejor",
+    link: "#benefits",
   },
   {
     id: 4,
     icon: <HandCoins className="h-5 w-5" />,
-    message: "Pago Contra entrega",
-    link: "#",
+    message: "Pago Contra Entrega",
+    link: "#pricing",
   },
 ];
 
-// export default function AnnouncementCarousel() {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-
-//   // Auto-rotate announcements
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentIndex((prevIndex) => (prevIndex + 1) % announcements.length);
-//     }, 5000); // Change announcement every 5 seconds
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   const nextAnnouncement = () => {
-//     setCurrentIndex((prevIndex) => (prevIndex + 1) % announcements.length);
-//   };
-
-//   const prevAnnouncement = () => {
-//     setCurrentIndex(
-//       (prevIndex) =>
-//         (prevIndex - 1 + announcements.length) % announcements.length
-//     );
-//   };
-
-//   const currentAnnouncement = announcements[currentIndex];
-
-//   return (
-//     <div className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-primary-foreground py-2 relative overflow-hidden">
-//       <div className="container px-4 md:px-6 flex items-center justify-center">
-//         <button
-//           onClick={prevAnnouncement}
-//           className="absolute left-2 md:left-4 p-1 rounded-full hover:bg-primary-foreground/10 transition-colors"
-//           aria-label="Previous announcement"
-//         >
-//           <ChevronLeft className="h-4 w-4" />
-//         </button>
-
-//         <div className="flex items-center justify-center gap-2 text-sm font-medium px-8">
-//           {currentAnnouncement.icon}
-
-//           {currentAnnouncement.link ? (
-//             <a
-//               href={currentAnnouncement.link}
-//               className="hover:underline transition-all whitespace-nowrap md:whitespace-normal"
-//             >
-//               {currentAnnouncement.message}
-//             </a>
-//           ) : (
-//             <span className="whitespace-nowrap md:whitespace-normal capitalize text-lg">
-//               {currentAnnouncement.message}
-//             </span>
-//           )}
-//         </div>
-
-//         <button
-//           onClick={nextAnnouncement}
-//           className="absolute right-2 md:right-4 p-1 rounded-full hover:bg-primary-foreground/10 transition-colors"
-//           aria-label="Next announcement"
-//         >
-//           <ChevronRight className="h-4 w-4" />
-//         </button>
-//       </div>
-
-//       {/* Progress indicators */}
-//       {/* <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 pb-0.5">
-//         {announcements.map((_, index) => (
-//           <div
-//             key={index}
-//             className={`h-0.5 w-5 rounded-full transition-all ${
-//               index === currentIndex
-//                 ? "bg-primary-foreground"
-//                 : "bg-primary-foreground/30"
-//             }`}
-//           />
-//         ))}
-//       </div> */}
-//     </div>
-//   );
-// }
 
 export default function AnnouncementCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -197,13 +119,13 @@ export default function AnnouncementCarousel() {
           className="absolute left-2 md:left-4 p-1 rounded-full hover:bg-primary-foreground/10 transition-colors z-10"
           aria-label="Previous announcement"
         >
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className="h-4 w-4 xl:h-8 xl:w-8" />
         </button>
 
         <div className="relative w-full max-w-2xl mx-auto overflow-hidden">
           <div
             key={currentAnnouncement.id}
-            className={`flex items-center justify-center gap-2 text-sm font-medium px-8 transition-all duration-300 ease-in-out
+            className={`flex items-center justify-center gap-2 text-sm xl:text-lg font-medium px-8 transition-all duration-300 ease-in-out
               ${
                 isAnimating
                   ? direction === "left"
@@ -234,12 +156,12 @@ export default function AnnouncementCarousel() {
           className="absolute right-2 md:right-4 p-1 rounded-full hover:bg-primary-foreground/10 transition-colors z-10"
           aria-label="Next announcement"
         >
-          <ChevronRight className="h-4 w-4" />
+          <ChevronRight className="h-4 w-4 xl:h-8 xl:w-8" />
         </button>
       </div>
 
       {/* Progress indicators */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 pb-0.5">
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 pb-0.5 xl:pb-1">
         {announcements.map((_, index) => (
           <div
             key={index}
