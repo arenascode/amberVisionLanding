@@ -1,15 +1,17 @@
 
 
 interface HamburguerButtonProps {
-  openMenu: () => void
+  setIsNavBarMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
   isOpen: boolean
 }
 
-export function HamburgerButton({openMenu, isOpen}: HamburguerButtonProps) {
+const HamburgerButton:React.FC<HamburguerButtonProps> = ({setIsNavBarMenuOpen, isOpen}) =>{
+ console.log("HamburgerButton rendered", { isOpen});
+console.log("openMenu is", typeof setIsNavBarMenuOpen);
 
   return (
     <button
-      onClick={openMenu}
+      onClick={() => setIsNavBarMenuOpen((prev) => !prev)}
       className="p-2 focus:outline-none transition-all duration-300 ease-in-out cursor-pointer"
     >
       <svg
@@ -62,3 +64,5 @@ export function HamburgerButton({openMenu, isOpen}: HamburguerButtonProps) {
     </button>
   );
 }
+
+export default HamburgerButton
