@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { makeRequest } from "../../utils/axios";
 import { FormErrors, ValidationRules } from "@/types/rulesValidationForm";
 import { validateForm } from "@/utils/validationForm";
+import { Loader2 } from "lucide-react";
 
 // Define the product type
 export type Product = {
@@ -20,10 +21,14 @@ export type Product = {
 export interface CheckOutFormProps {
   product: Product;
   setSuccessPage: React.Dispatch<React.SetStateAction<boolean>>;
-  handleOrderNumberFromChild: (data: string) => void
+  handleOrderNumberFromChild: (data: string) => void;
 }
 
-const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({ product, setSuccessPage, handleOrderNumberFromChild }) => {
+const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
+  product,
+  setSuccessPage,
+  handleOrderNumberFromChild,
+}) => {
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -36,12 +41,17 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({ product, setSuccessPa
     producto: product.name,
     kit: product.id,
     valor_compra: product.price,
-    numero_orden: `AV-${Math.floor(100000 + Math.random() * 900000)}`
+    numero_orden: `AV-${Math.floor(100000 + Math.random() * 900000)}`,
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [someError, setSomeError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prevErrors) => ({
@@ -84,7 +94,8 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({ product, setSuccessPa
       minLength: 5,
       messageRequired:
         "¿Sin dirección? ¡Eso sí que es una misión imposible para la transportadora! Ayúdanos a llevarlo a tu puerta.",
-      messageLength: "Es una dirección muy corta, danos un poco más de detalle."
+      messageLength:
+        "Es una dirección muy corta, danos un poco más de detalle.",
     },
     telefono: {
       required: true,
@@ -112,40 +123,44 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({ product, setSuccessPa
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-      const validationErrors = validateForm(formData, validationRules);
-      console.log({validationErrors});
-      
-    if (Object.keys(validationErrors).length > 0) {
-        console.log('enter here?');
-        
-        setErrors(validationErrors)
-        setSomeError(true)
-      } else {
-        try {
-          await makeRequest
-            .post("/purchase/newPurchase", formData)
-            .then((res) => {
-              console.log({ res });
+    const validationErrors = validateForm(formData, validationRules);
+    console.log({ validationErrors });
 
-              if (res.status === 201) {
-                handleOrderNumberFromChild(formData.numero_orden)
-               setSuccessPage(true) 
+    if (Object.keys(validationErrors).length > 0) {
+      console.log("enter here?");
+
+      setErrors(validationErrors);
+      setSomeError(true);
+    } else {
+      try {
+        setIsLoading(true);
+
+        await makeRequest
+          .post("/purchase/newPurchase", formData)
+          .then((res) => {
+            console.log({ res });
+
+            if (res.status === 201) {
+              handleOrderNumberFromChild(formData.numero_orden);
+              setSuccessPage(true);
               //navigate to thanks page!
-              } else if (res.status === 400) {
-                console.log({ res });
-                alert(res.data.message);
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-              alert(err.response.data.message);
-            });
-        } catch (err: unknown) {
-          if (err instanceof Error) {
-            alert(err.message);
-          }
+            } else if (res.status === 400) {
+              console.log({ res });
+              alert(res.data.message);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          alert(err.message);
         }
+      } finally {
+        setIsLoading(false);
       }
+    }
   };
 
   // Calculate totals
@@ -420,7 +435,10 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({ product, setSuccessPa
                 type="submit"
                 className="w-full bg-primary hover:bg-primary/90 text-white font-semibold cursor-pointer tracking-wider"
               >
-                Completar Compra
+                {isLoading ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}{" "}
+                {isLoading ? "Procesando..." : "Confirmar Compra"}
               </Button>
             </form>
           </CardContent>

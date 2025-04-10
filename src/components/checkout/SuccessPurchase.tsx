@@ -12,7 +12,7 @@ const CheckoutSuccessPage = ({
 }: SuccessPageProps) => {
   return (
     <div className="modalContainer fixed w-full h-full bg-black/70 overflow-x-scroll z-50">
-      <div className="container max-w-md xl:max-w-[80%] mx-auto px-4 py-6 text-center bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] xl:mt-11 relative flex flex-col lg:flex xl:h-[80%] items-center xl:p-8 gap-5 xl:gap-10">
+      <div className="container max-w-md xl:max-w-[80%] mx-auto px-2 py-6 text-center bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] xl:mt-11 relative flex flex-col lg:flex xl:h-[80%] items-center xl:p-8 gap-5 xl:gap-10">
         <div className="container lg:flex lg:flex-col lg:h-[100%]">
           <CheckCircle className="h-16 w-16 text-success mx-auto mb-6 lg:mt-8" />
 
@@ -36,7 +36,7 @@ const CheckoutSuccessPage = ({
         </div>
         <div className="container nextSteps">
          <div className="bg-gray-300 p-4 rounded-lg text-left">
-          <p className="font-medium mb-5 xl:text-lg">¿Cuáles son los siguientes pasos?</p>
+          <p className="font-medium mb-5 xl:text-lg text-black">¿Cuáles son los siguientes pasos?</p>
           <ol className="flex flex-col gap-3 space-y-2 text-sm lg:text-[16px] text-black list-decimal list-inside">
             <li>
               📥 Procesaremos y enviaremos tu pedido hoy mismo. (Si es un día

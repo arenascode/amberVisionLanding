@@ -5,12 +5,14 @@ const Footer = () => {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2 font-bold text-xl mb-4 ">
-              <span className="bg-gradient-to-r from-gray-100 via-gray-500 to-gray-100 bg-clip-text text-transparent">
-                Amber
-              </span>
-              <span className="bg-gradient-to-r from-gray-100 via-gray-500 to-gray-100 bg-clip-text text-transparent">
-                Vision
-              </span>
+              <a href="/" className="flex gap-2">
+                <span className="bg-gradient-to-r from-gray-100 via-gray-500 to-gray-100 bg-clip-text text-transparent">
+                  Amber
+                </span>
+                <span className="bg-gradient-to-r from-gray-100 via-gray-500 to-gray-100 bg-clip-text text-transparent">
+                  Vision
+                </span>
+              </a>
             </div>
             <p className="text-sm text-sidebar-primary-foreground mb-4">
               Protegiendo tus ojos en la era digital con tecnología innovadora
@@ -87,7 +89,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="#"
+                  href="/"
                   className="text-sidebar-primary-foreground hover:text-fire-btn"
                 >
                   Inicio
@@ -95,7 +97,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#benefits"
+                  href="/#benefits"
                   className="text-sidebar-primary-foreground hover:text-fire-btn"
                 >
                   Beneficios
@@ -103,7 +105,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#features"
+                  href="/#features"
                   className="text-sidebar-primary-foreground hover:text-fire-btn"
                 >
                   Características
@@ -111,7 +113,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#testimonials"
+                  href="/#testimonials"
                   className="text-sidebar-primary-foreground hover:text-fire-btn"
                 >
                   Testimonios
@@ -119,7 +121,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#pricing"
+                  href="/#pricing"
                   className="text-sidebar-primary-foreground hover:text-fire-btn"
                 >
                   Precios
@@ -127,7 +129,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#faq"
+                  href="/#faq"
                   className="text-sidebar-primary-foreground hover:text-fire-btn"
                 >
                   Preguntas frecuentes
@@ -173,6 +175,9 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
+            <h3 className="font-medium mt-5 text-sidebar-primary-foreground lg:text-lg">
+              <a href="/contacto">Contacto</a>
+            </h3>
           </div>
           <div>
             <h3 className="font-medium mb-4 text-sidebar-primary-foreground">
