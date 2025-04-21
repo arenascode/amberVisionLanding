@@ -15,12 +15,8 @@ export const validateForm = (
 
   for (const [field, rule] of Object.entries(rules)) {
     const value = values[field];
-
-    console.log({ value });
     
     if (rule.required && !value) {
-      console.log(`entered in required values`);
-      
       errors[field] = rule.messageRequired || `El ${field} es requerido.`;
     }
     

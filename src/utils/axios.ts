@@ -7,7 +7,6 @@ if (import.meta.env.DEV) {
 } else {
   API = import.meta.env.VITE_API_URL;
 }
-console.log(API);
 
 export const makeRequest = axios.create({
   baseURL: API,

@@ -6,8 +6,6 @@ interface HamburguerButtonProps {
 }
 
 const HamburgerButton:React.FC<HamburguerButtonProps> = ({setIsNavBarMenuOpen, isOpen}) =>{
- console.log("HamburgerButton rendered", { isOpen});
-console.log("openMenu is", typeof setIsNavBarMenuOpen);
 
   return (
     <button

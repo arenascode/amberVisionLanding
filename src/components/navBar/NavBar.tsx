@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import HamburgerButton from "../ui/hamburguerBtn";
 
 interface NavBarProps {
@@ -11,12 +10,6 @@ const NavBar: React.FC<NavBarProps> = ({
   isNavBarMenuOpen,
   setIsNavBarMenuOpen
 }) => {
-  console.log({ isNavBarMenuOpen });
-  console.log({ setIsNavBarMenuOpen });
-
-  useEffect(() => {
-    console.log("isNavBarMenuOpen changed:", isNavBarMenuOpen);
-  }, [isNavBarMenuOpen]);
 
   return (
     <header className="fixed z-50 w-full bg-nav-footer text-white backdrop-blur supports-[backdrop-filter] lg:px-5">

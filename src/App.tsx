@@ -14,7 +14,6 @@ export default function App() {
 
   useEffect(() => {
     const windowWidth = window.innerWidth;
-    console.log(windowWidth);
     if (windowWidth <= 480) {
       setIsMobile(true);
     } else {

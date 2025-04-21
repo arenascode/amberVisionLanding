@@ -9,7 +9,7 @@ import { makeRequest } from "../../utils/axios";
 import { FormErrors, ValidationRules } from "@/types/rulesValidationForm";
 import { validateForm } from "@/utils/validationForm";
 import { Loader2 } from "lucide-react";
-
+import ReactPixel from "react-facebook-pixel"
 // Define the product type
 export type Product = {
   id: string;
@@ -47,6 +47,8 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
   const [someError, setSomeError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const fbq = ReactPixel
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -60,7 +62,6 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
     }));
     setSomeError(false);
   };
-  console.log({ formData });
 
   const validationRules: Record<string, ValidationRules> = {
     nombre: {
@@ -124,11 +125,8 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validateForm(formData, validationRules);
-    console.log({ validationErrors });
 
     if (Object.keys(validationErrors).length > 0) {
-      console.log("enter here?");
-
       setErrors(validationErrors);
       setSomeError(true);
     } else {
@@ -138,19 +136,16 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
         await makeRequest
           .post("/purchase/newPurchase", formData)
           .then((res) => {
-            console.log({ res });
-
             if (res.status === 201) {
               handleOrderNumberFromChild(formData.numero_orden);
+              fbq.track("Purchase", {currency: "COL" , value: product.price})
               setSuccessPage(true);
               //navigate to thanks page!
             } else if (res.status === 400) {
-              console.log({ res });
               alert(res.data.message);
             }
           })
           .catch((err) => {
-            console.log(err);
             alert(err.response.data.message);
           });
       } catch (err: unknown) {

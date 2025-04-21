@@ -27,7 +27,6 @@ const Contact = () => {
     }));
     setSomeError(false);
   };
-  console.log({ form });
 
   const validationRules: Record<string, ValidationRules> = {
     nombre: {
@@ -64,8 +63,6 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log(`chchasion`);
-
     e.preventDefault();
     const validationErrors = validateForm(form, validationRules);
 
@@ -77,13 +74,11 @@ const Contact = () => {
       try {
         setIsLoading(true);
         await makeRequest.post("/contact", form).then((res) => {
-          console.log(res);
           if (res.status === 200) {
             setErrors({});
             setSomeError(false);
             alert(res.data.message);
           } else if (res.status === 500) {
-            console.log({ res });
             alert(res.data.message);
           }
         });

@@ -9,8 +9,7 @@ const NavBarMobile = ({onClose}: NavBarMobileProps) => {
 
   window.onclick = function (e) {
     const mobileMenu = document.getElementById("mobileMenu_modal");
-    console.log('closing mobile menu after open');
-    
+  
     if (e.target === mobileMenu) {
       if (mobileMenu) mobileMenu.style.opacity = '0'
       setTimeout(() => {

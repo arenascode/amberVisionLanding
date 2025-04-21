@@ -41,6 +41,7 @@ import comfortableMan from "/assets/img/comfortableMan.webp";
 import founderImage from "/assets/img/imageFounder.webp";
 import manCoding from "/assets/img/manCoding.webp";
 import coupleWatchingMovies from "/assets/img/coupleWatchingMovies.webp";
+import ReactPixel from "react-facebook-pixel"
 
 interface HomeProps {
   isMobile: boolean;
@@ -73,9 +74,11 @@ export default function Home({ isMobile }: HomeProps) {
   const [orderNumber, setOrderNumber] = useState<string>("");
 
 
+  const fbq = ReactPixel
   const openCheckout = (productId: string) => {
     const product = products.find((p) => p.id === productId);
     if (product) {
+      fbq.trackCustom("OpenForm", {product: product.id})
       setSelectedProduct(product);
       setIsCheckoutOpen(true);
     }
@@ -1062,7 +1065,7 @@ export default function Home({ isMobile }: HomeProps) {
         <CheckoutModal
           product={selectedProduct}
           isOpen={isCheckoutOpen}
-          onClose={() => setIsCheckoutOpen(false)}
+          onClose={() => { setIsCheckoutOpen(false); fbq.trackCustom("CheckOutClosed", {product: selectedProduct?.id})}}
           setSuccessPage={setSuccessPage}
           handleOrderNumberFromChild={handleOrderNumberFromChild}
         />
