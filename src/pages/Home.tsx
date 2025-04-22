@@ -117,14 +117,15 @@ export default function Home({ isMobile }: HomeProps) {
                 >
                   Protección Premium para tus Ojos
                 </Badge>
-                <h1 className="text-2xl font-bold tracking-wider  sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.5rem] font-body uppercase fade-in-up">
-                  Protege tu vista, mejora tu descanso — <br />
-                  descubre el poder de los Lentes Ambar
+                <h1 className="text-xl font-bold tracking-wider  sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.2rem] font-body uppercase fade-in-up">
+                  La luz azul de las pantallas daña tu vista y tu descanso -{" "}
+                  <br /> Nuestras gafas lo solucionan desde el primer uso.
                 </h1>
 
                 <p className="text-sidebar-primary-foreground font-body md:text-xl lg:text-xl">
-                  Bloquea la luz azul artificial, reduce la fatiga visual y
-                  disfruta de un sueño más profundo cada noche.
+                  Decenas de personas como tú sintieron alivio inmediato en sus
+                  ojos al usar nuestras gafas... y, sin esperarlo, también
+                  comenzaron a dormir mejor.
                 </p>
                 <div className="lg:hidden mobile">
                   {isMobile && <ProductIntro />}
@@ -187,8 +188,9 @@ export default function Home({ isMobile }: HomeProps) {
               </FadeIn>
 
               <p className="text-sidebar-prymary-foreground md:text-lg max-w-[800px]">
-                La luz azul de las pantallas afecta tu vista y tu ciclo de
-                sueño. Descubre cómo reducir el daño y recuperar tu bienestar.
+                Menos fatiga, más foco. Menos desvelo, más descanso. Todo
+                gracias a unas gafas diseñadas para protegerte del mundo
+                digital.
               </p>
             </div>
 
@@ -204,9 +206,9 @@ export default function Home({ isMobile }: HomeProps) {
                       Menos Fatiga Visual
                     </h3>
                     <p className="text-sidebar-primary-foreground">
-                      La exposición prolongada a pantallas causa cansancio,
-                      sequedad e irritación en los ojos. Nuestras lentes
-                      protegen tu vista desde el primer uso.
+                      ¿Pasas horas frente a pantallas? Estas gafas reducen el
+                      cansancio, la sequedad y la irritación ocular desde el
+                      primer uso.
                     </p>
                   </CardContent>
                 </Card>
@@ -240,8 +242,8 @@ export default function Home({ isMobile }: HomeProps) {
                       Menos Dolores de Cabeza
                     </h3>
                     <p className="text-sidebar-primary-foreground">
-                      Reduce la tensión ocular y evita las migrañas provocadas
-                      por la luz azul. Trabaja y estudia sin molestias.
+                      Despidete de las migrañas por tensión visual. Trabaja,
+                      estudia o mira series sin molestias.
                     </p>
                   </CardContent>
                 </Card>
@@ -260,43 +262,45 @@ export default function Home({ isMobile }: HomeProps) {
                 </div>
                 <div className="xl:self-baseline xl:pt-12">
                   <h3 className="text-2xl font-bold mb-8 xl:text-3xl">
-                    La Solución: Gafas con Filtro de Luz Azul
+                    Gafas con Filtro de Luz Azul Amber Vision
                   </h3>
                   <ul className="space-y-8">
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-10 text-success mt-0.5" />
                       <div className="xl:flex xl:flex-col xl:gap-2">
-                        <span className="font-semibold xl:text-lg">
-                          Bloquean el 99% de la luz azul dañina
+                        <span className="font-semibold text-[17px] xl:text-lg">
+                          Bloquean hasta el 99% de la luz azul más dañina
                         </span>
-                        <p className="text-sidebar-primary-foreground">
-                          Nuestras lentes especializadas filtran las longitudes
-                          de onda más perjudiciales para tus ojos.
+                        <p className="text-sidebar-primary-foreground mt-0.5">
+                          Nuestras gafas especializadas filtran las longitudes
+                          de onda más dañinas (415 a 455 nm), responsables de la
+                          fatiga ocular y la alteración del sueño.
                         </p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-10 text-success mt-0.5" />
                       <div className="xl:flex xl:flex-col xl:gap-2">
-                        <span className="font-semibold xl:text-lg">
-                          Favorecen un sueño reparador
+                        <span className="font-semibold text-[17px] xl:text-lg">
+                          Favorecen un sueño profundo y natural
                         </span>
-                        <p className="text-sidebar-primary-foreground">
-                          Estimula la producción natural de melatonina,
-                          ayudándote a conciliar el sueño más rápido y mejorar
-                          su calidad.
+                        <p className="text-sidebar-primary-foreground mt-0.5">
+                          Ayudan a restaurar tu ciclo circadiano estimulando la
+                          producción de melatonina, para que concilies el sueño
+                          más rápido y descanses mejor.
                         </p>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-10 text-success mt-0.5" />
                       <div className="xl:flex xl:flex-col xl:gap-2">
-                        <span className="font-semibold xl:text-lg">
-                          Reducen la fatiga ocular y las migrañas
+                        <span className="font-semibold text-[17px] xl:text-lg">
+                          Reducen la fatiga ocular y los dolores de cabeza
                         </span>
-                        <p className="text-sidebar-primary-foreground">
-                          Evita la tensión visual y las molestias provocadas por
-                          el uso prolongado de pantallas.
+                        <p className="text-sidebar-primary-foreground mt-0.5">
+                          Usalas durante tu jornada digital y nota el cambio en
+                          tus ojos: menos tensión visual y molestias provocadas
+                          por el uso prolongado de pantallas.
                         </p>
                       </div>
                     </li>
@@ -325,7 +329,7 @@ export default function Home({ isMobile }: HomeProps) {
             </div>
 
             {/* Comparación de efectos */}
-            <div className="grid gap-8 md:grid-cols-2 mb-16 xl:px-20 max-w-full">
+            <div className="grid gap-8 md:grid-cols-2 mb-8 xl:px-20 max-w-full">
               {/* Sin protección */}
               <div className="rounded-xl p-6 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:flex xl:flex-col xl:place-items-center">
                 <h3 className="text-xl font-bold mb-4 text-center text-red-500">
@@ -340,10 +344,10 @@ export default function Home({ isMobile }: HomeProps) {
                 </div>
                 <ul className="w-full space-y-2 xl:grid xl:grid-cols-2 xl:gap-4 xl:p-4">
                   {[
-                    "Vista cansada e irritada",
-                    "Dificultad para dormir",
-                    "Dolores de cabeza frecuentes",
-                    "Falta de concentración y fatiga",
+                    "Vista cansada e irritada.",
+                    "Dificultad para dormir.",
+                    "Dolores de cabeza frecuentes.",
+                    "Falta de concentración y fatiga.",
                   ].map((item, index) => (
                     <li
                       key={index}
@@ -359,7 +363,7 @@ export default function Home({ isMobile }: HomeProps) {
               {/* Con protección */}
               <div className="rounded-xl p-6 shadow-md backdrop-blur-lg bg-white/10 border-white/10 border xl:flex xl:flex-col xl:place-items-center">
                 <h3 className="text-xl font-bold mb-4 text-center text-success">
-                  Con Protección: <br /> Comodidad y Descanso Total
+                  Con Gafas Amber Vision: <br /> Comodidad y Descanso Total
                 </h3>
                 <div className="relative h-[320px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
                   <img
@@ -370,10 +374,10 @@ export default function Home({ isMobile }: HomeProps) {
                 </div>
                 <ul className="space-y-2 xl:grid xl:grid-cols-2 xl:gap-4 xl:p-4">
                   {[
-                    "Ojos descansados y sin tensión",
-                    "Sueño profundo y reparador",
-                    "Menos dolores de cabeza",
-                    "Mayor enfoque y productividad",
+                    "Ojos descansados y sin tensión.",
+                    "Sueño profundo y reparador.",
+                    "Menos dolores de cabeza.",
+                    "Mayor enfoque y productividad.",
                   ].map((item, index) => (
                     <li
                       key={index}
@@ -385,6 +389,24 @@ export default function Home({ isMobile }: HomeProps) {
                   ))}
                 </ul>
               </div>
+            </div>
+            {/* CTA */}
+            <div className="CTA-container flex flex-col justify-center xl:mt-16 mb-8 xl:mb-16 ">
+              <Button
+                size="default"
+                className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-full xl:w-max mx-auto"
+              >
+                <a
+                  href="#pricing"
+                  className="flex items-center gap-3 text-[16px] xl:text-xl"
+                >
+                  Comienza hoy a cuidar tu vista y duerme mejor
+                  <ShoppingCart className="h-5 w-5" />
+                </a>
+              </Button>
+              <small className="italic self-center xl:text-sm xl:mt-1">
+                Compra segura: envío rápido y pagas al recibir 🛡️
+              </small>
             </div>
 
             {/* Beneficios adicionales */}
@@ -461,7 +483,7 @@ export default function Home({ isMobile }: HomeProps) {
               </FadeIn>
 
               <p className="text-sidebar-primary-foreground md:text-lg max-w-[800px]">
-                Más de 300 personas han mejorado su sueño y reducido la fatiga
+                Decenas de personas han mejorado su sueño y reducido la fatiga
                 ocular con nuestras gafas.
               </p>
             </div>
@@ -941,7 +963,24 @@ export default function Home({ isMobile }: HomeProps) {
             </div>
           </div>
         </section>
-
+        {/* CTA */}
+        <div className="CTA-container flex flex-col justify-center  mb-8 ">
+          <Button
+            size="default"
+            className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-[90%] xl:w-max mx-auto"
+          >
+            <a
+              href="#pricing"
+              className="flex items-center gap-3 text-[16px] xl:text-xl xl:p-2"
+            >
+              Protege Tus Ojos y mejora tu sueño!
+              <ShoppingCart className="h-5 w-5" />
+            </a>
+          </Button>
+          <small className="italic self-center xl:text-sm xl:mt-1">
+            envío GRATIS. Pocas unidades disponibles 📦
+          </small>
+        </div>
         {/* More Social Proof */}
         <section className="py-6 md:py-16 xl:py-10">
           <div className="container px-4 md:px-6">
@@ -1035,7 +1074,7 @@ export default function Home({ isMobile }: HomeProps) {
                 </p>
                 <Button
                   size={isMobile ? "default" : "lg"}
-                  className="bg-primary hover:bg-primary/90 text-white font-semibold mb-4 text-sm xl:text-lg"
+                  className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-white font-semibold mb-4 text-[16px] xl:text-lg"
                 >
                   <a href="#pricing" className="flex items-center">
                     ¡Ordena Ahora – Stock Limitado!
@@ -1065,7 +1104,10 @@ export default function Home({ isMobile }: HomeProps) {
         <CheckoutModal
           product={selectedProduct}
           isOpen={isCheckoutOpen}
-          onClose={() => { setIsCheckoutOpen(false); fbq.trackCustom("CheckOutClosed", {product: selectedProduct?.id})}}
+          onClose={() => {
+            setIsCheckoutOpen(false);
+            fbq.trackCustom("CheckOutClosed", { product: selectedProduct?.id });
+          }}
           setSuccessPage={setSuccessPage}
           handleOrderNumberFromChild={handleOrderNumberFromChild}
         />
