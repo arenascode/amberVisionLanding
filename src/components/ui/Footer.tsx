@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <footer className="bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)]">
+    <footer className="bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] xl:flex xl:justify-center">
       <div className="container px-4 py-8 md:px-6">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 xl:gap-28 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2 font-bold text-xl mb-4 ">
               <a href="/" className="flex gap-2">

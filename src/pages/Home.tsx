@@ -118,8 +118,9 @@ export default function Home({ isMobile }: HomeProps) {
                   Protección Premium para tus Ojos
                 </Badge>
                 <h1 className="text-xl font-bold tracking-wider  sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.2rem] font-body uppercase fade-in-up">
-                  La luz azul de las pantallas daña tu vista y tu descanso -{" "}
-                  <br /> Nuestras gafas lo solucionan desde el primer uso.
+                  La exposición a pantallas desgasta tu vista y altera tu sueño
+                  - <br /> Nuestras gafas te devuelven el bienestar desde el
+                  primer uso.
                 </h1>
 
                 <p className="text-sidebar-primary-foreground font-body md:text-xl lg:text-xl">
@@ -197,7 +198,7 @@ export default function Home({ isMobile }: HomeProps) {
             {/* Beneficios clave */}
             <div className="grid gap-8 md:grid-cols-3">
               <FadeIn delay={100}>
-                <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
+                <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 h-full">
                   <CardContent className="p-6 flex flex-col items-center text-center gap-4">
                     <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center">
                       <Eye className="text-sidebar-primary-foreground h-6 w-6" />
@@ -312,7 +313,10 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
 
         {/* Product Benefits & Features */}
-        <section id="features" className="py-6 md:py-10">
+        <section
+          id="features"
+          className="py-6 md:py-10 xl:flex xl:justify-center"
+        >
           <div className="container px-4 md:px-6">
             {/* Encabezado principal */}
             <div className="w-full flex flex-col items-center text-center text-wrap gap-4 mb-12">
@@ -400,7 +404,7 @@ export default function Home({ isMobile }: HomeProps) {
                   href="#pricing"
                   className="flex items-center gap-3 text-[16px] xl:text-xl"
                 >
-                  Comienza hoy a cuidar tu vista y duerme mejor
+                  Pruébalas hoy, tus ojos te lo agradecerán
                   <ShoppingCart className="h-5 w-5" />
                 </a>
               </Button>
@@ -471,7 +475,7 @@ export default function Home({ isMobile }: HomeProps) {
         {/* Social Proof & Testimonials */}
         <section
           id="testimonials"
-          className="py-10 pb-2 md:py-16 overflow-hidden"
+          className="py-10 pb-2 md:py-16 overflow-hidden xl:flex xl:justify-center"
         >
           <div className="container px-4 md:px-6 overflow-hidden">
             {/* Section Heading */}
@@ -544,7 +548,10 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
 
         {/* Urgency & Call-href-Action */}
-        <section id="pricing" className="py-10 pt-16 md:py-14">
+        <section
+          id="pricing"
+          className="py-10 pt-16 md:py-14 xl:flex xl:justify-center"
+        >
           <div className="container px-4 md:px-6">
             {/* Urgency & Headline */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
@@ -732,7 +739,7 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
 
         {/* Nota Personal del Fundador */}
-        <section className="py-6 md:py-24 xl:py-5">
+        <section className="py-6 md:py-24 xl:py-5 xl:flex xl:justify-center">
           <div className="container px-4 md:px-6 ">
             <FadeIn delay={100}>
               <div className="max-w-[800px] p-2 mx-auto shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl items-center">
@@ -776,7 +783,7 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-12 md:py-24">
+        <section id="faq" className="py-12 md:py-24 xl:flex xl:justify-center">
           <div className="container px-4 md:px-6">
             {/* Section Title */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
@@ -964,7 +971,7 @@ export default function Home({ isMobile }: HomeProps) {
           </div>
         </section>
         {/* CTA */}
-        <div className="CTA-container flex flex-col justify-center  mb-8 ">
+        <div className="CTA-container flex flex-col justify-center  mb-8 xl:flex xl:justify-center">
           <Button
             size="default"
             className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-[90%] xl:w-max mx-auto"
@@ -982,7 +989,7 @@ export default function Home({ isMobile }: HomeProps) {
           </small>
         </div>
         {/* More Social Proof */}
-        <section className="py-6 md:py-16 xl:py-10">
+        <section className="py-6 md:py-16 xl:py-10 xl:flex xl:justify-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center text-center gap-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tight">
@@ -1060,7 +1067,7 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
 
         {/* Final CTA */}
-        <section className="py-8 md:py-24 ">
+        <section className="py-8 md:py-24 xl:flex xl:justify-center">
           <div className="container px-4 md:px-6 ">
             <FadeIn delay={100}>
               <div className="max-w-[800px] mx-auto rounded-xl p-4 text-center border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
