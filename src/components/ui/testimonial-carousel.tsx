@@ -89,7 +89,7 @@ export default function TestimonialCarousel() {
             key={testimonial.id}
             className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10"
           >
-            <CardContent className="p-6">
+            <CardContent className="p-2 sm:p-5">
               <div className="flex mb-4 xl:gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star

@@ -41,7 +41,7 @@ import comfortableMan from "/assets/img/comfortableMan.webp";
 import founderImage from "/assets/img/imageFounder.webp";
 import manCoding from "/assets/img/manCoding.webp";
 import coupleWatchingMovies from "/assets/img/coupleWatchingMovies.webp";
-import ReactPixel from "react-facebook-pixel"
+import ReactPixel from "react-facebook-pixel";
 
 interface HomeProps {
   isMobile: boolean;
@@ -73,12 +73,11 @@ export default function Home({ isMobile }: HomeProps) {
   const [successPage, setSuccessPage] = useState<boolean>(false);
   const [orderNumber, setOrderNumber] = useState<string>("");
 
-
-  const fbq = ReactPixel
+  const fbq = ReactPixel;
   const openCheckout = (productId: string) => {
     const product = products.find((p) => p.id === productId);
     if (product) {
-      fbq.trackCustom("OpenForm", {product: product.id})
+      fbq.trackCustom("OpenForm", { product: product.id });
       setSelectedProduct(product);
       setIsCheckoutOpen(true);
     }
@@ -108,9 +107,9 @@ export default function Home({ isMobile }: HomeProps) {
         </div>
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-20 lg:py-10 items-center lg:flex justify-center mt-22 xl:mt-27">
-          <div className="container px-4 md:px-6 lg:px-2 lg:w-full justify-center">
+          <div className="container px-2 md:px-6 lg:px-2 lg:w-full justify-center">
             <div className="flex flex-col gap-8 md:gap-10 lg:flex-row items-center xl:gap-20 xl:w-full xl:px-10">
-              <div className="flex flex-col justify-between gap-5 xl:gap-9">
+              <div className="flex flex-col justify-between w-full gap-5 xl:gap-9">
                 <Badge
                   className="w-fit border-1 border-white text-sm xl:text-lg text-white"
                   variant="outline"
@@ -119,10 +118,15 @@ export default function Home({ isMobile }: HomeProps) {
                 </Badge>
                 <h1 className="text-xl font-bold tracking-wider  sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.2rem] font-body uppercase fade-in-up">
                   La exposición a pantallas desgasta tu vista y altera tu sueño
-                  - <br /> Nuestras gafas te devuelven el bienestar desde el
-                  primer uso.
+                  -{" "}
+                  <span className="italic normal-case font-normal">
+                    nuestras gafas te devuelven el bienestar desde el primer
+                    uso.
+                  </span>
                 </h1>
-
+                {/* <span className="italic text-xl mt-[-15px]">
+                  Nuestras gafas te devuelven el bienestar desde el primer uso.
+                </span> */}
                 <p className="text-sidebar-primary-foreground font-body md:text-xl lg:text-xl">
                   Decenas de personas como tú sintieron alivio inmediato en sus
                   ojos al usar nuestras gafas... y, sin esperarlo, también
@@ -166,7 +170,7 @@ export default function Home({ isMobile }: HomeProps) {
                 </div>
               </div>
               {!isMobile && (
-                <div className="hidden lg:flex xl:h-[600px] w-[70%]">
+                <div className="hidden lg:flex xl:h-[600px] w-[60%]">
                   <ProductIntro />
                 </div>
               )}
@@ -252,7 +256,7 @@ export default function Home({ isMobile }: HomeProps) {
             </div>
 
             {/* Sección de solución con imagen */}
-            <div className="mt-16 rounded-xl p-4 shadow-md backdrop-blur-lg bg-white/10 border border-white/10">
+            <div className="mt-16 rounded-xl p-1 shadow-md backdrop-blur-lg bg-white/10 border border-white/10">
               <div className="grid gap-8 md:grid-cols-2 items-center">
                 <div className="relative h-[300px] xl:h-[450px] rounded-lg overflow-hidden">
                   <img
@@ -335,7 +339,7 @@ export default function Home({ isMobile }: HomeProps) {
             {/* Comparación de efectos */}
             <div className="grid gap-8 md:grid-cols-2 mb-8 xl:px-20 max-w-full">
               {/* Sin protección */}
-              <div className="rounded-xl p-6 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:flex xl:flex-col xl:place-items-center">
+              <div className="rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:flex xl:flex-col xl:place-items-center">
                 <h3 className="text-xl font-bold mb-4 text-center text-red-500">
                   Sin Protección: <br /> Estrés Visual Constante
                 </h3>
@@ -365,7 +369,7 @@ export default function Home({ isMobile }: HomeProps) {
               </div>
 
               {/* Con protección */}
-              <div className="rounded-xl p-6 shadow-md backdrop-blur-lg bg-white/10 border-white/10 border xl:flex xl:flex-col xl:place-items-center">
+              <div className="rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border-white/10 border xl:flex xl:flex-col xl:place-items-center">
                 <h3 className="text-xl font-bold mb-4 text-center text-success">
                   Con Gafas Amber Vision: <br /> Comodidad y Descanso Total
                 </h3>
@@ -398,11 +402,11 @@ export default function Home({ isMobile }: HomeProps) {
             <div className="CTA-container flex flex-col justify-center xl:mt-16 mb-8 xl:mb-16 ">
               <Button
                 size="default"
-                className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-full xl:w-max mx-auto"
+                className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold p-6 xl:py-6 xs:p-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-full xl:w-max mx-auto"
               >
                 <a
                   href="#pricing"
-                  className="flex items-center gap-3 text-[16px] xl:text-xl"
+                  className="flex flex-col sm:flex-row items-center gap-0 sm:gap-3 text-[16px] xl:text-xl"
                 >
                   Pruébalas hoy, tus ojos te lo agradecerán
                   <ShoppingCart className="h-5 w-5" />
@@ -577,7 +581,7 @@ export default function Home({ isMobile }: HomeProps) {
               {/* Basic Package - 1 Pair */}
               <FadeIn delay={100}>
                 <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 relative overflow-hidden h-full">
-                  <div className="p-6">
+                  <div className="p-3 sm:p-6">
                     <h3 className="text-xl xl:text-2xl font-bold mb-2 text-sidebar-primary-foreground">
                       1 Par de Gafas Amber Vision
                     </h3>
@@ -629,7 +633,7 @@ export default function Home({ isMobile }: HomeProps) {
                   <div className="absolute top-0 right-0 bg-green-600 text-primary-foreground px-3 py-1 text-xs xl:text-sm font-medium rounded-bl-lg">
                     Mejor Oferta 🔥
                   </div>
-                  <div className="p-6 text-sidebar-primary-foreground">
+                  <div className="p-3 pt-6 sm:p-6 text-sidebar-primary-foreground">
                     <h3 className="text-xl xl:text-2xl font-bold mb-2">
                       2 Pares de Gafas Amber Vision
                     </h3>
@@ -974,11 +978,11 @@ export default function Home({ isMobile }: HomeProps) {
         <div className="CTA-container flex flex-col justify-center  mb-8 xl:flex xl:justify-center">
           <Button
             size="default"
-            className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-[90%] xl:w-max mx-auto"
+            className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold py-6 sm:px-6 sm:py-3 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-[85%] xl:w-max mx-auto"
           >
             <a
               href="#pricing"
-              className="flex items-center gap-3 text-[16px] xl:text-xl xl:p-2"
+              className="flex items-center sm:gap-3 text-[16px] xl:text-xl xl:p-2 flex-col sm:flex-row"
             >
               Protege Tus Ojos y mejora tu sueño!
               <ShoppingCart className="h-5 w-5" />
@@ -990,7 +994,7 @@ export default function Home({ isMobile }: HomeProps) {
         </div>
         {/* More Social Proof */}
         <section className="py-6 md:py-16 xl:py-10 xl:flex xl:justify-center">
-          <div className="container px-4 md:px-6">
+          <div className="container px-3 md:px-6">
             <div className="flex flex-col items-center text-center gap-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tight">
                 Únete a Cientos de Clientes Satisfechos
@@ -1034,7 +1038,7 @@ export default function Home({ isMobile }: HomeProps) {
                     key={i}
                     className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 h-full"
                   >
-                    <CardContent className="p-6">
+                    <CardContent className="p-3 sm:p-6">
                       <div className="flex mb-4 gap-1">
                         {[...Array(5)].map((_, j) => (
                           <Star
@@ -1070,7 +1074,7 @@ export default function Home({ isMobile }: HomeProps) {
         <section className="py-8 md:py-24 xl:flex xl:justify-center">
           <div className="container px-4 md:px-6 ">
             <FadeIn delay={100}>
-              <div className="max-w-[800px] mx-auto rounded-xl p-4 text-center border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
+              <div className="max-w-[800px] mx-auto rounded-xl p-2 sm:p-4 text-center border shadow-md backdrop-blur-lg bg-white/10 border-white/10">
                 <h2 className="text-3xl font-bold tracking-tight mb-4">
                   ¿Listo para Transformar tu Descanso?
                 </h2>
@@ -1081,9 +1085,12 @@ export default function Home({ isMobile }: HomeProps) {
                 </p>
                 <Button
                   size={isMobile ? "default" : "lg"}
-                  className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-white font-semibold mb-4 text-[16px] xl:text-lg"
+                  className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold py-6 sm:px-6 sm:py-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 text-white font-semibold mb-4 text-[16px] xl:text-lg"
                 >
-                  <a href="#pricing" className="flex items-center">
+                  <a
+                    href="#pricing"
+                    className="flex items-center flex-col sm:flex-row"
+                  >
                     ¡Ordena Ahora – Stock Limitado!
                     <ShoppingCart className="ml-2 h-5 w-5" />
                   </a>
