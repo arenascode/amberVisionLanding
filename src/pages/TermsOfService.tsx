@@ -5,7 +5,7 @@ const TermsOfService = () => {
         TÉRMINOS Y CONDICIONES DE USO DE LA TIENDA ONLINE FOCUS FIT SHOP
       </h1>
 
-      <div className="space-y-10 text-gray-700 text-base leading-relaxed">
+      <div className="space-y-10 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
         <div>
           <p>
             Por favor, lea cuidadosamente estos Términos y Condiciones antes de
