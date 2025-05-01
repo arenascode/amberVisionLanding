@@ -1,6 +1,8 @@
+import "../styles/scss/app.scss";
+
 const ShippingPolicy = () => {
   return (
-    <div className="max-w-3xl mx-auto p-6 text-gray-800">
+    <div className="max-w-3xl mx-auto p-6 text-gray-800 darkMode">
       <h1 className="text-3xl font-bold mb-6">Política de Envíos</h1>
 
       <section className="mb-8">
@@ -137,5 +139,5 @@ const ShippingPolicy = () => {
       </p>
     </div>
   );
-}
-export default ShippingPolicy
+};
+export default ShippingPolicy;

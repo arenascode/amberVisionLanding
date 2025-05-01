@@ -1,6 +1,8 @@
+import "../styles/scss/app.scss"
+
 const PrivacyPolicy = () => {
   return (
-    <div className="max-w-3xl mx-auto p-6 text-gray-800">
+    <div className="max-w-3xl mx-auto p-6 text-gray-700 darkMode">
       <h1 className="text-3xl font-bold mb-6">Política de Privacidad</h1>
 
       <section className="mb-8">

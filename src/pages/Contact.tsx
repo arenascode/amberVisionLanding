@@ -3,6 +3,7 @@ import { makeRequest } from "@/utils/axios";
 import { validateForm } from "@/utils/validationForm";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
+import "../styles/scss/app.scss";
 
 const Contact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
@@ -95,7 +96,7 @@ const Contact = () => {
   return (
     <div className="max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10 mt-18 xl:mt-24">
       {/* Información de contacto */}
-      <div className="text-gray-800">
+      <div className="text-gray-800 darkMode">
         <h2 className="text-3xl font-bold mb-4">Contáctanos</h2>
         <p className="mb-6">
           Estamos aquí para ayudarte. Si tienes preguntas sobre tu pedido,
@@ -133,7 +134,7 @@ const Contact = () => {
 
       {/* Formulario de contacto */}
       <form
-        className="bg-white p-6 rounded-lg shadow-lg space-y-5"
+        className="p-6 rounded-lg border-1 shadow-lg space-y-5"
         onSubmit={handleSubmit}
       >
         <h3 className="text-xl font-semibold mb-2">Envíanos un mensaje</h3>
@@ -141,7 +142,7 @@ const Contact = () => {
         <div>
           <label
             htmlFor="nombre"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 darkMode"
           >
             Nombre completo
           </label>
@@ -163,7 +164,7 @@ const Contact = () => {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 darkMode"
           >
             Correo electrónico
           </label>
@@ -185,7 +186,7 @@ const Contact = () => {
         <div>
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 darkMode"
           >
             Teléfono celular
           </label>
@@ -207,7 +208,7 @@ const Contact = () => {
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 darkMode"
           >
             Mensaje
           </label>
@@ -228,7 +229,7 @@ const Contact = () => {
         <div className="container flex flex-col gap-4">
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-md transition duration-300 flex items-center justify-center gap-4"
+            className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-6 rounded-md transition duration-300 flex items-center justify-center gap-4 pointer"
           >
             {isLoading ? (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />

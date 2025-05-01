@@ -1,3 +1,4 @@
+import "../styles/scss/app.scss"
 const TermsOfService = () => {
   return (
     <section className="max-w-5xl mx-auto px-4 py-12 pt-22">
@@ -5,9 +6,9 @@ const TermsOfService = () => {
         TÉRMINOS Y CONDICIONES DE USO DE LA TIENDA ONLINE FOCUS FIT SHOP
       </h1>
 
-      <div className="space-y-10 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+      <div className="space-y-10 text-gray-700 darkMode text-base leading-relaxed">
         <div>
-          <p>
+          <p className="dark:text-gray-200">
             Por favor, lea cuidadosamente estos Términos y Condiciones antes de
             utilizar este sitio web. El acceso y uso del sitio web
             ambervision.focusfitshop.com (en adelante, "el Sitio") implica la
@@ -150,9 +151,15 @@ const TermsOfService = () => {
           </h2>
           <p>
             El envío de tu información personal está regido por nuestra{" "}
-            <a href="/politica-de-privacidad" className="text-blue-600 font-bold">Política de Privacidad</a> y serán
-            tratados conforme a la Ley 1581 de 2012 y demás normas aplicables.
-            Te invitamos a consultarla para saber cómo protegemos tus datos.
+            <a
+              href="/politica-de-privacidad"
+              className="text-blue-600 font-bold"
+            >
+              Política de Privacidad
+            </a>{" "}
+            y serán tratados conforme a la Ley 1581 de 2012 y demás normas
+            aplicables. Te invitamos a consultarla para saber cómo protegemos
+            tus datos.
           </p>
         </div>
 

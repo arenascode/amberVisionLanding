@@ -18,33 +18,33 @@
 }
 
 //* Dark mode
-@media (prefers-color-scheme: dark) {
-  body {
-    --font-color-light: #ccc; /* Light mode font color */
-    --font-color-dark: #ffffff; /* Dark mode font color */
-    --bg-color-dark: #000000;
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   body {
+//     --font-color-light: #ccc; /* Light mode font color */
+//     --font-color-dark: #ffffff; /* Dark mode font color */
+//     --bg-color-dark: #000000;
+//   }
+// }
 
 /* Apply different font color in dark mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    color: var(--font-color-dark); /* Dark mode font color */
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    // background: linear-gradient(to bottom, #1081ab, #00bfff);
-    /* Clip the background to the text */
-    // -webkit-background-clip: text;
-    // background-clip: text;
-    // /* Set the text color to transparent to show the gradient background */
-    // color: transparent;
-  }
-}
+// @media (prefers-color-scheme: dark) {
+//   body {
+//     color: var(--font-color-dark); /* Dark mode font color */
+//   }
+//   h1,
+//   h2,
+//   h3,
+//   h4,
+//   h5,
+//   h6 {
+//     // background: linear-gradient(to bottom, #1081ab, #00bfff);
+//     /* Clip the background to the text */
+//     // -webkit-background-clip: text;
+//     // background-clip: text;
+//     // /* Set the text color to transparent to show the gradient background */
+//     // color: transparent;
+//   }
+// }
 
 html {
   scroll-behavior: smooth;

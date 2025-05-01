@@ -1,6 +1,8 @@
+import "../styles/scss/app.scss";
+
 const ReturnPolicy = () => {
   return (
-    <div className="max-w-3xl mx-auto p-6 text-gray-800">
+    <div className="max-w-3xl mx-auto p-6 text-gray-800 darkMode">
       <h1 className="text-3xl font-bold mb-6">
         Política de Cambios y Devoluciones
       </h1>
@@ -124,5 +126,5 @@ const ReturnPolicy = () => {
       </p>
     </div>
   );
-}
-export default ReturnPolicy
+};
+export default ReturnPolicy;
