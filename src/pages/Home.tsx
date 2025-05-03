@@ -427,6 +427,7 @@ export default function Home({ isMobile }: HomeProps) {
                   src="/assets/img/Wave-Icon-White.svg"
                   alt="wave icon"
                   className="self-start w-1/2 md:w-1/3"
+                  loading="lazy"
                 />
                 <FadeIn delay={100}>
                   <h3 className="text-2xl md:text-3xl lg:text-2xl font-bold mb-4 mt-3 lg:mt-0">
@@ -1145,6 +1146,7 @@ export default function Home({ isMobile }: HomeProps) {
                             src={testimonial.img}
                             alt="customer review"
                             className="w-full h-full object-cover"
+                            loading="lazy"
                           />
                         </div>
                         <div>

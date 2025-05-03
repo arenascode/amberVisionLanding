@@ -113,7 +113,7 @@ export default function TestimonialCarousel() {
                 "{testimonial.content}"
               </p>
               <div className="flex items-center gap-3 rounded-full">
-                <div className="h-20 w-20 rounded-full bg-muted-foreground/20 overflow-hidden"><img src={testimonial.img} alt="customer review" className="w-full h-full object-cover"/></div>
+                <div className="h-20 w-20 rounded-full bg-muted-foreground/20 overflow-hidden"><img src={testimonial.img} alt="customer review" className="w-full h-full object-cover" loading="lazy"/></div>
                 <div>
                   <p className="font-medium text-sidebar-primary-foreground">
                     {testimonial.name}
