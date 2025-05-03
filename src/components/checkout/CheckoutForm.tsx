@@ -163,7 +163,7 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
 
   return (
     <div className="container max-w-6xl lg:px-4 lg:py-4">
-      <div className="grid gap-8 md:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-3 md:gap-2">
         {/* Order Summary */}
         <Card className="md:col-span-1 bg-gray-300 xl:px-1">
           <CardHeader>
@@ -174,7 +174,7 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
           <CardContent className="space-y-6">
             {/* Product */}
             <div className="flex flex-col items-center gap-4">
-              <div className="h-40 w-40 xl:h-60 xl:w-62 rounded-md border bg-muted flex items-center justify-center overflow-hidden">
+              <div className="h-40 w-40 xl:h-60 md:w-50 md:h-48 xl:w-62 rounded-md border bg-muted flex items-center justify-center overflow-hidden">
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
@@ -301,7 +301,7 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">
+                  <label className="text-sm font-medium md:text-nowrap">
                     Documento <small>(Solo para la transportadora)</small>
                   </label>
                   <Input

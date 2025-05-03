@@ -42,6 +42,7 @@ import founderImage from "/assets/img/imageFounder.webp";
 import manCoding from "/assets/img/manCoding.webp";
 import coupleWatchingMovies from "/assets/img/coupleWatchingMovies.webp";
 import ReactPixel from "react-facebook-pixel";
+import BeforeAfterTransition from "@/components/ui/BeforeAfterTransition";
 
 interface HomeProps {
   isMobile: boolean;
@@ -106,9 +107,9 @@ export default function Home({ isMobile }: HomeProps) {
           <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')]"></div>
         </div>
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-20 lg:py-10 items-center lg:flex justify-center mt-22 xl:mt-27">
+        <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-8 lg:py-10 items-center lg:flex justify-center mt-22 xl:mt-27">
           <div className="container px-2 md:px-6 lg:px-2 lg:w-full justify-center">
-            <div className="flex flex-col gap-8 md:gap-10 lg:flex-row items-center xl:gap-20 xl:w-full xl:px-10">
+            <div className="flex flex-col gap-8 md:gap-10 lg:flex-row items-center lg:items-start xl:gap-20 xl:w-full xl:px-10">
               <div className="flex flex-col justify-between w-full gap-5 xl:gap-9">
                 <Badge
                   className="w-fit border-1 border-white text-sm xl:text-lg text-white"
@@ -116,10 +117,10 @@ export default function Home({ isMobile }: HomeProps) {
                 >
                   Protección Premium para tus Ojos
                 </Badge>
-                <h1 className="text-xl font-bold tracking-wider  sm:text-3xl md:text-4xl lg:text-4xl xl:text-[2.2rem] font-body uppercase fade-in-up">
+                <h1 className="text-lg font-bold tracking-wider  sm:text-3xl md:text-3xl xl:text-[2.2rem] font-body uppercase fade-in-up">
                   La exposición a pantallas desgasta tu vista y altera tu sueño
-                  -{" "}
-                  <span className="italic normal-case font-normal">
+                  - <br />{" "}
+                  <span className="">
                     nuestras gafas te devuelven el bienestar desde el primer
                     uso.
                   </span>
@@ -132,7 +133,7 @@ export default function Home({ isMobile }: HomeProps) {
                   ojos al usar nuestras gafas... y, sin esperarlo, también
                   comenzaron a dormir mejor.
                 </p>
-                <div className="lg:hidden mobile">
+                <div className="md:hidden mobile">
                   {isMobile && <ProductIntro />}
                 </div>
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-3 pt-1">
@@ -170,7 +171,7 @@ export default function Home({ isMobile }: HomeProps) {
                 </div>
               </div>
               {!isMobile && (
-                <div className="hidden lg:flex xl:h-[600px] w-[60%]">
+                <div className="hidden md:flex md:justify-center xl:h-[600px] w-[60%]">
                   <ProductIntro />
                 </div>
               )}
@@ -181,7 +182,7 @@ export default function Home({ isMobile }: HomeProps) {
         {/* Problem & Solution Section */}
         <section
           id="benefits"
-          className="py-10 md:py-24 lg:flex lg:justify-center"
+          className="py-10 lg:py-16 lg:flex lg:justify-center"
         >
           <div className="container px-4 md:px-6">
             {/* Encabezado principal */}
@@ -238,7 +239,7 @@ export default function Home({ isMobile }: HomeProps) {
               </FadeIn>
 
               <FadeIn delay={300}>
-                <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 xl:h-full">
+                <Card className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10 md:h-full">
                   <CardContent className="p-6 flex flex-col items-center text-center gap-4">
                     <div className="h-12 w-12 rounded-full bg-amber-500/80 flex items-center justify-center">
                       <AlertTriangle className="text-white h-6 w-6" />
@@ -257,12 +258,13 @@ export default function Home({ isMobile }: HomeProps) {
 
             {/* Sección de solución con imagen */}
             <div className="mt-16 rounded-xl p-1 shadow-md backdrop-blur-lg bg-white/10 border border-white/10">
-              <div className="grid gap-8 md:grid-cols-2 items-center">
-                <div className="relative h-[300px] xl:h-[450px] rounded-lg overflow-hidden">
+              <div className="grid gap-8 lg:grid-cols-2 items-center">
+                <div className="relative h-[300px] md:h-[400px] xl:h-[450px] rounded-lg overflow-hidden">
                   <img
                     src={imageSolution}
                     alt="Persona usando gafas con filtro de luz azul"
                     className="object-cover w-full h-full"
+                    loading="lazy"
                   />
                 </div>
                 <div className="xl:self-baseline xl:pt-12">
@@ -319,7 +321,7 @@ export default function Home({ isMobile }: HomeProps) {
         {/* Product Benefits & Features */}
         <section
           id="features"
-          className="py-6 md:py-10 xl:flex xl:justify-center"
+          className="py-6 md:py-10 lg:py-5 xl:flex xl:justify-center"
         >
           <div className="container px-4 md:px-6">
             {/* Encabezado principal */}
@@ -348,6 +350,7 @@ export default function Home({ isMobile }: HomeProps) {
                     src={tiredMan}
                     alt="Persona con ojos cansados e irritados"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <ul className="w-full space-y-2 xl:grid xl:grid-cols-2 xl:gap-4 xl:p-4">
@@ -378,6 +381,7 @@ export default function Home({ isMobile }: HomeProps) {
                     src={comfortableMan}
                     alt="Persona con visión relajada y enfocada"
                     className="object-cover h-full w-full"
+                    loading="lazy"
                   />
                 </div>
                 <ul className="space-y-2 xl:grid xl:grid-cols-2 xl:gap-4 xl:p-4">
@@ -399,10 +403,10 @@ export default function Home({ isMobile }: HomeProps) {
               </div>
             </div>
             {/* CTA */}
-            <div className="CTA-container flex flex-col justify-center xl:mt-16 mb-8 xl:mb-16 ">
+            <div className="CTA-container flex flex-col justify-center md:mt-12 lg:mt-16 mb-8 md:mb-14 xl:mb-16 ">
               <Button
                 size="default"
-                className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold p-6 xl:py-6 xs:p-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-full xl:w-max mx-auto"
+                className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold p-6 xl:py-6 xs:p-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-full lg:w-[80%] mx-auto"
               >
                 <a
                   href="#pricing"
@@ -412,13 +416,58 @@ export default function Home({ isMobile }: HomeProps) {
                   <ShoppingCart className="h-5 w-5" />
                 </a>
               </Button>
-              <small className="italic self-center xl:text-sm xl:mt-1">
+              <small className="italic self-center md:text-sm xl:mt-1">
                 Compra segura: envío rápido y pagas al recibir 🛡️
               </small>
             </div>
+            <div className="beforeAndAfter-container lg:flex lg:flex-row">
+              <BeforeAfterTransition />
+              <div className="scienceBehind mt-4 lg:mt-0 px-2 md:px-6 lg:pl-4 lg:pr-0 xl:px-12 max-w-4xl mx-auto text-left lg:flex-1">
+                <img
+                  src="/assets/img/Wave-Icon-White.svg"
+                  alt="wave icon"
+                  className="self-start w-1/2 md:w-1/3"
+                />
+                <FadeIn delay={100}>
+                  <h3 className="text-2xl md:text-3xl lg:text-2xl font-bold mb-4 mt-3 lg:mt-0">
+                    🧠 La Ciencia Detrás de Amber Vision
+                  </h3>
+                </FadeIn>
+
+                <p className="text-base md:text-lg mb-3">
+                  La luz azul y verde —especialmente entre los{" "}
+                  <span className="font-semibold">400 y 520 nanómetros</span>—
+                  altera tu capacidad para relajarte y
+                  <span className="font-semibold">
+                    {" "}
+                    afecta tu ritmo circadiano
+                  </span>
+                  , el reloj interno que regula tu descanso.
+                </p>
+                <p className="text-base md:text-lg mb-3">
+                  En esta era digital, estamos expuestos a fuentes de{" "}
+                  <span className="font-semibold">
+                    luz artificial como celulares, computadores o luces LED.
+                  </span>{" "}
+                  Aunque parezcan inofensivas, incluso niveles bajos de esta luz
+                  impiden la correcta producción de melatonina, la hormona clave que le
+                  dice a tu cuerpo cuándo es hora de dormir.
+                </p>
+                <p className="text-base md:text-lg mb-3">
+                  Nuestras gafas{" "}
+                  <span className="font-semibold">Amber Vision</span> filtran
+                  selectivamente esta luz nociva, creando un entorno visual más
+                  cálido y natural, similar al del atardecer. Al usarlas en las
+                  ultimas horas del día,{" "}
+                  <span className="font-semibold">
+                    tu cuerpo se relajará y dormirás mejor.
+                  </span>
+                </p>
+              </div>
+            </div>
 
             {/* Beneficios adicionales */}
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-8 md:mt-12 md:grid-cols-2 lg:grid-cols-4">
               {[
                 {
                   icon: (
@@ -426,7 +475,7 @@ export default function Home({ isMobile }: HomeProps) {
                   ),
                   title: "Filtran el 99% de la luz azul",
                   description:
-                    "Protege tu vista y reduce la fatiga ocular en cualquier entorno.",
+                    "Nuestras gafas protegen tu vista y reducen la fatiga ocular en cualquier entorno.",
                 },
                 {
                   icon: (
@@ -479,7 +528,7 @@ export default function Home({ isMobile }: HomeProps) {
         {/* Social Proof & Testimonials */}
         <section
           id="testimonials"
-          className="py-10 pb-2 md:py-16 overflow-hidden xl:flex xl:justify-center"
+          className="py-10 pb-2 md:py-10 overflow-hidden xl:flex xl:justify-center"
         >
           <div className="container px-4 md:px-6 overflow-hidden">
             {/* Section Heading */}
@@ -554,7 +603,7 @@ export default function Home({ isMobile }: HomeProps) {
         {/* Urgency & Call-href-Action */}
         <section
           id="pricing"
-          className="py-10 pt-16 md:py-14 xl:flex xl:justify-center"
+          className="py-10 pt-16 md:py-10 xl:flex xl:justify-center"
         >
           <div className="container px-4 md:px-6">
             {/* Urgency & Headline */}
@@ -594,6 +643,7 @@ export default function Home({ isMobile }: HomeProps) {
                         src={manCoding}
                         alt="man coding"
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                     <div className="flex items-end gap-1 mb-4 mt-2 text-sidebar-primary-foreground">
@@ -643,8 +693,9 @@ export default function Home({ isMobile }: HomeProps) {
                     <div className="imgContainer container rounded-lg overflow-hidden">
                       <img
                         src={coupleWatchingMovies}
-                        alt="man coding"
+                        alt="couple watching movies"
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                     <div className="flex items-end gap-1 mb-2 mt-2">
@@ -720,7 +771,7 @@ export default function Home({ isMobile }: HomeProps) {
 
             {/* Additional Benefits */}
             <div className="flex justify-center mt-8">
-              <div className="flex items-center gap-1 xl:gap-4 text-sm text-muted-foreground text-pretty">
+              <div className="flex items-center gap-1 md:gap-3 lg:gap-4 text-sm text-muted-foreground text-pretty">
                 {[
                   {
                     icon: Shield,
@@ -743,7 +794,7 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
 
         {/* Nota Personal del Fundador */}
-        <section className="py-6 md:py-24 xl:py-5 xl:flex xl:justify-center">
+        <section className="py-6 lg:py-14 xl:py-5 xl:flex xl:justify-center">
           <div className="container px-4 md:px-6 ">
             <FadeIn delay={100}>
               <div className="max-w-[800px] p-2 mx-auto shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl items-center">
@@ -753,6 +804,7 @@ export default function Home({ isMobile }: HomeProps) {
                       src={founderImage}
                       alt="Fundador de Amber Vision"
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <h2 className="text-2xl font-bold text-center">
@@ -787,7 +839,10 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-12 md:py-24 xl:flex xl:justify-center">
+        <section
+          id="faq"
+          className="py-8 md:py-10 md:px-6 xl:py-16 xl:flex xl:justify-center"
+        >
           <div className="container px-4 md:px-6">
             {/* Section Title */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
@@ -974,11 +1029,39 @@ export default function Home({ isMobile }: HomeProps) {
             </div>
           </div>
         </section>
+        {/* Purchase Warranty */}
+        <section className="py-2 text-text text-center px-3 md:px-12 ">
+          <div className="max-w-3xl mx-auto md:p-3 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl items-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Dale una oportunidad real a tu descanso
+            </h2>
+            <p className="text-lg md:text-xl font-medium mb-6">
+              Estamos tan seguros de que nuestras gafas{" "}
+              <span className="font-semibold text-brand">Amber Vision</span>{" "}
+              transformarán tu bienestar, que te damos{" "}
+              <span className="font-semibold">30 días para comprobarlo</span>.
+            </p>
+            <p className="text-md md:text-lg mb-4">
+              Póntelas, úsalas, siente la diferencia en tu vista y en la calidad
+              de tu sueño. Si no notas mejoría o simplemente no te convencen,
+              puedes{" "}
+              <span className="font-semibold text-fire-dark">
+                devolverlas sin explicaciones
+              </span>
+              .
+            </p>
+            <p className="text-sm italic">
+              Tu salud visual está primero, y tu compra está 100% protegida. 🛡️
+            </p>
+          </div>
+        </section>
+
         {/* CTA */}
-        <div className="CTA-container flex flex-col justify-center  mb-8 xl:flex xl:justify-center">
+        <div className="CTA-container flex flex-col justify-center mt-3 md:mt-6 mb-8 xl:flex xl:justify-center">
           <Button
             size="default"
-            className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold py-6 sm:px-6 sm:py-3 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-[85%] xl:w-max mx-auto"
+            className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold py-6 sm:px-6 sm:py-3 lg:mt-8 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-[85%]
+            lg:w-[70%] xl:w-max mx-auto"
           >
             <a
               href="#pricing"
@@ -988,12 +1071,12 @@ export default function Home({ isMobile }: HomeProps) {
               <ShoppingCart className="h-5 w-5" />
             </a>
           </Button>
-          <small className="italic self-center xl:text-sm xl:mt-1">
+          <small className="italic self-center lg:text-sm xl:mt-1">
             envío GRATIS. Pocas unidades disponibles 📦
           </small>
         </div>
         {/* More Social Proof */}
-        <section className="py-6 md:py-16 xl:py-10 xl:flex xl:justify-center">
+        <section className="py-6 md:py-10 xl:flex xl:justify-center">
           <div className="container px-3 md:px-6">
             <div className="flex flex-col items-center text-center gap-4 mb-12">
               <h2 className="text-3xl font-bold tracking-tight">
@@ -1011,26 +1094,31 @@ export default function Home({ isMobile }: HomeProps) {
                   review:
                     "No podía creer lo cómodas que son estas gafas. Paso muchas horas frente a la computadora y desde que las uso, ya no sufro de dolor de cabeza ni fatiga visual. ¡Definitivamente una gran inversión!",
                   name: "Sofía G.",
+                  img: "./assets/img/person-review11.webp",
                 },
                 {
                   review:
                     "No sabía que la luz azul afectaba tanto mi sueño hasta que probé estas gafas. Ahora duermo mucho mejor después de usar el celular o ver TV en la noche. ¡Protegen mis ojos y me ayudan a descansar de verdad! Además, son cómodas y se ven bien.",
                   name: "Luis M.",
+                  img: "./assets/img/person-review5.webp",
                 },
                 {
                   review:
                     "Son ligeras y si siento que me protegen del brillo de las pantallas. Las uso a partir de que la luz del día se comienza a ir (cuando ya hay que prender luces en la casa) y sigo trabajando en la computadora y/o viendo tele. Las uso de corrido hasta la hora de dormir para que también me protege de la luz de los focos de la casa. Mis ojos se cansan mucho menos. ¡Las recomiendo al 100%!",
                   name: "Valentina R.",
+                  img: "./assets/img/person-review10.webp",
                 },
                 {
                   review:
                     "Soy programador y paso muchas horas frente a múltiples pantallas. Estas gafas han cambiado por completo mi rutina: ya no tengo ojos cansados y puedo concentrarme mucho mejor. ¡Una compra excelente!",
                   name: "Diego P.",
+                  img: "./assets/img/person-review9.webp",
                 },
                 {
                   review:
                     "Me sorprendió lo ligeras que son. A veces olvido que las tengo puestas de lo cómodas que son ya que paso horas frente a la computadora ya que trabajo remoto. Además, me gusta su diseño estilo Rayban.",
-                  name: "Camila T.",
+                  name: "Camilo T.",
+                  img: "./assets/img/person-review12.webp",
                 },
               ].map((testimonial, i) => (
                 <FadeIn delay={100}>
@@ -1052,7 +1140,13 @@ export default function Home({ isMobile }: HomeProps) {
                         "{testimonial.review}"
                       </p>
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full bg-muted-foreground/20"></div>
+                        <div className="h-20 w-20 rounded-full bg-muted-foreground/20 overflow-hidden">
+                          <img
+                            src={testimonial.img}
+                            alt="customer review"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                         <div>
                           <p className="font-medium text-sidebar-primary-foreground">
                             {testimonial.name}
@@ -1071,7 +1165,7 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
 
         {/* Final CTA */}
-        <section className="py-8 md:py-24 xl:flex xl:justify-center">
+        <section className="py-8 md:py-12 xl:py-20 xl:flex xl:justify-center">
           <div className="container px-4 md:px-6 ">
             <FadeIn delay={100}>
               <div className="max-w-[800px] mx-auto rounded-xl p-2 sm:p-4 text-center border shadow-md backdrop-blur-lg bg-white/10 border-white/10">

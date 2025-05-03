@@ -32,7 +32,7 @@ const NavBar: React.FC<NavBarProps> = ({
             />
           </a>
         </div>
-        <nav className="hidden md:flex gap-6 xl:gap-10">
+        <nav className="hidden md:flex gap-6 xl:gap-10 md:px-2">
           <a
             href="/#benefits"
             className="text-sm xl:text-lg font-medium hover:text-fire-btn"
@@ -70,7 +70,7 @@ const NavBar: React.FC<NavBarProps> = ({
             Contacto
           </a>
         </nav>
-        <div className="lg:hidden">
+        <div className="md:hidden">
           <HamburgerButton
             setIsNavBarMenuOpen={setIsNavBarMenuOpen}
             isOpen={isNavBarMenuOpen}

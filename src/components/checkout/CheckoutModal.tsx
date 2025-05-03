@@ -25,7 +25,7 @@ export default function CheckoutModal({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent
-        className="max-w-xl xl:max-w-5xl max-h-[100dvh] overflow-y-auto bg-[radial-gradient(circle,#4a4a4a,#333333,#1f1f1f)] border-none
+        className="max-w-xl xl:max-w-6xl md:max-w-full lg:max-w-full max-h-[100dvh] overflow-y-auto bg-[radial-gradient(circle,#4a4a4a,#333333,#1f1f1f)] border-none
 "
       >
         <DialogHeader className="flex flex-col items-center justify-between px-4 xl:px-10 xl:gap-4">

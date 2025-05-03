@@ -11,8 +11,18 @@ const testimonials = [
     name: "Carolina López",
     role: "Diseñadora Gráfica",
     content:
-      "Estas gafas me sorprendieron. Varias veces sentí dolor en los ojos después de estar frente al computador, me puse las gafas y, en cuestión de minutos, el dolor desapareció. Solo por eso ya valen la pena. Si pasas mucho tiempo frente a pantallas, te recomiendo estas gafas así no sientas molestias todavía. El daño de la luz azul es acumulativo y puede ser permanente. ¡Ojalá hubiera conocido estas gafas antes!",
+      "Estas gafas me sorprendieron. Varias veces sentí dolor en los ojos después de estar frente al computador, me puse las gafas y, en cuestión de minutos, el dolor desapareció. Solo por eso ya valen la pena. Si pasas mucho tiempo frente a pantallas, te recomiendo estas gafas así no sientas molestias todavía. El daño de la luz azul es acumulativo y puede ser permanente.",
     rating: 5,
+    img: "./assets/img/person-review8.webp",
+  },
+  {
+    id: 6,
+    name: "Laura Castillo",
+    role: "Docente Virtual",
+    content:
+      "Dar clases online en la noche solía dejarme acelerada y sin poder dormir. ¡Estas gafas han resuelto completamente ese problema!",
+    rating: 4,
+    img: "./assets/img/person-review2.webp",
   },
   {
     id: 2,
@@ -21,6 +31,16 @@ const testimonials = [
     content:
       "Trabajo hasta tarde programando, y estas gafas han sido un salvavidas. Mis ojos se sienten mucho menos cansados, puedo quedarme más tiempo frente a la pc y me duermo más rápido que nunca.",
     rating: 5,
+    img: "./assets/img/person-review3.webp",
+  },
+  {
+    id: 3,
+    name: "Juan Camilo Rodríguez",
+    role: "Estudiante",
+    content:
+      "Estudio muchas horas frente al computador en la noche y estas gafas me han ayudado a reducir el cansancio visual y a mejorar el sueño. Son cómodas, modernas y de verdad bloquean la luz azul. Muy contento con la compra!",
+    rating: 4,
+    img: "./assets/img/person-review4.webp",
   },
   {
     id: 5,
@@ -29,15 +49,9 @@ const testimonials = [
     content:
       "Después de años luchando contra el insomnio, estas gafas han hecho una diferencia notable. Me duermo más rápido y me despierto mucho más descansado.",
     rating: 5,
+    img: "./assets/img/person-review7.webp",
   },
-  {
-    id: 3,
-    name: "Juan Camilo Rodríguez",
-    role: "Ingeniero de Software",
-    content:
-      "Trabajo muchas horas frente al computador y estas gafas me han ayudado a reducir el cansancio visual y mejorar el sueño. Son cómodas, modernas y bloquean la luz azul. ¡Una gran inversión para quienes pasan mucho tiempo en pantalla, sus ojos se lo agradecerán!",
-    rating: 4,
-  },
+
   {
     id: 4,
     name: "Valentina Moreno",
@@ -45,22 +59,15 @@ const testimonials = [
     content:
       "Estas gafas han cambiado completamente mi rutina nocturna. Ahora puedo editar videos hasta tarde sin sufrir fatiga visual ni afectar mi sueño.",
     rating: 5,
-  },
-
-  {
-    id: 6,
-    name: "Laura Castillo",
-    role: "Docente Virtual",
-    content:
-      "Dar clases online en la noche solía dejarme acelerada y sin poder dormir. ¡Estas gafas han resuelto completamente ese problema!",
-    rating: 4,
+    img: "./assets/img/person-review1.webp",
   },
 ];
 
-
+const screenWidth = window.innerWidth
+ 
 export default function TestimonialCarousel() {
   const [currentPage, setCurrentPage] = useState(0)
-  const itemsPerPage = 3
+  const itemsPerPage = screenWidth >= 1024 ? 3 : 2
   const totalPages = Math.ceil(testimonials.length / itemsPerPage)
 
   const nextPage = () => {
@@ -83,7 +90,7 @@ export default function TestimonialCarousel() {
 
   return (
     <div className="relative">
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {currentTestimonials.map((testimonial) => (
           <Card
             key={testimonial.id}
@@ -105,8 +112,8 @@ export default function TestimonialCarousel() {
               <p className="text-sidebar-primary-foreground mb-6">
                 "{testimonial.content}"
               </p>
-              <div className="flex items-center gap-3">
-                {/* <div className="h-10 w-10 rounded-full bg-muted-foreground/20"></div> */}
+              <div className="flex items-center gap-3 rounded-full">
+                <div className="h-20 w-20 rounded-full bg-muted-foreground/20 overflow-hidden"><img src={testimonial.img} alt="customer review" className="w-full h-full object-cover"/></div>
                 <div>
                   <p className="font-medium text-sidebar-primary-foreground">
                     {testimonial.name}
