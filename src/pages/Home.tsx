@@ -529,9 +529,9 @@ export default function Home({ isMobile }: HomeProps) {
         {/* Social Proof & Testimonials */}
         <section
           id="testimonials"
-          className="py-10 pb-2 md:py-10 overflow-hidden xl:flex xl:justify-center"
+          className="py-10 pb-2 md:py-4 overflow-hidden xl:flex xl:justify-center h-[920px] md:h-[600px] md:min-h-[418px]"
         >
-          <div className="container px-4 md:px-6 overflow-hidden">
+          <div className="container px-4 md:px-6 overflow-hidden h-full md:h-full">
             {/* Section Heading */}
             <div className="flex flex-col items-center text-center gap-4 mb-12">
               <FadeIn delay={100}>
@@ -604,7 +604,7 @@ export default function Home({ isMobile }: HomeProps) {
         {/* Urgency & Call-href-Action */}
         <section
           id="pricing"
-          className="py-10 pt-16 md:py-10 xl:flex xl:justify-center"
+          className="py-6 pt-2 md:py-10 xl:flex xl:justify-center"
         >
           <div className="container px-4 md:px-6">
             {/* Urgency & Headline */}

@@ -11,7 +11,7 @@ const testimonials = [
     name: "Carolina López",
     role: "Diseñadora Gráfica",
     content:
-      "Estas gafas me sorprendieron. Varias veces sentí dolor en los ojos después de estar frente al computador, me puse las gafas y, en cuestión de minutos, el dolor desapareció. Solo por eso ya valen la pena. Si pasas mucho tiempo frente a pantallas, te recomiendo estas gafas así no sientas molestias todavía. El daño de la luz azul es acumulativo y puede ser permanente.",
+      "Estas gafas me sorprendieron. Varias veces sentí dolor en los ojos después de estar frente al computador, me puse las gafas y, en cuestión de minutos, el dolor desapareció. Solo por eso ya valen la pena.",
     rating: 5,
     img: "./assets/img/person-review8.webp",
   },
@@ -20,7 +20,7 @@ const testimonials = [
     name: "Laura Castillo",
     role: "Docente Virtual",
     content:
-      "Dar clases online en la noche solía dejarme acelerada y sin poder dormir. ¡Estas gafas han resuelto completamente ese problema!",
+      "Dar clases online en la noche solía dejarme acelerada y sin poder dormir. Ahora puedo conciliar más facilmente el sueño y no termino con ardor en los ojos. Las recomiendo totalmente!",
     rating: 4,
     img: "./assets/img/person-review2.webp",
   },
@@ -89,14 +89,14 @@ export default function TestimonialCarousel() {
   const currentTestimonials = testimonials.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
 
   return (
-    <div className="relative">
+    <div className="relative md:min-h-[418px]">
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {currentTestimonials.map((testimonial) => (
           <Card
             key={testimonial.id}
             className="border shadow-md backdrop-blur-lg bg-white/10 border-white/10"
           >
-            <CardContent className="p-2 sm:p-5">
+            <CardContent className="p-2 sm:p-5 flex flex-col justify-between">
               <div className="flex mb-4 xl:gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star
@@ -113,7 +113,14 @@ export default function TestimonialCarousel() {
                 "{testimonial.content}"
               </p>
               <div className="flex items-center gap-3 rounded-full">
-                <div className="h-20 w-20 rounded-full bg-muted-foreground/20 overflow-hidden"><img src={testimonial.img} alt="customer review" className="w-full h-full object-cover" loading="lazy"/></div>
+                <div className="h-20 w-20 rounded-full bg-muted-foreground/20 overflow-hidden">
+                  <img
+                    src={testimonial.img}
+                    alt="customer review"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
                 <div>
                   <p className="font-medium text-sidebar-primary-foreground">
                     {testimonial.name}
@@ -128,7 +135,7 @@ export default function TestimonialCarousel() {
         ))}
       </div>
 
-      <div className="flex justify-center gap-2 mt-6">
+      <div className="flex justify-center gap-2 mt-6 items-center">
         <Button
           variant="outline"
           size="icon"
@@ -143,7 +150,9 @@ export default function TestimonialCarousel() {
             key={i}
             variant={i === currentPage ? "default" : "outline"}
             size="icon"
-            className={`h-2 w-2 rounded-full p-0 ${i === currentPage ? "bg-white" : " bg-none"} cursor-pointer`}
+            className={`h-2 w-2 rounded-full p-0 ${
+              i === currentPage ? "bg-white" : " bg-none"
+            } cursor-pointer`}
             onClick={() => setCurrentPage(i)}
           >
             <span className="sr-only">Page {i + 1}</span>
