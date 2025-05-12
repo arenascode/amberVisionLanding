@@ -31,6 +31,17 @@ export default function App() {
           <Route path="/politica-de-envios" element={<ShippingPolicy />} />
           <Route path="/politica-de-devoluciones" element={<ReturnPolicy />} />
           <Route path="/contacto" element={<Contact />} />
+          {/*404 Not Found Route */}
+          <Route
+            path="*"
+            element={
+              <div className="flex flex-col items-center justify-center h-screen">
+                <h1 className="text-4xl font-bold">404 Not Found</h1>
+                <p className="text-lg">La Pagina que estás buscando no existe.</p>
+                <button className="btn btn-lg rounded-lg mt-5"><a href="/">Volver</a></button>
+              </div>
+            }
+          />
         </Routes>
       </MainLayout>
     </BrowserRouter>

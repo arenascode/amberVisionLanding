@@ -7,13 +7,13 @@ import { Button } from "@/components/ui/button"
 
 const testimonials = [
   {
-    id: 1,
-    name: "Carolina López",
-    role: "Diseñadora Gráfica",
+    id: 4,
+    name: "Valentina Moreno",
+    role: "Creadora de Contenido",
     content:
-      "Estas gafas me sorprendieron. Varias veces sentí dolor en los ojos después de estar frente al computador, me puse las gafas y, en cuestión de minutos, el dolor desapareció. Solo por eso ya valen la pena.",
+      "Estas gafas han cambiado completamente mi rutina nocturna. Ahora puedo editar videos hasta tarde sin sufrir fatiga visual ni afectar mi sueño.",
     rating: 5,
-    img: "./assets/img/person-review8.webp",
+    img: "./assets/img/person-review1.webp",
   },
   {
     id: 6,
@@ -51,15 +51,14 @@ const testimonials = [
     rating: 5,
     img: "./assets/img/person-review7.webp",
   },
-
   {
-    id: 4,
-    name: "Valentina Moreno",
-    role: "Creadora de Contenido",
+    id: 1,
+    name: "Carolina López",
+    role: "Diseñadora Gráfica",
     content:
-      "Estas gafas han cambiado completamente mi rutina nocturna. Ahora puedo editar videos hasta tarde sin sufrir fatiga visual ni afectar mi sueño.",
+      "Estas gafas me sorprendieron. Varias veces sentí dolor en los ojos después de estar frente al computador, me puse las gafas y, en cuestión de minutos, el dolor desapareció. Solo por eso ya valen la pena.",
     rating: 5,
-    img: "./assets/img/person-review1.webp",
+    img: "./assets/img/person-review8.webp",
   },
 ];
 
@@ -89,7 +88,7 @@ export default function TestimonialCarousel() {
   const currentTestimonials = testimonials.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
 
   return (
-    <div className="relative md:min-h-[418px]">
+    <div className="relative md:min-h-[418px] lg:min-h-[650px]">
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {currentTestimonials.map((testimonial) => (
           <Card

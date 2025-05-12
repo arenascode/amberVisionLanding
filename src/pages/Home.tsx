@@ -10,8 +10,6 @@ import {
   Moon,
   AlertTriangle,
   X,
-  Sun,
-  Book,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -40,7 +38,12 @@ import tiredMan from "/assets/img/tiredMan.webp";
 import comfortableMan from "/assets/img/comfortableMan.webp";
 import founderImage from "/assets/img/imageFounder.webp";
 import manCoding from "/assets/img/manCoding.webp";
+import measure1 from "/assets/product/measure1.png";
+import measure2 from "/assets/product/measure2.png";
+import iconGlasses from "/assets/icons/iconGlasses.webp";
 import coupleWatchingMovies from "/assets/img/coupleWatchingMovies.webp";
+import testingVideo from "/assets/video/testingVideo.mp4";
+import peopleUsingGlasses from "/assets/img/peopleUsingGlasses-desktop.webp";
 import ReactPixel from "react-facebook-pixel";
 import BeforeAfterTransition from "@/components/ui/BeforeAfterTransition";
 
@@ -276,15 +279,16 @@ export default function Home({ isMobile }: HomeProps) {
                       <Check className="h-5 w-10 text-success mt-0.5" />
                       <div className="xl:flex xl:flex-col xl:gap-2">
                         <span className="font-semibold text-[17px] xl:text-lg">
-                          Bloquean hasta el 99% de la luz azul más dañina
+                          Reducen la fatiga ocular y los dolores de cabeza
                         </span>
                         <p className="text-sidebar-primary-foreground mt-0.5">
-                          Nuestras gafas especializadas filtran las longitudes
-                          de onda más dañinas (415 a 455 nm), responsables de la
-                          fatiga ocular y la alteración del sueño.
+                          Usalas durante tu jornada digital y nota el cambio en
+                          tus ojos: menos tensión visual y molestias provocadas
+                          por el uso prolongado de pantallas.
                         </p>
                       </div>
                     </li>
+
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-10 text-success mt-0.5" />
                       <div className="xl:flex xl:flex-col xl:gap-2">
@@ -302,12 +306,12 @@ export default function Home({ isMobile }: HomeProps) {
                       <Check className="h-5 w-10 text-success mt-0.5" />
                       <div className="xl:flex xl:flex-col xl:gap-2">
                         <span className="font-semibold text-[17px] xl:text-lg">
-                          Reducen la fatiga ocular y los dolores de cabeza
+                          Bloquean hasta el 99% de la luz azul más dañina
                         </span>
                         <p className="text-sidebar-primary-foreground mt-0.5">
-                          Usalas durante tu jornada digital y nota el cambio en
-                          tus ojos: menos tensión visual y molestias provocadas
-                          por el uso prolongado de pantallas.
+                          Nuestras gafas especializadas filtran las longitudes
+                          de onda más dañinas (415 a 455 nm), responsables de la
+                          fatiga ocular y la alteración del sueño.
                         </p>
                       </div>
                     </li>
@@ -373,7 +377,7 @@ export default function Home({ isMobile }: HomeProps) {
 
               {/* Con protección */}
               <div className="rounded-xl p-2 shadow-md backdrop-blur-lg bg-white/10 border-white/10 border xl:flex xl:flex-col xl:place-items-center">
-                <h3 className="text-xl font-bold mb-4 text-center text-success">
+                <h3 className="text-xl font-bold mb-4 text-center text-green-500">
                   Con Gafas Amber Vision: <br /> Comodidad y Descanso Total
                 </h3>
                 <div className="relative h-[320px] xl:h-[400px] w-full xl:w-[400px] rounded-lg overflow-hidden mb-4">
@@ -396,14 +400,14 @@ export default function Home({ isMobile }: HomeProps) {
                       className="flex items-start gap-2 text-white text-lg xl:text-lg"
                     >
                       <Check className="h-5 w-5 xl:h-7 xl:w-7 text-success" />
-                      {item}
+                      <strong className="tracking-wide">{item}</strong>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
             {/* CTA */}
-            <div className="CTA-container flex flex-col justify-center md:mt-12 lg:mt-16 mb-8 md:mb-14 xl:mb-16 ">
+            <div className="CTA-container flex flex-col justify-center mt-10 md:mt-12 lg:my-20 mb-8 md:mb-14 xl:mb-16 ">
               <Button
                 size="default"
                 className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold p-6 xl:py-6 xs:p-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-full lg:w-[80%] mx-auto"
@@ -420,7 +424,44 @@ export default function Home({ isMobile }: HomeProps) {
                 Compra segura: envío rápido y pagas al recibir 🛡️
               </small>
             </div>
-            <div className="beforeAndAfter-container lg:flex lg:flex-row">
+            {/* Video de prueba */}
+            <section className="w-full rounded-xl shadow-md backdrop-blur-lg bg-white/10 border-white/10 border p-2 lg:p-5 flex flex-col lg:flex-row items-center mt-10 mb-6">
+              <div className="textContainer flex flex-col p-4 lg:self-start lg:flex-2 xl:flex-1">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">
+                  Prueba Real de Efectividad
+                </h2>
+                <p className="text-[1rem] md:text-xl text-center max-w-2xl mb-6 lg:mt-8">
+                  Mira cómo nuestras gafas bloquean eficazmente la luz azul.
+                  Usamos una tarjeta sensible a esta luz junto con un LED azul
+                  intenso. El área sin protección se tiñe de morado, mientras
+                  que el área protegida por nuestras lentes permanece intacta.
+                </p>
+                <p className="text-sm hidden md:text-lg lg:text-xl lg:text-wrap text-center font-semibold italic lg:mt-10 lg:block">
+                  Te regalamos esta misma tarjeta de prueba para que lo compruebes tú
+                  mismo desde casa. 🧪🎁
+                </p>
+              </div>
+
+              <div className="videoContainer flex flex-col items-center justify-center lg:flex-1.5 xl:flex-1">
+                <video
+                  className="rounded-xl shadow-lg w-full opacity-80 max-w-2xl mb-2 md:w-[40%] lg:w-[100%] xl:w-[60%]"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src={testingVideo} type="video/mp4" />
+                  Tu navegador no soporta la reproducción de video.
+                </video>
+
+                <p className="text-sm md:text-lg text-center font-semibold italic lg:hidden">
+                  Te regalamos esta misma tarjeta de prueba para comprobarlo tú
+                  mismo desde casa. 🧪🎁
+                </p>
+              </div>
+            </section>
+
+            <div className="beforeAndAfter-container lg:flex lg:flex-row lg:mt-26">
               <BeforeAfterTransition />
               <div className="scienceBehind mt-4 lg:mt-0 px-2 md:px-6 lg:pl-4 lg:pr-0 xl:px-12 max-w-4xl mx-auto text-left lg:flex-1">
                 <img
@@ -431,7 +472,7 @@ export default function Home({ isMobile }: HomeProps) {
                 />
                 <FadeIn delay={100}>
                   <h3 className="text-2xl md:text-3xl lg:text-2xl font-bold mb-4 mt-3 lg:mt-0">
-                    🧠 La Ciencia Detrás de Amber Vision
+                    La Ciencia Detrás de Amber Vision
                   </h3>
                 </FadeIn>
 
@@ -451,8 +492,8 @@ export default function Home({ isMobile }: HomeProps) {
                     luz artificial como celulares, computadores o luces LED.
                   </span>{" "}
                   Aunque parezcan inofensivas, incluso niveles bajos de esta luz
-                  impiden la correcta producción de melatonina, la hormona clave que le
-                  dice a tu cuerpo cuándo es hora de dormir.
+                  impiden la correcta producción de melatonina, la hormona clave
+                  que le dice a tu cuerpo cuándo es hora de dormir.
                 </p>
                 <p className="text-base md:text-lg mb-3">
                   Nuestras gafas{" "}
@@ -461,15 +502,66 @@ export default function Home({ isMobile }: HomeProps) {
                   cálido y natural, similar al del atardecer. Al usarlas en las
                   ultimas horas del día,{" "}
                   <span className="font-semibold">
-                    tu cuerpo se relajará y dormirás mejor.
+                    tu cuerpo se relajará, dormirás mejor y le dirás adiós a la
+                    fatiga ocular si estás muchas horas frente a la pantalla.
                   </span>
                 </p>
               </div>
             </div>
 
             {/* Beneficios adicionales */}
-            <div className="grid gap-8 md:mt-12 md:grid-cols-2 lg:grid-cols-4">
-              {[
+            <div className="grid gap-8 mt-8 md:mt-12 lg:grid-cols-4 xl:px-20 md:flex md:flex-col md:items-center">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 mt-3 lg:mt-10 text-center">
+                Diseño que se adapta a cualquier rostro
+              </h2>
+              <div className="imgFeaturesContainer flex flex-col items-center justify-center md:w-[65%] lg:mt-10">
+                <img
+                  src={measure1}
+                  alt="Medidas gafas frente"
+                  className="object-cover"
+                  loading="lazy"
+                />
+                <img
+                  src={measure2}
+                  alt="Medidas Gafas Lateral"
+                  loading="lazy"
+                  className="mt-5 object-cover"
+                />
+              </div>
+              <Card className="border-none shadow-md backdrop-blur-lg bg-white/10 border-white/10 h-full">
+                <CardContent className="p-5 flex flex-col md:flex-row items-center text-center gap-4">
+                  <div className="cardBody flex flex-col items-center gap-4 text-left md:flex-1">
+                    <div className="h-12 lg:h-15 w-12 lg:w-15 rounded-full bg-amber-500/80 flex items-center justify-center text-sidebar-primary-foreground">
+                      <img src={iconGlasses} alt="" loading="lazy" />
+                    </div>
+                    <h3 className="font-bold text-sidebar-primary-foreground text-[1.3rem] lg:text-2xl xl:text-3xl lg:mb-8">
+                      Estilo Unisex
+                    </h3>
+                    <p className="lg:text-xl text-sidebar-primary-foreground">
+                      Inspiradas en el estilo atemporal <strong>Ray-Ban</strong>
+                      , estas gafas se ven bien en todo tipo de cara — desde
+                      rostros delgados hasta anchos.
+                    </p>
+                    <p className="text-[1.1rem] lg:text-xl text-sidebar-primary-foreground">
+                      Están fabricadas con <strong>TR90 suizo</strong>, un
+                      material premium reconocido por su{" "}
+                      <strong>ligereza, flexibilidad y resistencia</strong>.
+                    </p>
+                    <p className="text-[1.1rem] lg:text-xl text-sidebar-primary-foreground">
+                      Se ajustan suavemente a tu rostro sin generar presión,
+                      incluso tras horas de uso.
+                    </p>
+                  </div>
+                  <div className="cardImg rounded-xl overflow-hidden md:flex-1">
+                    <img
+                      src={peopleUsingGlasses}
+                      alt="Personas usando gafas amber vision"
+                      loading="lazy"
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+              {/* {[
                 {
                   icon: (
                     <Eye className="h-6 w-6 text-sidebar-primary-foreground" />
@@ -521,7 +613,7 @@ export default function Home({ isMobile }: HomeProps) {
                     </CardContent>
                   </Card>
                 </FadeIn>
-              ))}
+              ))} */}
             </div>
           </div>
         </section>
@@ -529,18 +621,18 @@ export default function Home({ isMobile }: HomeProps) {
         {/* Social Proof & Testimonials */}
         <section
           id="testimonials"
-          className="py-10 pb-2 md:py-4 overflow-hidden xl:flex xl:justify-center h-[920px] md:h-[600px] md:min-h-[418px]"
+          className="py-10 pb-2 md:py-4 overflow-hidden xl:flex xl:justify-center min-h-[900px] md:h-[600px] md:min-h-[418px] lg:min-h-[650px]"
         >
           <div className="container px-4 md:px-6 overflow-hidden h-full md:h-full">
             {/* Section Heading */}
-            <div className="flex flex-col items-center text-center gap-4 mb-12">
+            <div className="flex flex-col items-center text-center gap-4 mb-12 lg:mt-10">
               <FadeIn delay={100}>
-                <h2 className="text-3xl font-bold tracking-tight">
+                <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
                   Lo Que Dicen Nuestros Clientes
                 </h2>
               </FadeIn>
 
-              <p className="text-sidebar-primary-foreground md:text-lg max-w-[800px]">
+              <p className="text-sidebar-primary-foreground md:text-lg lg:text-xl max-w-[800px]">
                 Decenas de personas han mejorado su sueño y reducido la fatiga
                 ocular con nuestras gafas.
               </p>
@@ -613,12 +705,12 @@ export default function Home({ isMobile }: HomeProps) {
                 Oferta por Tiempo Limitado ⏳
               </Badge>
               <FadeIn delay={100}>
-                <h2 className="text-3xl font-bold tracking-tight xl:mt-4 xl:text-4xl">
+                <h2 className="text-3xl font-bold tracking-tight xl:mt-4 lg:text-4xl">
                   Descuento Especial de Lanzamiento
                 </h2>
               </FadeIn>
 
-              <p className="text-sidebar-primary-foreground md:text-lg xl:text-xl max-w-[800px]">
+              <p className="text-sidebar-primary-foreground md:text-lg lg:text-xl max-w-[800px]">
                 Aprovecha nuestro precio exclusivo antes de que desaparezca
               </p>
               <div className="mt-4">
@@ -771,8 +863,8 @@ export default function Home({ isMobile }: HomeProps) {
             </div>
 
             {/* Additional Benefits */}
-            <div className="flex justify-center mt-8">
-              <div className="flex items-center gap-1 md:gap-3 lg:gap-4 text-sm text-muted-foreground text-pretty">
+            <div className="flex justify-center mt-8 lg:mt-16">
+              <div className="flex items-center gap-1 md:gap-3 lg:gap-4 text-sm lg:text-lg xl:text-xl text-muted-foreground text-pretty">
                 {[
                   {
                     icon: Shield,
@@ -811,7 +903,7 @@ export default function Home({ isMobile }: HomeProps) {
                   <h2 className="text-2xl font-bold text-center">
                     Un Mensaje de Nuestro Fundador
                   </h2>
-                  <p className="text-sidebar-primary-foreground text-center xl:text-lg">
+                  <p className="text-sidebar-primary-foreground text-center lg:text-lg">
                     "Después de años lidiando con migrañas e insomnio por pasar
                     más de 12 horas al día frente a pantallas, descubrí el
                     impacto de la luz azul en mi salud. Decidí crear estas gafas
@@ -819,7 +911,7 @@ export default function Home({ isMobile }: HomeProps) {
                     se acabaron los dolores de cabeza y la fatiga ocular
                     desapareció.
                   </p>
-                  <p className="text-sidebar-primary-foreground text-center xl:text-lg">
+                  <p className="text-sidebar-primary-foreground text-center lg:text-lg">
                     Hoy, mi misión es ayudar a más personas a proteger su vista
                     y mejorar su descanso. Estas gafas no son solo un accesorio,
                     sino una inversión en tu bienestar y calidad de vida en esta
@@ -853,7 +945,7 @@ export default function Home({ isMobile }: HomeProps) {
                 </h2>
               </FadeIn>
 
-              <p className="text-sidebar-primary-foreground md:text-lg max-w-[800px]">
+              <p className="text-sidebar-primary-foreground md:text-lg lg:text-xl max-w-[800px]">
                 Todo lo que necesitas saber sobre nuestras gafas bloqueadoras de
                 luz azul
               </p>
@@ -864,14 +956,14 @@ export default function Home({ isMobile }: HomeProps) {
               <Accordion
                 type="single"
                 collapsible
-                className="w-full xl:text-2xl"
+                className="w-full lg:text-xl xl:text-2xl"
               >
                 {/* Pregunta 1 */}
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-left underline">
                     ¿Puedo usar estas gafas para conducir?
                   </AccordionTrigger>
-                  <AccordionContent className="xl:text-lg flex flex-col gap-3">
+                  <AccordionContent className="lg:text-lg flex flex-col gap-3">
                     <p>
                       Estas gafas no restan visibilidad y pueden brindar mayor
                       comodidad al conducir, especialmente frente al brillo
@@ -911,7 +1003,7 @@ export default function Home({ isMobile }: HomeProps) {
                   <AccordionTrigger className="text-left underline">
                     ¿Estas gafas tienen aumento o graduación visual?
                   </AccordionTrigger>
-                  <AccordionContent className="xl:text-lg flex flex-col gap-3">
+                  <AccordionContent className="lg:text-lg flex flex-col gap-3">
                     <p>
                       <strong>
                         No, estas gafas no tienen aumento o graduación alguna.{" "}
@@ -933,7 +1025,7 @@ export default function Home({ isMobile }: HomeProps) {
                   <AccordionTrigger className="text-left underline">
                     ¿Son cómodas para usarlas por varias horas?
                   </AccordionTrigger>
-                  <AccordionContent className="xl:text-lg flex flex-col gap-3">
+                  <AccordionContent className="lg:text-lg flex flex-col gap-3">
                     <p>
                       <strong>¡Absolutamente!</strong> Nuestras gafas están
                       diseñadas pensando en tu comodidad. Las monturas son
@@ -955,7 +1047,7 @@ export default function Home({ isMobile }: HomeProps) {
                   <AccordionTrigger className="text-left underline">
                     ¿Cuándo debo usar estas gafas?
                   </AccordionTrigger>
-                  <AccordionContent className="xl:text-lg flex flex-col gap-3">
+                  <AccordionContent className="lg:text-lg flex flex-col gap-3">
                     <p>
                       Para obtener los mejores resultados, úsalas
                       <strong> 2-3 horas antes de dormir. </strong>
@@ -968,7 +1060,7 @@ export default function Home({ isMobile }: HomeProps) {
                       Son ideales para actividades nocturnas como ver pantallas,
                       leer o realizar tareas en interiores antes de acostarte.
                       Además, durante el día también pueden ayudarte a{" "}
-                      <strong>reducir la fatiga ocular</strong> , especialmente
+                      <strong>reducir la fatiga ocular</strong>, especialmente
                       en ambientes con luz artificial intensa.
                     </p>
                     <p>
@@ -985,7 +1077,7 @@ export default function Home({ isMobile }: HomeProps) {
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-4">
-                      <ul className="list-disc pl-5 flex flex-col gap-3 xl:text-lg">
+                      <ul className="list-disc pl-5 flex flex-col gap-3 lg:text-lg">
                         <li>
                           <strong>Limpieza diaria:</strong> Utiliza el{" "}
                           <span className="font-semibold">
@@ -1019,7 +1111,7 @@ export default function Home({ isMobile }: HomeProps) {
                           acompañen por mucho tiempo.
                         </li>
                       </ul>
-                      <p className="mt-4 xl:text-lg font-medium">
+                      <p className="mt-4 lg:text-lg font-medium">
                         ¡Cuídalas como se merecen y disfruta de su comodidad y
                         estilo por más tiempo! 😎
                       </p>
@@ -1051,7 +1143,7 @@ export default function Home({ isMobile }: HomeProps) {
               </span>
               .
             </p>
-            <p className="text-sm italic">
+            <p className="text-sm lg:text-lg italic">
               Tu salud visual está primero, y tu compra está 100% protegida. 🛡️
             </p>
           </div>
@@ -1062,17 +1154,17 @@ export default function Home({ isMobile }: HomeProps) {
           <Button
             size="default"
             className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold py-6 sm:px-6 sm:py-3 lg:mt-8 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-[85%]
-            lg:w-[70%] xl:w-max mx-auto"
+            lg:w-[60%] xl:w-max mx-auto"
           >
             <a
               href="#pricing"
-              className="flex items-center sm:gap-3 text-[16px] xl:text-xl xl:p-2 flex-col sm:flex-row"
+              className="flex items-center sm:gap-3 text-[16px] lg:text-xl xl:p-2 flex-col sm:flex-row"
             >
               Protege Tus Ojos y mejora tu sueño!
               <ShoppingCart className="h-5 w-5" />
             </a>
           </Button>
-          <small className="italic self-center lg:text-sm xl:mt-1">
+          <small className="italic self-center lg:text-lg xl:mt-1">
             envío GRATIS. Pocas unidades disponibles 📦
           </small>
         </div>
