@@ -10,13 +10,20 @@ import { FormErrors, ValidationRules } from "@/types/rulesValidationForm";
 import { validateForm } from "@/utils/validationForm";
 import { Loader2 } from "lucide-react";
 import ReactPixel from "react-facebook-pixel"
+import ebook1 from "/assets/img/ebook1.webp";
+import ebook2 from "/assets/img/ebook1.webp";
+import accessories from "/assets/img/accessories.webp";
+import freeDelivery from "/assets/img/freeDelivery.webp";
 // Define the product type
 export type Product = {
   id: string;
   name: string;
   price: number;
+  priceBefore: number
   image: string;
-  variant?: string;
+  gift1: string;
+  gift2: string;
+  gift3: string;
 };
 export interface CheckOutFormProps {
   product: Product;
@@ -174,27 +181,120 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
           <CardContent className="space-y-6">
             {/* Product */}
             <div className="flex flex-col items-center gap-4">
-              <div className="h-40 w-40 xl:h-60 md:w-50 md:h-48 xl:w-62 rounded-md border bg-muted flex items-center justify-center overflow-hidden">
-                <img
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.name}
-                  className="h-full w-full object-cover"
-                />
+              <div className="box flex gap-2 border p-2 rounded-sm bg-gray-100 w-full justify-between ">
+                <div className="h-20 w-20  md:w-50 md:h-48 lg:w-30 lg:h-30 xl:w-40 xl:h-40 rounded-md border border-gray-400 flex items-center justify-center overflow-hidden">
+                  <img
+                    src={product.image || "/placeholder.svg"}
+                    alt={product.name}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex-1 flex items-center gap-1 justify-between ">
+                  <span className="font-medium text-left text-sm md:text-lg">
+                    {product.name}
+                  </span>
+                  <div className="font-medium text-center text-sm md:text-lg flex flex-col">
+                    <span className="italic line-through text-end">
+                      $
+                      {product.priceBefore.toLocaleString("es-CO", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </span>
+                    <span className="font-bold text-green-600">
+                      $
+                      {product.price.toLocaleString("es-CO", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div className="flex-1">
-                <h3 className="font-medium text-center">{product.name}</h3>
-                {product.variant && (
-                  <p className="text-sm text-muted-foreground text-center">
-                    {product.variant}
-                  </p>
-                )}
-                <p className="mt-1 font-medium text-center">
-                  $
-                  {product.price.toLocaleString("es-CO", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}
-                </p>
+              <div className="box flex gap-1 border p-2 rounded-sm bg-gray-100">
+                <div className="h-22 w-22 md:w-50 md:h-48 lg:w-30 lg:h-30 xl:w-40 xl:h-40 flex items-center justify-center overflow-hidden">
+                  <img
+                    src={accessories}
+                    alt={product.gift1}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex-1 flex items-center gap-1">
+                  <span className="font-medium text-left text-[13px] md:text-lg">
+                    {product.gift1}
+                  </span>
+                  <div className="font-medium text-center text-sm md:text-lg flex flex-col">
+                    <span className="italic line-through text-end">
+                      $30.000
+                    </span>
+                    <span className="font-bold text-green-600">GRATIS</span>
+                  </div>
+                </div>
+              </div>
+              <div className="box flex gap-1 border p-2 rounded-sm bg-gray-100">
+                <div className="h-22 w-22  md:w-50 md:h-48 lg:w-30 lg:h-30 xl:w-40 xl:h-40 flex items-center justify-center overflow-hidden">
+                  <img
+                    src={ebook1}
+                    alt={product.name}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex-1 flex items-center gap-1">
+                  <span className="font-medium text-left text-[13px] md:text-lg">
+                    {product.gift2}
+                  </span>
+                  <div className="font-medium text-center flex flex-col md:text-lg">
+                    <span className="italic line-through text-end">
+                      $59.900
+                    </span>
+                    <span className="font-bold text-green-600">GRATIS</span>
+                  </div>
+                </div>
+              </div>
+              <div className="box flex gap-1 border p-2 rounded-sm bg-gray-100">
+                <div className="h-22 w-22  md:w-50 md:h-48 lg:w-30 lg:h-30 xl:w-40 xl:h-40 flex items-center justify-center overflow-hidden">
+                  <img
+                    src={ebook1}
+                    alt={product.name}
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex-1 flex items-center gap-1">
+                  <span className="font-medium text-left text-[13px] md:text-lg">
+                    {product.gift3}
+                  </span>
+                  <div className="font-medium text-center flex flex-col md:text-lg">
+                    <span className="italic line-through text-end">
+                      $59.900
+                    </span>
+                    <span className="font-bold text-green-600">GRATIS</span>
+                  </div>
+                </div>
+              </div>
+              <div className="box flex gap-4 border p-2 rounded-sm bg-gray-100 w-full justify-between">
+                <div className="h-22 w-22 md:w-50 md:h-48 lg:w-30 lg:h-30 xl:w-40 xl:h-40 flex items-center justify-center overflow-hidden rounded-md border border-gray-400">
+                  <img
+                    src={freeDelivery}
+                    alt="Delivery Gratis"
+                    className="h-full w-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="flex-1 flex items-center gap-1 justify-between">
+                  <span className="font-medium text-left text-[13px] md:text-lg flex flex-col">
+                    ENTREGA DE 2 A 4 DÍAS
+                    <small className="font-italic">
+                      Dependiendo de tu ciudad
+                    </small>
+                  </span>
+                  <div className="font-medium text-center flex flex-col md:text-lg">
+                    <span className="font-bold text-green-600">GRATIS</span>
+                  </div>
+                </div>
               </div>
             </div>
 

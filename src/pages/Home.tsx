@@ -29,8 +29,8 @@ import { useEffect, useState } from "react";
 import FadeIn from "../components/ui/fadeIn";
 import CheckoutModal from "../components/checkout/CheckoutModal";
 import { Product } from "../components/checkout/CheckoutForm";
-import amberLensesSingle from "/assets/product/amberLensesSingle.webp";
-import amberLensesPairPromo from "/assets/product/AmberLensesPair.webp";
+import amberLensesSingle from "/assets/product/singlePair.webp";
+import amberLensesPairPromo from "/assets/product/pairLenses.webp";
 import CheckoutSuccessPage from "../components/checkout/SuccessPurchase";
 // import NavBarMobile from "../../components/navBar/navBarMobile";
 import imageSolution from "/assets/img/manUsingGlasses2.webp";
@@ -46,6 +46,9 @@ import testingVideo from "/assets/video/testingVideo.mp4";
 import peopleUsingGlasses from "/assets/img/peopleUsingGlasses-desktop.webp";
 import ReactPixel from "react-facebook-pixel";
 import BeforeAfterTransition from "@/components/ui/BeforeAfterTransition";
+import ebook1 from "/assets/img/ebook1.webp";
+import ebook2 from "/assets/img/ebook1.webp";
+
 
 interface HomeProps {
   isMobile: boolean;
@@ -56,17 +59,27 @@ const products = [
     id: "basic",
     name: "1 Par de Gafas Amber Vision con filtro de luz azul",
     price: 119999,
+    priceBefore: 150000,
     image: amberLensesSingle,
-    variant:
+    gift1:
       "+ Estuche Carcasa Dura + Estuche Tela + Paño Microfibra + Tarjeta de Prueba Anti Luz Azul",
+    gift2:
+      "RECUPERA TU SUEÑO - La Guía Práctica y Cientifica Para Despertar Lleno de Energía",
+    gift3:
+      "¡SOS PANTALLAS! Tu Guía de Hábitos y Ejercicios para una Visión Descansada y Ojos Felices",
   },
   {
     id: "promo",
     name: "2 Pares de Gafas Amber Vision con filtro de luz azul",
     price: 219999,
+    priceBefore: 300000,
     image: amberLensesPairPromo,
-    variant:
+    gift1:
       "(+ Estuche Carcasa Dura + Estuche Tela + Paño Microfibra + Tarjeta de Prueba Anti Luz Azul) X 2",
+    gift2:
+      "RECUPERA TU SUEÑO - La Guía Práctica y Cientifica Para Despertar Lleno de Energía",
+    gift3:
+      "¡SOS PANTALLAS! Tu Guía de Hábitos y Ejercicios para una Visión Descansada y Ojos Felices",
   },
 ];
 
@@ -120,24 +133,54 @@ export default function Home({ isMobile }: HomeProps) {
                 >
                   Protección Premium para tus Ojos
                 </Badge>
-                <h1 className="text-lg font-bold tracking-wider  sm:text-3xl md:text-3xl xl:text-[2.2rem] font-body uppercase fade-in-up">
+                <h1 className="text-xl font-bold tracking-wider text-center sm:text-2xl md:text-3xl lg:text-2xl xl:text-[2.2rem] font-body uppercase fade-in-up leading-tight">
+                  ¿Tus ojos arden o te cuesta dormir después de usar el celular
+                  o el computador?
+                </h1>
+
+                {/* <h1 className="text-lg font-bold tracking-wider  sm:text-3xl md:text-3xl xl:text-[2.2rem] font-body uppercase fade-in-up">
                   La exposición a pantallas desgasta tu vista y altera tu sueño
                   - <br />{" "}
                   <span className="">
                     nuestras gafas te devuelven el bienestar desde el primer
                     uso.
                   </span>
-                </h1>
+                </h1> */}
                 {/* <span className="italic text-xl mt-[-15px]">
                   Nuestras gafas te devuelven el bienestar desde el primer uso.
                 </span> */}
-                <p className="text-sidebar-primary-foreground font-body md:text-xl lg:text-xl">
+                <p className="text-lg md:text-xl text-center mt-2 text-primary-foreground">
+                  Nuestras gafas con filtro ámbar bloquean la luz azul dañina y
+                  te ayudan a recuperar el bienestar visual y tu descanso desde
+                  el primer uso.
+                </p>
+
+                {/* <p className="text-sidebar-primary-foreground font-body md:text-xl lg:text-xl">
                   Decenas de personas como tú sintieron alivio inmediato en sus
                   ojos al usar nuestras gafas... y, sin esperarlo, también
                   comenzaron a dormir mejor.
-                </p>
+                </p> */}
                 <div className="md:hidden mobile">
                   {isMobile && <ProductIntro />}
+                </div>
+                <div className="flex flex-col items-center lg:flex-row lg:flex-wrap items-flex-start gap-2 pt-2">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className="h-4 w-4 fill-[#FFD700] border-[#FFD700] stroke-[#FFD700]"
+                        size="large"
+                      />
+                    ))}
+                  </div>
+                  <span className="text-lg lg:text-xl font-medium xl:text-nowrap font-bold">
+                    + 500 Vendidas
+                  </span>
+                  <p className="text-lg text-start text-primary-foreground max-w-xl mx-auto">
+                    Cientos de personas como tú sintieron alivio inmediato en
+                    sus ojos al usarlas... y sin esperarlo, también comenzaron a
+                    dormir mejor.
+                  </p>
                 </div>
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-3 pt-1">
                   <Button
@@ -146,9 +189,9 @@ export default function Home({ isMobile }: HomeProps) {
                   >
                     <a
                       href="#pricing"
-                      className="flex items-center gap-3 xl:text-lg"
+                      className="flex items-center gap-3 text-[1rem] xl:text-lg"
                     >
-                      Cuida Tus Ojos y Duerme Mejor
+                      Quiero Aliviar Mis Ojos y Dormir Mejor
                       <ShoppingCart className="h-5 w-5" />
                     </a>
                   </Button>
@@ -158,7 +201,7 @@ export default function Home({ isMobile }: HomeProps) {
                     <span>100% Satisfacción Garantizada</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 pt-2">
+                {/* <div className="flex items-center gap-2 pt-2">
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
@@ -171,7 +214,7 @@ export default function Home({ isMobile }: HomeProps) {
                   <span className="text-sm lg:text-lg font-medium xl:text-nowrap">
                     4.9/5 Basado en más de 300 reseñas verificadas
                   </span>
-                </div>
+                </div> */}
               </div>
               {!isMobile && (
                 <div className="hidden md:flex md:justify-center xl:h-[600px] w-[60%]">
@@ -187,16 +230,21 @@ export default function Home({ isMobile }: HomeProps) {
           id="benefits"
           className="py-10 lg:py-16 lg:flex lg:justify-center"
         >
-          <div className="container px-4 md:px-6">
+          <div className="container px-4 md:px-6 lg:flex lg:flex-col lg:items-center">
             {/* Encabezado principal */}
-            <div className="flex flex-col items-center text-center gap-4 mb-12">
+            <div className="flex flex-col items-center text-start gap-5 mb-12 lg:text-center lg:self-center lg:w-[70%]">
               <FadeIn delay={200}>
-                <h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
-                  Protege tus Ojos y Mejora tu Descanso
+                <h2 className="text-2xl lg:text-4xl font-bold ">
+                  La exposición a pantallas desgasta tu vista y altera tu sueño
+                  - <br />{" "}
+                  <span className="lg:text-2xl lg:tracking-wider">
+                    Nuestras gafas te devuelven el bienestar desde el primer
+                    uso.
+                  </span>
                 </h2>
               </FadeIn>
 
-              <p className="text-sidebar-prymary-foreground md:text-lg max-w-[800px]">
+              <p className="text-sidebar-prymary-foreground text-lg max-w-[800px] lg:hidden">
                 Menos fatiga, más foco. Menos desvelo, más descanso. Todo
                 gracias a unas gafas diseñadas para protegerte del mundo
                 digital.
@@ -260,7 +308,7 @@ export default function Home({ isMobile }: HomeProps) {
             </div>
 
             {/* Sección de solución con imagen */}
-            <div className="mt-16 rounded-xl p-1 shadow-md backdrop-blur-lg bg-white/10 border border-white/10">
+            <div className="mt-14 rounded-xl p-1 shadow-md backdrop-blur-lg bg-white/10 border border-white/10">
               <div className="grid gap-8 lg:grid-cols-2 items-center">
                 <div className="relative h-[300px] md:h-[400px] xl:h-[450px] rounded-lg overflow-hidden">
                   <img
@@ -424,42 +472,6 @@ export default function Home({ isMobile }: HomeProps) {
                 Compra segura: envío rápido y pagas al recibir 🛡️
               </small>
             </div>
-            {/* Video de prueba */}
-            <section className="w-full rounded-xl shadow-md backdrop-blur-lg bg-white/10 border-white/10 border p-2 lg:p-5 flex flex-col lg:flex-row items-center mt-10 mb-6">
-              <div className="textContainer flex flex-col p-4 lg:self-start lg:flex-2 xl:flex-1">
-                <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">
-                  Prueba Real de Efectividad
-                </h2>
-                <p className="text-[1rem] md:text-xl text-center max-w-2xl mb-6 lg:mt-8">
-                  Mira cómo nuestras gafas bloquean eficazmente la luz azul.
-                  Usamos una tarjeta sensible a esta luz junto con un LED azul
-                  intenso. El área sin protección se tiñe de morado, mientras
-                  que el área protegida por nuestras lentes permanece intacta.
-                </p>
-                <p className="text-sm hidden md:text-lg lg:text-xl lg:text-wrap text-center font-semibold italic lg:mt-10 lg:block">
-                  Te regalamos esta misma tarjeta de prueba para que lo compruebes tú
-                  mismo desde casa. 🧪🎁
-                </p>
-              </div>
-
-              <div className="videoContainer flex flex-col items-center justify-center lg:flex-1.5 xl:flex-1">
-                <video
-                  className="rounded-xl shadow-lg w-full opacity-80 max-w-2xl mb-2 md:w-[40%] lg:w-[100%] xl:w-[60%]"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                >
-                  <source src={testingVideo} type="video/mp4" />
-                  Tu navegador no soporta la reproducción de video.
-                </video>
-
-                <p className="text-sm md:text-lg text-center font-semibold italic lg:hidden">
-                  Te regalamos esta misma tarjeta de prueba para comprobarlo tú
-                  mismo desde casa. 🧪🎁
-                </p>
-              </div>
-            </section>
 
             <div className="beforeAndAfter-container lg:flex lg:flex-row lg:mt-26">
               <BeforeAfterTransition />
@@ -508,7 +520,42 @@ export default function Home({ isMobile }: HomeProps) {
                 </p>
               </div>
             </div>
+            {/* Video de prueba */}
+            <section className="w-full rounded-xl shadow-md backdrop-blur-lg bg-white/10 border-white/10 border p-2 lg:p-5 flex flex-col lg:flex-row items-center mt-10 mb-6">
+              <div className="textContainer flex flex-col p-2 lg:self-start lg:flex-2 xl:flex-1">
+                <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">
+                  Prueba Real de Efectividad 🔎
+                </h2>
+                <p className="text-[1rem] md:text-xl text-start max-w-2xl mb-6 lg:mt-8">
+                  Mira cómo nuestras gafas bloquean eficazmente la luz azul.
+                  Usamos una tarjeta sensible a esta luz junto con un LED azul
+                  intenso. El área sin protección se tiñe de morado, mientras
+                  que el área protegida por nuestras lentes permanece intacta.
+                </p>
+                <p className="text-sm hidden md:text-lg lg:text-xl lg:text-wrap text-center font-semibold italic lg:mt-10 lg:block">
+                  Te regalamos esta misma tarjeta de prueba para que lo
+                  compruebes tú mismo desde casa. 🧪🎁
+                </p>
+              </div>
 
+              <div className="videoContainer flex flex-col items-center justify-center lg:flex-1.5 xl:flex-1">
+                <video
+                  className="rounded-xl shadow-lg w-full opacity-80 max-w-2xl mb-2 md:w-[40%] lg:w-[100%] xl:w-[60%]"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src={testingVideo} type="video/mp4" />
+                  Tu navegador no soporta la reproducción de video.
+                </video>
+
+                <p className="text-sm md:text-lg text-center font-semibold italic lg:hidden">
+                  Te regalamos esta misma tarjeta de prueba para comprobarlo tú
+                  mismo desde casa. 🧪🎁
+                </p>
+              </div>
+            </section>
             {/* Beneficios adicionales */}
             <div className="grid gap-8 mt-8 md:mt-12 lg:grid-cols-4 xl:px-20 md:flex md:flex-col md:items-center">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 mt-3 lg:mt-10 text-center">
@@ -633,7 +680,7 @@ export default function Home({ isMobile }: HomeProps) {
               </FadeIn>
 
               <p className="text-sidebar-primary-foreground md:text-lg lg:text-xl max-w-[800px]">
-                Decenas de personas han mejorado su sueño y reducido la fatiga
+                Cientos de personas han mejorado su sueño y reducido la fatiga
                 ocular con nuestras gafas.
               </p>
             </div>
@@ -692,11 +739,105 @@ export default function Home({ isMobile }: HomeProps) {
             </FadeIn> */}
           </div>
         </section>
+        {/*Gift Section */}
+        <div
+          id="purchaseGiftContainer"
+          className="px-3 sm:px-6 lg:px-12 xl:px-16 xl:px-28 xl:mx-10 rounded-2xl shadow-lg mt-4 lg:mt-16"
+        >
+          <div className="giftSection_Container p-2 shadow-md backdrop-blur-lg bg-white/10 border-white/10 rounded-2xl shadow-lg py-5 pb-2 md:py-4 lg:flex lg:flex-col lg:justify-center lg:px-10">
+            <div className="text-center mb-7">
+              <span className="text-amber-400 font-semibold tracking-widest uppercase text-[1rem] lg:text-lg">
+                🔥 ¡OFERTA EXCLUSIVA! 🔥
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold mt-2">
+                Mejora Tu Vista y Tu Descanso con Estos Regalos Exclusivos 🎁
+              </h2>
+            </div>
+            <div className="gap-8 items-center">
+              <div className="text-sidebar-primary-foreground text-lg md:self-start space-y-4 ">
+                <p className="lg:text-xl mb-10">
+                  Con tu compra de las Gafas Amber Vision no solo proteges tus
+                  ojos y duermes mejor…{" "}
+                  <strong>
+                    ¡También te regalamos 2 eBooks prácticos y poderosos que
+                    transformarán tu rutina nocturna y tu bienestar general!
+                    🧘‍♂️📘
+                  </strong>
+                </p>
 
+                <ul className="space-y-2 text-base xl:text-xl xl:space-y-4 font- md:flex md:flex-col md:gap-5">
+                  <li className="flex flex-col items-start md:items-center md:flex-row md:gap-3">
+                    <div className="left md:flex-1 flex flex-col gap-2">
+                      <h3 className="font-bold text-lg md:text-xl mb-2 text-center">
+                        📘🌟 EBOOK 1: "RECUPERA TU SUEÑO: La Guía Práctica y
+                        Cientifica Para Despertar Lleno de Energía "
+                      </h3>
+
+                      <p className="text-base text-[1.1rem] md:text-lg">
+                        Descubre estrategias prácticas y fáciles (luz,
+                        nutrición, hábitos, estrés) formulados por expertos para
+                        alcanzar un sueño profundo y reparador, transformando
+                        tus noches y despertando cada día con energía y
+                        vitalidad renovada.
+                      </p>
+                      <span className="font-bold text-lg md:text-xl">
+                        (Valorado en $69.900 – ¡Hoy GRATIS para ti!)
+                      </span>
+                    </div>
+
+                    <div
+                      className="right md:flex-1 self-center mt-4 lg:flex lg:justify-center"
+                      data-aos="fade-up"
+                    >
+                      <img
+                        src={ebook1}
+                        alt="Gift"
+                        loading="lazy"
+                        className="w-80 sm:w-[300px] h-[250px] md:h-[350px]"
+                      />
+                    </div>
+                  </li>
+                  <li className="flex text-5xl justify-center">+</li>
+                  <li className="flex flex-col items-start md:items-center md:flex-row-reverse md:gap-3">
+                    <div className="left md:flex-1 flex flex-col gap-2 mt-4">
+                      <h3 className="font-bold text-lg text-center md:text-xl mb-4">
+                        📘🌟 EBOOK 2: "Cuidado Visual en la Era Digital:
+                        Estrategias y ejercicios simples para reducir el daño
+                        ocular frente a pantallas y mantener tu visión saludable
+                        por años. 👁️"
+                      </h3>
+                      <p className="text-base md:text-lg">
+                        Accede a los ejercicios y hábitos más efectivos recomendados
+                        por especialistas en salud visual para proteger tus ojos
+                        del uso intensivo de pantallas y mantener una visión
+                        clara y saludable por años.
+                      </p>
+                      <span className="font-bold text-lg md:text-xl">
+                        (Valorado en $59.900 – ¡También GRATIS para ti!)
+                      </span>
+                    </div>
+
+                    <div
+                      className="right md:flex-1 flex justify-center self-center mt-4"
+                      data-aos="fade-up"
+                    >
+                      <img
+                        src={ebook2}
+                        alt="Gift"
+                        loading="lazy"
+                        className="w-80 sm:w-[300px] h-[250px] md:h-[350px]"
+                      />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* Urgency & Call-href-Action */}
         <section
           id="pricing"
-          className="py-6 pt-2 md:py-10 xl:flex xl:justify-center"
+          className="py-6 pt-8 md:py-10 xl:flex xl:justify-center"
         >
           <div className="container px-4 md:px-6">
             {/* Urgency & Headline */}
@@ -1124,7 +1265,7 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
         {/* Purchase Warranty */}
         <section className="py-2 text-text text-center px-3 md:px-12 ">
-          <div className="max-w-3xl mx-auto md:p-3 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl items-center">
+          <div className="max-w-3xl p-3 mx-auto md:p-3 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl items-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Dale una oportunidad real a tu descanso
             </h2>
@@ -1150,7 +1291,7 @@ export default function Home({ isMobile }: HomeProps) {
         </section>
 
         {/* CTA */}
-        <div className="CTA-container flex flex-col justify-center mt-3 md:mt-6 mb-8 xl:flex xl:justify-center">
+        <div className="CTA-container flex flex-col justify-center mt-6 mb-8 xl:flex xl:justify-center">
           <Button
             size="default"
             className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold py-6 sm:px-6 sm:py-3 lg:mt-8 xl:py-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2 w-[85%]

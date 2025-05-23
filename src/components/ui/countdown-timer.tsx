@@ -5,7 +5,7 @@ import { Clock } from "lucide-react"
 
 export default function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
-    hours: 12,
+    hours: 7,
     minutes: 0,
     seconds: 0,
   })
