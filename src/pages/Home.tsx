@@ -37,7 +37,7 @@ import imageSolution from "/assets/img/manUsingGlasses2.webp";
 import tiredMan from "/assets/img/tiredMan.webp";
 import comfortableMan from "/assets/img/comfortableMan.webp";
 import founderImage from "/assets/img/imageFounder.webp";
-import manCoding from "/assets/img/manCoding.webp";
+import manCoding from "/assets/img/manCodingV2.webp";
 import measure1 from "/assets/product/measure1.png";
 import measure2 from "/assets/product/measure2.png";
 import iconGlasses from "/assets/icons/iconGlasses.webp";
@@ -47,7 +47,7 @@ import peopleUsingGlasses from "/assets/img/peopleUsingGlasses-desktop.webp";
 import ReactPixel from "react-facebook-pixel";
 import BeforeAfterTransition from "@/components/ui/BeforeAfterTransition";
 import ebook1 from "/assets/img/ebook1.webp";
-import ebook2 from "/assets/img/ebook1.webp";
+import ebook2 from "/assets/img/ebook2.webp";
 
 
 interface HomeProps {
@@ -164,7 +164,8 @@ export default function Home({ isMobile }: HomeProps) {
                   {isMobile && <ProductIntro />}
                 </div>
                 <div className="flex flex-col items-center lg:flex-row lg:flex-wrap items-flex-start gap-2 pt-2">
-                  <div className="flex gap-1">
+                  <div className="stars_qty_sold flex items-center gap-2">
+                    <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
@@ -176,6 +177,8 @@ export default function Home({ isMobile }: HomeProps) {
                   <span className="text-lg lg:text-xl font-medium xl:text-nowrap font-bold">
                     + 500 Vendidas
                   </span>
+                  </div>
+                  
                   <p className="text-lg text-start text-primary-foreground max-w-xl mx-auto">
                     Cientos de personas como tú sintieron alivio inmediato en
                     sus ojos al usarlas... y sin esperarlo, también comenzaron a
@@ -309,7 +312,7 @@ export default function Home({ isMobile }: HomeProps) {
 
             {/* Sección de solución con imagen */}
             <div className="mt-14 rounded-xl p-1 shadow-md backdrop-blur-lg bg-white/10 border border-white/10">
-              <div className="grid gap-8 lg:grid-cols-2 items-center">
+              <div className="grid gap-2 lg:grid-cols-2 items-center">
                 <div className="relative h-[300px] md:h-[400px] xl:h-[450px] rounded-lg overflow-hidden">
                   <img
                     src={imageSolution}
@@ -770,7 +773,7 @@ export default function Home({ isMobile }: HomeProps) {
                     <div className="left md:flex-1 flex flex-col gap-2">
                       <h3 className="font-bold text-lg md:text-xl mb-2 text-center">
                         📘🌟 EBOOK 1: "RECUPERA TU SUEÑO: La Guía Práctica y
-                        Cientifica Para Despertar Lleno de Energía "
+                        Cientifica Para Despertar Lleno de Energía"
                       </h3>
 
                       <p className="text-base text-[1.1rem] md:text-lg">
@@ -903,8 +906,8 @@ export default function Home({ isMobile }: HomeProps) {
                       ))}
                     </ul>
                     <Button
-                      className="w-full text-lg tracking-wider cursor-pointer"
-                      onClick={() => openCheckout("basic")}
+                      className="btn-buy w-full text-lg tracking-wider cursor-pointer"
+                      onClick={() => openCheckout("basic")} data-kit="One Pair"
                     >
                       Elegir <ShoppingCart className="ml-2 h-5 w-5" />
                     </Button>
@@ -958,8 +961,8 @@ export default function Home({ isMobile }: HomeProps) {
                       ))}
                     </ul>
                     <Button
-                      className="w-full bg-primary hover:bg-primary/90 tracking-wider text-lg cursor-pointer"
-                      onClick={() => openCheckout("promo")}
+                      className="btn-buy w-full bg-primary hover:bg-primary/90 tracking-wider text-lg cursor-pointer"
+                      onClick={() => openCheckout("promo")} data-kit="promo"
                     >
                       Aprovechar Oferta{" "}
                       <ShoppingCart className="ml-2 h-5 w-5" />

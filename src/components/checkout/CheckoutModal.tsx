@@ -85,15 +85,6 @@ export default function CheckoutModal({
             <span className="sr-only">Close</span>
           </button>
         </DialogHeader>
-        <div className="flex flex-col justify-center">
-          <span className="text-red-500 text-center xl:text-lg">
-            🚨 Atencion 🚨
-          </span>
-          <DialogDescription className="xl:text-sm text-sidebar-primary-foreground text-center w-[80%] lg:w-[50%] mx-auto">
-            Asegúrate de proporcionar la información correcta para el envío de
-            tu pedido. Es crucial incluir un número de teléfono con WhatsApp.
-          </DialogDescription>
-        </div>
         {product && (
           <CheckoutForm product={product} setSuccessPage={setSuccessPage}
             handleOrderNumberFromChild={handleOrderNumberFromChild} />

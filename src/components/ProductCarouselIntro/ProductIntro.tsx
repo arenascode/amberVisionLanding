@@ -1,6 +1,6 @@
 import "./productIntro.scss";
 //*Imgs //
-import manUsingGlasses from "/assets/img/manUsingGlasses.webp";
+import manUsingGlasses from "/assets/img/manUsingGlassesV2.webp";
 import amberLensesSideDesktop from "/assets/product/amberLensesSide.webp";
 import amberLensesSideMobile from "/assets/product/amberLensesSideMobile.webp";
 import amberLensesBackDesktop from "/assets/product/amberLensesBack.webp";
@@ -9,7 +9,7 @@ import amberLensesSideTwoDesktop from "/assets/product/amberLensesSideTwo.webp";
 import amberLensesSideTwoMobile from "/assets/product/amberLensesSideTwoMobile.webp";
 import amberLensesFrontDesktop from "/assets/product/amberLensesFront.webp";
 import amberLensesFrontMobile from "/assets/product/amberLensesFrontMobile.webp";
-import manUsingGlassesMini from "/assets/img/manUsingGlassesMini.webp";
+import manUsingGlassesMini from "/assets/img/manUsingGlassesMiniV2.webp";
 import amberLensesBackMini from "/assets/product/amberLensesBackMini.webp";
 import amberLensesSideMini from "/assets/product/amberLensesSideMini.webp";
 import amberLensesSideTwoMini from "/assets/product/amberLensesSideTwoMini.webp";
@@ -86,18 +86,19 @@ const ProductIntro = () => {
                   <source
                     media="(max-width: 480px)"
                     srcSet={amberLensesSideMobile}
-                    rel="preload"
-                  />
+                    
+                    />
                   {/* <!-- Desktop --> */}
                   <source
                     media="(min-width: 1200px)"
                     srcSet={amberLensesSideDesktop}
-                    rel="preload"
-                  />
+
+                    />
                   <img
                     src={amberLensesSideDesktop}
                     className="w-full slide2"
                     alt="Amber lenses Side"
+                    loading="eager"
                   />
                 </picture>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-0.5 right-5 top-1/2 w-[98%]">
@@ -133,6 +134,7 @@ const ProductIntro = () => {
                     src={amberLensesFrontDesktop}
                     className="w-full slide2"
                     alt="Amber lenses Side"
+                    loading="eager"
                   />
                 </picture>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-0.5 right-5 top-1/2 w-[98%]">
@@ -168,6 +170,7 @@ const ProductIntro = () => {
                     src={amberLensesBackDesktop}
                     className="w-full slide2"
                     alt="Amber lenses Side"
+                    loading="lazy"
                   />
                 </picture>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-0.5 right-5 top-1/2 w-[98%]">
@@ -203,6 +206,7 @@ const ProductIntro = () => {
                     src={amberLensesSideTwoDesktop}
                     className="w-full slide2"
                     alt="Amber lenses Side"
+                    loading="lazy"
                   />
                 </picture>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-0.5 right-5 top-1/2 w-[98%]">

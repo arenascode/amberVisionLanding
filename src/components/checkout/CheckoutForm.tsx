@@ -11,9 +11,10 @@ import { validateForm } from "@/utils/validationForm";
 import { Loader2 } from "lucide-react";
 import ReactPixel from "react-facebook-pixel"
 import ebook1 from "/assets/img/ebook1.webp";
-import ebook2 from "/assets/img/ebook1.webp";
+import ebook2 from "/assets/img/ebook2.webp";
 import accessories from "/assets/img/accessories.webp";
 import freeDelivery from "/assets/img/freeDelivery.webp";
+import { DialogDescription } from "../ui/dialog";
 // Define the product type
 export type Product = {
   id: string;
@@ -170,7 +171,16 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
 
   return (
     <div className="container max-w-6xl lg:px-4 lg:py-4">
-      <div className="grid gap-8 md:grid-cols-3 md:gap-2">
+      <div className="hidden justify-center lg:flex lg:flex-col">
+        <span className="text-red-500 font-semibold text-lg text-center lg:text-2xl">
+          🚨 Atencion 🚨
+        </span>
+        <DialogDescription className="text-lg lg:text-xl text-sidebar-primary-foreground text-center w-[80%] lg:w-[72%] lg:mb-10 mx-auto">
+          Asegúrate de proporcionar la información correcta para el envío de tu
+          pedido. Es crucial incluir un número de teléfono con WhatsApp.
+        </DialogDescription>
+      </div>
+      <div className="grid gap-5 md:grid-cols-1 lg:flex lg:flex-shrink md:gap-2">
         {/* Order Summary */}
         <Card className="md:col-span-1 bg-gray-300 xl:px-1">
           <CardHeader>
@@ -257,7 +267,7 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
               <div className="box flex gap-1 border p-2 rounded-sm bg-gray-100">
                 <div className="h-22 w-22  md:w-50 md:h-48 lg:w-30 lg:h-30 xl:w-40 xl:h-40 flex items-center justify-center overflow-hidden">
                   <img
-                    src={ebook1}
+                    src={ebook2}
                     alt={product.name}
                     className="h-full w-full object-contain"
                     loading="lazy"
@@ -332,212 +342,250 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
             </div>
           </CardContent>
         </Card>
+        <div>
+          <div className="flex flex-col justify-center lg:hidden mb-4">
+            <span className="text-red-500 font-semibold text-lg text-center xl:text-xl">
+              🚨 Atencion 🚨
+            </span>
+            <DialogDescription className="text-lg text-sidebar-primary-foreground text-center w-[80%] lg:w-full lg:mb-4 mx-auto">
+              Asegúrate de proporcionar la información correcta para el envío de
+              tu pedido. Es crucial incluir un número de teléfono con WhatsApp.
+            </DialogDescription>
+          </div>
+          {/* Customer Information Form */}
+          <Card className="md:col-span-2 bg-gray-300">
+            <CardHeader>
+              <CardTitle className="tracking-wide">
+                Información para tu envío
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6" id="purchaseForm">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">
+                      Nombre Y Apellido
+                    </label>
+                    <Input
+                      name="nombre"
+                      value={formData.nombre}
+                      onChange={handleChange}
+                      placeholder="Tu nombre completo"
+                      className="border-b-gray-700 placeholder-gray-400"
+                    />
+                    {errors.nombre && (
+                      <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                        {errors.nombre}
+                      </span>
+                    )}
+                  </div>
 
-        {/* Customer Information Form */}
-        <Card className="md:col-span-2 bg-gray-300">
-          <CardHeader>
-            <CardTitle className="tracking-wide">
-              Información para tu envío
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6 ">
-              <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">
+                      Correo Electronico
+                    </label>
+                    <Input
+                      name="email"
+                      type="text"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="tucorreo@ejemplo.com"
+                      className="border-b-gray-700"
+                    />
+                    {errors.email && (
+                      <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                        {errors.email}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">
+                      Telefono / WhatsApp
+                    </label>
+                    <Input
+                      name="telefono"
+                      value={formData.telefono}
+                      onChange={handleChange}
+                      placeholder="320 123 4567"
+                      className="border-b-gray-700 "
+                    />
+                    {errors.telefono && (
+                      <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                        {errors.telefono}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium md:text-nowrap">
+                      Documento <small>(Solo para la transportadora)</small>
+                    </label>
+                    <Input
+                      name="cedula"
+                      value={formData.cedula}
+                      onChange={handleChange}
+                      placeholder="123456789"
+                      className="border-b-gray-700 "
+                    />
+                    {errors.cedula && (
+                      <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                        {errors.cedula}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Ciudad</label>
+                    <Input
+                      name="ciudad"
+                      value={formData.ciudad}
+                      onChange={handleChange}
+                      placeholder="Tu Ciudad"
+                      className="border-b-gray-700 "
+                    />
+                    {errors.ciudad && (
+                      <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                        {errors.ciudad}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Departamento</label>
+                    <select
+                      name="departamento"
+                      value={formData.departamento}
+                      onChange={handleChange}
+                      className="flex h-10 w-full rounded-md border border-gray-500 bg-background px-3 py-2 text-gray-700 shadow-sm transition-all duration-300 focus:outline-none focus:bg-gray-500 focus:text-white focus:shadow-lg disabled:cursor-not-allowed disabled:opacity-50 font-semibold"
+                    >
+                      <option value="" className="">
+                        Selecciona tu departamento
+                      </option>
+                      <option value="Amazonas">Amazonas</option>
+                      <option value="Antioquia">Antioquia</option>
+                      <option value="Arauca">Arauca</option>
+                      <option value="Atlántico">Atlántico</option>
+                      <option value="Bogotá">Bogotá</option>
+                      <option value="Bolívar">Bolívar</option>
+                      <option value="Boyacá">Boyacá</option>
+                      <option value="Caldas">Caldas</option>
+                      <option value="Caquetá">Caquetá</option>
+                      <option value="Casanare">Casanare</option>
+                      <option value="Cauca">Cauca</option>
+                      <option value="Cesar">Cesar</option>
+                      <option value="Chocó">Chocó</option>
+                      <option value="Córdoba">Córdoba</option>
+                      <option value="Cundinamarca">Cundinamarca</option>
+                      <option value="Guainía">Guainía</option>
+                      <option value="Guaviare">Guaviare</option>
+                      <option value="Huila">Huila</option>
+                      <option value="La Guajira">La Guajira</option>
+                      <option value="Magdalena">Magdalena</option>
+                      <option value="Meta">Meta</option>
+                      <option value="Nariño">Nariño</option>
+                      <option value="Norte de Santander">
+                        Norte de Santander
+                      </option>
+                      <option value="Putumayo">Putumayo</option>
+                      <option value="Quindío">Quindío</option>
+                      <option value="Risaralda">Risaralda</option>
+                      <option value="San Andrés y Providencia">
+                        San Andrés y Providencia
+                      </option>
+                      <option value="Santander">Santander</option>
+                      <option value="Sucre">Sucre</option>
+                      <option value="Tolima">Tolima</option>
+                      <option value="Valle del Cauca">Valle del Cauca</option>
+                      <option value="Vaupés">Vaupés</option>
+                      <option value="Vichada">Vichada</option>
+                      {/* Add other states as needed */}
+                    </select>
+                    {errors.departamento && (
+                      <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                        {errors.departamento}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">
-                    Nombre Y Apellido
-                  </label>
+                  <label className="text-sm font-medium">Dirección</label>
                   <Input
-                    name="nombre"
-                    value={formData.nombre}
+                    name="direccion"
+                    value={formData.direccion}
                     onChange={handleChange}
-                    placeholder="Tu nombre completo"
-                    className="border-b-gray-700 placeholder-gray-400"
-                  />
-                  {errors.nombre && (
-                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
-                      {errors.nombre}
-                    </span>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">
-                    Correo Electronico
-                  </label>
-                  <Input
-                    name="email"
-                    type="text"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="tucorreo@ejemplo.com"
-                    className="border-b-gray-700"
-                  />
-                  {errors.email && (
-                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
-                      {errors.email}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">
-                    Telefono / WhatsApp
-                  </label>
-                  <Input
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleChange}
-                    placeholder="320 123 4567"
-                    className="border-b-gray-700 "
-                  />
-                  {errors.telefono && (
-                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
-                      {errors.telefono}
-                    </span>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium md:text-nowrap">
-                    Documento <small>(Solo para la transportadora)</small>
-                  </label>
-                  <Input
-                    name="cedula"
-                    value={formData.cedula}
-                    onChange={handleChange}
-                    placeholder="123456789"
-                    className="border-b-gray-700 "
-                  />
-                  {errors.cedula && (
-                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
-                      {errors.cedula}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Ciudad</label>
-                  <Input
-                    name="ciudad"
-                    value={formData.ciudad}
-                    onChange={handleChange}
-                    placeholder="Tu Ciudad"
-                    className="border-b-gray-700 "
-                  />
-                  {errors.ciudad && (
-                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
-                      {errors.ciudad}
-                    </span>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Departamento</label>
-                  <select
-                    name="departamento"
-                    value={formData.departamento}
-                    onChange={handleChange}
-                    className="flex h-10 w-full rounded-md border border-gray-500 bg-background px-3 py-2 text-gray-700 shadow-sm transition-all duration-300 focus:outline-none focus:bg-gray-500 focus:text-white focus:shadow-lg disabled:cursor-not-allowed disabled:opacity-50 font-semibold"
-                  >
-                    <option value="" className="">
-                      Selecciona tu departamento
-                    </option>
-                    <option value="Amazonas">Amazonas</option>
-                    <option value="Antioquia">Antioquia</option>
-                    <option value="Arauca">Arauca</option>
-                    <option value="Atlántico">Atlántico</option>
-                    <option value="Bogotá">Bogotá</option>
-                    <option value="Bolívar">Bolívar</option>
-                    <option value="Boyacá">Boyacá</option>
-                    <option value="Caldas">Caldas</option>
-                    <option value="Caquetá">Caquetá</option>
-                    <option value="Casanare">Casanare</option>
-                    <option value="Cauca">Cauca</option>
-                    <option value="Cesar">Cesar</option>
-                    <option value="Chocó">Chocó</option>
-                    <option value="Córdoba">Córdoba</option>
-                    <option value="Cundinamarca">Cundinamarca</option>
-                    <option value="Guainía">Guainía</option>
-                    <option value="Guaviare">Guaviare</option>
-                    <option value="Huila">Huila</option>
-                    <option value="La Guajira">La Guajira</option>
-                    <option value="Magdalena">Magdalena</option>
-                    <option value="Meta">Meta</option>
-                    <option value="Nariño">Nariño</option>
-                    <option value="Norte de Santander">
-                      Norte de Santander
-                    </option>
-                    <option value="Putumayo">Putumayo</option>
-                    <option value="Quindío">Quindío</option>
-                    <option value="Risaralda">Risaralda</option>
-                    <option value="San Andrés y Providencia">
-                      San Andrés y Providencia
-                    </option>
-                    <option value="Santander">Santander</option>
-                    <option value="Sucre">Sucre</option>
-                    <option value="Tolima">Tolima</option>
-                    <option value="Valle del Cauca">Valle del Cauca</option>
-                    <option value="Vaupés">Vaupés</option>
-                    <option value="Vichada">Vichada</option>
-                    {/* Add other states as needed */}
-                  </select>
-                  {errors.departamento && (
-                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
-                      {errors.departamento}
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Dirección</label>
-                <Input
-                  name="direccion"
-                  value={formData.direccion}
-                  onChange={handleChange}
-                  placeholder="Calle xxx, barrio, cerca a..."
-                  className="border-b-gray-700
+                    placeholder="Calle xxx, barrio, cerca a..."
+                    className="border-b-gray-700
                   "
-                />
-                {errors.direccion && (
-                  <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
-                    {errors.direccion}
+                  />
+                  {errors.direccion && (
+                    <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
+                      {errors.direccion}
+                    </span>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">
+                    Datos Adicionales
+                  </label>
+                  <Textarea
+                    name="datos_adicionales"
+                    value={formData.datos_adicionales}
+                    onChange={handleChange}
+                    placeholder="Instrucciones de entrega, localidad, barrio, municipio cercano, area suburbana o cualquier información adicional que consideres necesaria."
+                    className="min-h-[100px] flex h-10 w-full border-input rounded-md px-3 bg-gray-200 py-2 text-base shadow-sm shadow-gray-800 transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-gray-400 focus:placeholder:text-gray-100 focus:outline-none focus:shadow-md focus:bg-gray-500 focus:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+                {/* Alert Confirm Purchase */}
+                <div className="flex flex-col justify-center text-center items-center gap-2 mb-1 lg:mt-10">
+                  <span className="text-red-500 font-semibold text-lg text-center lg:text-xl">
+                    🚨 Atencion 🚨
+                  </span>
+                  <span className="font-bold text-center">
+                    TU COMPRA ES UN COMPROMISO
+                  </span>
+                  <p className="text-sm lg:text-[1rem] text-black">
+                    Al confirmar tu compra, activamos todo el proceso logístico:
+                    personal, preparación y el envío que te regalamos 💌.
+                  </p>
+                  <p className="text-sm lg:text-[1rem] text-black">
+                    Por eso, te pedimos que solo realices el pedido si estás
+                    seguro, así evitamos devoluciones que generan costos
+                    innecesarios y nos ayudan a seguir ofreciendo este beneficio
+                    a más personas 🙏
+                  </p>
+                  <span className="text-center font-bold lg:text-xl lg:mt-4">
+                    ¡Gracias por tu comprensión! 🩶
+                  </span>
+                </div>
+                {someError && (
+                  <span className="someError text-red-500 text-[12px] text-center mt-[-0.5rem]">
+                    Revisa todos los campos, hubo un error o faltó alguno
                   </span>
                 )}
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Datos Adicionales</label>
-                <Textarea
-                  name="datos_adicionales"
-                  value={formData.datos_adicionales}
-                  onChange={handleChange}
-                  placeholder="Instrucciones de entrega, localidad, barrio, municipio cercano, area suburbana o cualquier información adicional que consideres necesaria."
-                  className="min-h-[100px] flex h-10 w-full border-input rounded-md px-3 bg-gray-200 py-2 text-base shadow-sm shadow-gray-800 transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-gray-400 focus:placeholder:text-gray-100 focus:outline-none focus:shadow-md focus:bg-gray-500 focus:text-white disabled:cursor-not-allowed disabled:opacity-50"
-                />
-              </div>
-              {someError && (
-                <span className="someError text-red-500 text-[12px] text-center mt-[-0.5rem]">
-                  Revisa todos los campos, hubo un error o faltó alguno
-                </span>
-              )}
-              <Button
-                type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-white font-semibold cursor-pointer tracking-wider"
-              >
-                {isLoading ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : null}{" "}
-                {isLoading ? "Procesando..." : "Confirmar Compra"}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
+                <Button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold mb-0 cursor-pointer tracking-wider"
+                  id="formPurchaseBtn" data-purchasedproduct={product.name}
+                >
+                  {isLoading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : null}{" "}
+                  {isLoading ? "Procesando..." : "Confirmar Compra"}
+                </Button>
+                <p className="text-sm mt-1 text-center">
+                  🔒 Solo pagas cuando lo recibes!
+                </p>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );
