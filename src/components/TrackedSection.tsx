@@ -1,5 +1,3 @@
-// src/components/TrackedSection.tsx
-import { log } from "console";
 import React, { useEffect, ReactNode } from "react";
 import { useInView } from "react-intersection-observer";
 
