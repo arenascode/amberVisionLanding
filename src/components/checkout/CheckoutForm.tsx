@@ -360,8 +360,12 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6" id="purchaseForm">
-                <div className="grid gap-4 sm:grid-cols-2">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6"
+                id="purchaseForm"
+              >
+                <div className="grid gap-4 sm:grid-cols-2 mb-3">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">
                       Nombre Y Apellido
@@ -400,7 +404,7 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
                   </div>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2 mb-3">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">
                       Telefono / WhatsApp
@@ -438,7 +442,7 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
                   </div>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2 mb-3">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Ciudad</label>
                     <Input
@@ -461,7 +465,7 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
                       name="departamento"
                       value={formData.departamento}
                       onChange={handleChange}
-                      className="flex h-10 w-full rounded-md border border-gray-500 bg-background px-3 py-2 text-gray-700 shadow-sm transition-all duration-300 focus:outline-none focus:bg-gray-500 focus:text-white focus:shadow-lg disabled:cursor-not-allowed disabled:opacity-50 font-semibold"
+                      className="flex h-10 w-full rounded-md border border-gray-500 bg-white px-3 py-2 shadow-sm transition-all duration-300 focus:outline-none focus:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <option value="" className="">
                         Selecciona tu departamento
@@ -519,10 +523,13 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
                     name="direccion"
                     value={formData.direccion}
                     onChange={handleChange}
-                    placeholder="Calle xxx, barrio, cerca a..."
-                    className="border-b-gray-700
+                    placeholder="ej: Calle 123 #45-67, depto 89, torre 10.."
+                    className="border-b-gray-700 mb-0
                   "
                   />
+                  <small className="text-[0.7rem] md:text-[0.9rem] italic">
+                   Debe ser exacta para que la transportadora pueda ubicarse
+                  </small>
                   {errors.direccion && (
                     <span className="inputError text-red-500 text-[12px] mt-[-0.3rem]">
                       {errors.direccion}
@@ -539,11 +546,11 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
                     value={formData.datos_adicionales}
                     onChange={handleChange}
                     placeholder="Instrucciones de entrega, localidad, barrio, municipio cercano, area suburbana o cualquier información adicional que consideres necesaria."
-                    className="min-h-[100px] flex h-10 w-full border-input rounded-md px-3 bg-gray-200 py-2 text-base shadow-sm shadow-gray-800 transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-gray-400 focus:placeholder:text-gray-100 focus:outline-none focus:shadow-md focus:bg-gray-500 focus:text-white disabled:cursor-not-allowed disabled:opacity-50"
+                    className="min-h-[100px] flex h-10 w-full border-input rounded-md px-3 bg-white py-2 text-base shadow-sm shadow-gray-800 transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-gray-400 focus:placeholder:text-gray-100 focus:outline-none focus:shadow-md disabled:cursor-not-allowed disabled:opacity-50"
                   />
                 </div>
                 {/* Alert Confirm Purchase */}
-                <div className="flex flex-col justify-center text-center items-center gap-2 mb-1 lg:mt-10">
+                <div className="flex flex-col justify-center text-center items-center gap-2 mb-3 lg:mt-10">
                   <span className="text-red-500 font-semibold text-lg text-center lg:text-xl">
                     🚨 Atencion 🚨
                   </span>
@@ -571,8 +578,9 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
                 )}
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold mb-0 cursor-pointer tracking-wider"
-                  id="formPurchaseBtn" data-purchasedproduct={product.name}
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold mb-0 cursor-pointer tracking-wider text-lg"
+                  id="formPurchaseBtn"
+                  data-purchasedproduct={product.name}
                 >
                   {isLoading ? (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -580,7 +588,7 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
                   {isLoading ? "Procesando..." : "Confirmar Compra"}
                 </Button>
                 <p className="text-sm mt-1 text-center">
-                  🔒 Solo pagas cuando lo recibes!
+                  🔒 Solo pagas al recibir!
                 </p>
               </form>
             </CardContent>

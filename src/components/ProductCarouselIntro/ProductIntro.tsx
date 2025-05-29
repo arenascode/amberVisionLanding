@@ -50,7 +50,7 @@ const ProductIntro = () => {
 
 
   return (
-    <div>
+    <>
       <div className="h-full w-full" id="product">
         <div className="productImagesContainer" id="productSlider">
           <div className="imgContainer">
@@ -265,7 +265,7 @@ const ProductIntro = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -126,7 +126,7 @@ export default function Home({ isMobile }: HomeProps) {
         <section className="relative overflow-hidden bg-[radial-gradient(circle,#2c2c2c,#1f1f1f,#000000)] py-6 md:py-8 lg:py-10 items-center lg:flex justify-center mt-22 xl:mt-27">
           <div className="container px-2 md:px-6 lg:px-2 lg:w-full justify-center">
             <div className="flex flex-col gap-8 md:gap-10 lg:flex-row items-center lg:items-start xl:gap-20 xl:w-full xl:px-10">
-              <div className="flex flex-col justify-between w-full gap-5 xl:gap-9">
+              <div className="flex flex-col justify-between w-full gap-5 lg:gap-9">
                 <Badge
                   className="w-fit border-1 border-white text-sm xl:text-lg text-white"
                   variant="outline"
@@ -164,21 +164,21 @@ export default function Home({ isMobile }: HomeProps) {
                   {isMobile && <ProductIntro />}
                 </div>
                 <div className="flex flex-col items-center lg:flex-row lg:flex-wrap items-flex-start gap-2 pt-2">
-                  <div className="stars_qty_sold flex items-center gap-2">
+                  <div className="stars_qty_sold flex self-start items-center lg:hidden gap-2">
                     <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-[#FFD700] border-[#FFD700] stroke-[#FFD700]"
-                        size="large"
-                      />
-                    ))}
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-4 w-4 fill-[#FFD700] border-[#FFD700] stroke-[#FFD700]"
+                          size="large"
+                        />
+                      ))}
+                    </div>
+                    <span className="text-lg lg:text-xl font-medium xl:text-nowrap font-bold">
+                      + 500 Vendidas
+                    </span>
                   </div>
-                  <span className="text-lg lg:text-xl font-medium xl:text-nowrap font-bold">
-                    + 500 Vendidas
-                  </span>
-                  </div>
-                  
+
                   <p className="text-lg text-start text-primary-foreground max-w-xl mx-auto">
                     Cientos de personas como tú sintieron alivio inmediato en
                     sus ojos al usarlas... y sin esperarlo, también comenzaron a
@@ -186,6 +186,20 @@ export default function Home({ isMobile }: HomeProps) {
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row lg:flex-col gap-3 pt-1">
+                  <div className="stars_qty_sold lg:flex self-start items-center gap-2 hidden lg:flex">
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-4 w-4 fill-[#FFD700] border-[#FFD700] stroke-[#FFD700]"
+                          size="large"
+                        />
+                      ))}
+                    </div>
+                    <span className="text-lg lg:text-xl font-medium xl:text-nowrap  font-bold">
+                      + 500 Vendidas
+                    </span>
+                  </div>
                   <Button
                     size="default"
                     className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-500 hover:to-red-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-transform transform hover:scale-105 flex items-center justify-center gap-2"
@@ -220,7 +234,7 @@ export default function Home({ isMobile }: HomeProps) {
                 </div> */}
               </div>
               {!isMobile && (
-                <div className="hidden md:flex md:justify-center xl:h-[600px] w-[60%]">
+                <div className="hidden md:flex md:justify-center xl:h-[600px] w-[60%] lg:w-[50%] xl:w-[45%]">
                   <ProductIntro />
                 </div>
               )}
@@ -247,11 +261,11 @@ export default function Home({ isMobile }: HomeProps) {
                 </h2>
               </FadeIn>
 
-              <p className="text-sidebar-prymary-foreground text-lg max-w-[800px] lg:hidden">
+              {/* <p className="text-sidebar-prymary-foreground text-lg max-w-[800px] lg:hidden">
                 Menos fatiga, más foco. Menos desvelo, más descanso. Todo
                 gracias a unas gafas diseñadas para protegerte del mundo
                 digital.
-              </p>
+              </p> */}
             </div>
 
             {/* Beneficios clave */}
@@ -810,10 +824,10 @@ export default function Home({ isMobile }: HomeProps) {
                         por años. 👁️"
                       </h3>
                       <p className="text-base md:text-lg">
-                        Accede a los ejercicios y hábitos más efectivos recomendados
-                        por especialistas en salud visual para proteger tus ojos
-                        del uso intensivo de pantallas y mantener una visión
-                        clara y saludable por años.
+                        Accede a los ejercicios y hábitos más efectivos
+                        recomendados por especialistas en salud visual para
+                        proteger tus ojos del uso intensivo de pantallas y
+                        mantener una visión clara y saludable por años.
                       </p>
                       <span className="font-bold text-lg md:text-xl">
                         (Valorado en $59.900 – ¡También GRATIS para ti!)
@@ -907,7 +921,8 @@ export default function Home({ isMobile }: HomeProps) {
                     </ul>
                     <Button
                       className="btn-buy w-full text-lg tracking-wider cursor-pointer"
-                      onClick={() => openCheckout("basic")} data-kit="One Pair"
+                      onClick={() => openCheckout("basic")}
+                      data-kit="One Pair"
                     >
                       Elegir <ShoppingCart className="ml-2 h-5 w-5" />
                     </Button>
@@ -962,7 +977,8 @@ export default function Home({ isMobile }: HomeProps) {
                     </ul>
                     <Button
                       className="btn-buy w-full bg-primary hover:bg-primary/90 tracking-wider text-lg cursor-pointer"
-                      onClick={() => openCheckout("promo")} data-kit="promo"
+                      onClick={() => openCheckout("promo")}
+                      data-kit="promo"
                     >
                       Aprovechar Oferta{" "}
                       <ShoppingCart className="ml-2 h-5 w-5" />
