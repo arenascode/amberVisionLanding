@@ -5,8 +5,8 @@ export default function BeforeAfterTransition() {
   const [direction, setDirection] = useState(1);
 
   // Imágenes de ejemplo (reemplazar con tus propias URLs)
-  const beforeImage = "./assets/img/sinProteccion.webp";
-  const afterImage = "./assets/img/conProteccion.webp";
+  const beforeImage = "./assets/img/sinProteccion.avif";
+  const afterImage = "./assets/img/conProteccion.avif";
 
   // Efecto para la animación de transición
   useEffect(() => {

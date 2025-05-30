@@ -1,19 +1,19 @@
 import "./productIntro.scss";
 //*Imgs //
-import manUsingGlasses from "/assets/img/manUsingGlassesV2.webp";
-import amberLensesSideDesktop from "/assets/product/amberLensesSide.webp";
-import amberLensesSideMobile from "/assets/product/amberLensesSideMobile.webp";
+import manUsingGlasses from "/assets/img/manUsingGlassesV2.avif";
+import amberLensesSideDesktop from "/assets/product/amberLensesSide.avif";
+import amberLensesSideMobile from "/assets/product/amberLensesSide.avif";
 import amberLensesBackDesktop from "/assets/product/amberLensesBack.webp";
-import amberLensesBackMobile from "/assets/product/amberLensesBackMobile.webp";
+import amberLensesBackMobile from "/assets/product/amberLensesBackMobile.avif";
 import amberLensesSideTwoDesktop from "/assets/product/amberLensesSideTwo.webp";
-import amberLensesSideTwoMobile from "/assets/product/amberLensesSideTwoMobile.webp";
-import amberLensesFrontDesktop from "/assets/product/amberLensesFront.webp";
-import amberLensesFrontMobile from "/assets/product/amberLensesFrontMobile.webp";
+import amberLensesSideTwoMobile from "/assets/product/amberLensesSideTwoMobile.avif";
+import amberLensesFrontDesktop from "/assets/product/amberLensesFrontMobile.avif";
+import amberLensesFrontMobile from "/assets/product/amberLensesFrontMobile.avif";
 import manUsingGlassesMini from "/assets/img/manUsingGlassesMiniV2.webp";
-import amberLensesBackMini from "/assets/product/amberLensesBackMini.webp";
-import amberLensesSideMini from "/assets/product/amberLensesSideMini.webp";
-import amberLensesSideTwoMini from "/assets/product/amberLensesSideTwoMini.webp";
-import amberLensesFrontMini from "/assets/product/amberLensesFrontMini.webp";
+import amberLensesBackMini from "/assets/product/amberLensesBackMini.avif";
+import amberLensesSideMini from "/assets/product/amberLensesSideMini.avif";
+import amberLensesSideTwoMini from "/assets/product/amberLensesSideTwoMini.avif";
+import amberLensesFrontMini from "/assets/product/amberLensesFrontMini.avif";
 
 
 const ProductIntro = () => {
