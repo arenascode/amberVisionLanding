@@ -256,14 +256,13 @@ export default function Home({ isMobile }: HomeProps) {
             {/* Encabezado principal */}
             <div className="flex flex-col items-center text-start gap-5 mb-12 lg:text-center lg:self-center lg:w-[70%]">
               <FadeIn delay={200}>
-                <h2 className="text-2xl lg:text-4xl font-bold ">
+                <h2 className="text-2xl lg:text-4xl font-bold text-center">
                   La exposición a pantallas desgasta tu vista y altera tu sueño
-                  - <br />{" "}
-                  <span className="lg:text-2xl lg:tracking-wider">
+                </h2>
+                <p className="text-xl text-center mt-6 lg:text-2xl lg:tracking-wider">
                     Nuestras gafas te devuelven el bienestar desde el primer
                     uso.
-                  </span>
-                </h2>
+                  </p>
               </FadeIn>
 
               {/* <p className="text-sidebar-prymary-foreground text-lg max-w-[800px] lg:hidden">
@@ -284,7 +283,7 @@ export default function Home({ isMobile }: HomeProps) {
                     <h3 className="text-xl font-bold text-white">
                       Menos Fatiga Visual
                     </h3>
-                    <p className="text-sidebar-primary-foreground">
+                    <p className="text-lg text-sidebar-primary-foreground">
                       ¿Pasas horas frente a pantallas? Estas gafas reducen el
                       cansancio, la sequedad y la irritación ocular desde el
                       primer uso.
@@ -302,7 +301,7 @@ export default function Home({ isMobile }: HomeProps) {
                     <h3 className="text-xl font-bold text-white">
                       Duerme Mejor
                     </h3>
-                    <p className="text-sidebar-primary-foreground">
+                    <p className="text-lg text-sidebar-primary-foreground">
                       La luz azul interfiere con la producción de melatonina,
                       afectando tu descanso. Usa nuestras gafas antes de dormir
                       y despierta renovado.
@@ -320,7 +319,7 @@ export default function Home({ isMobile }: HomeProps) {
                     <h3 className="text-xl font-bold text-white">
                       Menos Dolores de Cabeza
                     </h3>
-                    <p className="text-sidebar-primary-foreground">
+                    <p className="text-lg text-sidebar-primary-foreground">
                       Despidete de las migrañas por tensión visual. Trabaja,
                       estudia o mira series sin molestias.
                     </p>
@@ -407,7 +406,7 @@ export default function Home({ isMobile }: HomeProps) {
                   </h2>
                 </FadeIn>
 
-                <p className="text-sidebar-primary-foreground md:text-lg xl:text-xl max-w-[800px]">
+                <p className="text-sidebar-primary-foreground text-lg xl:text-xl max-w-[800px]">
                   Descubre cómo nuestras gafas de bloqueo de luz azul pueden
                   transformar tu día y mejorar tu descanso.
                 </p>
