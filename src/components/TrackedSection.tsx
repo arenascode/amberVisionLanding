@@ -29,9 +29,6 @@ const TrackedSection: React.FC<TrackedSectionProps> = ({
 
   useEffect(() => {
     if (inView) {
-      console.log(
-        `TrackedSection: ${eventName} is visible. Pushing to dataLayer.`
-      );
       // Now window.dataLayer.push is type-safe
       window.dataLayer.push({
         event: eventName,
@@ -41,8 +38,7 @@ const TrackedSection: React.FC<TrackedSectionProps> = ({
       });
     }
   }, [inView, eventName]); // Dependencies for the useEffect hook
- console.log(window.dataLayer);
- 
+
   return <div ref={ref}>{children}</div>;
 };
 

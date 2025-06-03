@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { makeRequest } from "../../utils/axios";
 import { FormErrors, ValidationRules } from "@/types/rulesValidationForm";
-import { validateForm } from "@/utils/validationForm";
+import { normalizePhoneNumber, validateForm } from "@/utils/validationForm";
 import { Loader2 } from "lucide-react";
 import ReactPixel from "react-facebook-pixel"
 import ebook1 from "/assets/img/ebook1.webp";
@@ -69,6 +69,14 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
       [name]: "",
     }));
     setSomeError(false);
+  };
+
+  const handleOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name === "telefono") {
+      const cleanedNumber = normalizePhoneNumber(value);
+      setFormData((prev) => ({ ...prev, [name]: cleanedNumber }));
+    }
   };
 
   const validationRules: Record<string, ValidationRules> = {
@@ -413,6 +421,7 @@ const SimpleCheckoutForm: React.FC<CheckOutFormProps> = ({
                       name="telefono"
                       value={formData.telefono}
                       onChange={handleChange}
+                      onBlur={handleOnBlur}
                       placeholder="320 123 4567"
                       className="border-b-gray-700 "
                     />

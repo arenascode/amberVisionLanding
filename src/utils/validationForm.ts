@@ -44,3 +44,19 @@ export const validateForm = (
 
   return errors;
 };
+
+export const normalizePhoneNumber = (raw: string): string => {
+  // Remove all non-digit characters
+  let digits = raw.replace(/\D/g, "");
+
+  // Remove leading 57, 0057, or 057
+  if (digits.startsWith("0057")) {
+    digits = digits.slice(4);
+  } else if (digits.startsWith("057")) {
+    digits = digits.slice(3);
+  } else if (digits.startsWith("57")) {
+    digits = digits.slice(2);
+  }
+
+  return digits;
+};
