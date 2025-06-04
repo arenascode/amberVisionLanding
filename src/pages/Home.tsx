@@ -139,8 +139,8 @@ export default function Home({ isMobile }: HomeProps) {
                   Protección Premium para tus Ojos
                 </Badge>
                 <h1 className="text-xl font-bold tracking-wider text-center sm:text-2xl md:text-3xl lg:text-2xl xl:text-[2.2rem] font-body uppercase fade-in-up leading-tight">
-                  ¿Tus ojos arden o te cuesta dormir después de usar el celular
-                  o el computador?
+                  Bloquea la luz azul y protege tus ojos mientras trabajas,
+                  estudias o juegas.
                 </h1>
 
                 {/* <h1 className="text-lg font-bold tracking-wider  sm:text-3xl md:text-3xl xl:text-[2.2rem] font-body uppercase fade-in-up">
@@ -257,12 +257,11 @@ export default function Home({ isMobile }: HomeProps) {
             <div className="flex flex-col items-center text-start gap-5 mb-12 lg:text-center lg:self-center lg:w-[70%]">
               <FadeIn delay={200}>
                 <h2 className="text-2xl lg:text-4xl font-bold text-center">
-                  La exposición a pantallas desgasta tu vista y altera tu sueño
+                  La exposición a la luz azul de las pantallas desgasta tu vista y altera tu sueño
                 </h2>
                 <p className="text-xl text-center mt-6 lg:text-2xl lg:tracking-wider">
-                    Nuestras gafas te devuelven el bienestar desde el primer
-                    uso.
-                  </p>
+                  Nuestras gafas te devuelven el bienestar desde el primer uso.
+                </p>
               </FadeIn>
 
               {/* <p className="text-sidebar-prymary-foreground text-lg max-w-[800px] lg:hidden">
@@ -1308,36 +1307,36 @@ export default function Home({ isMobile }: HomeProps) {
 
         {/* Purchase Warranty */}
         <TrackedSection eventName="warranty_section_trigger">
-        <section
-          id="securePurchase"
-          className="py-2 text-text text-center px-3 md:px-12 "
-        >
-          <div className="max-w-3xl p-3 mx-auto md:p-3 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl items-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Dale una oportunidad real a tu descanso
-            </h2>
-            <p className="text-lg md:text-xl font-medium mb-6">
-              Estamos tan seguros de que nuestras gafas{" "}
-              <span className="font-semibold text-brand">Amber Vision</span>{" "}
-              transformarán tu bienestar, que te damos{" "}
-              <span className="font-semibold">30 días para comprobarlo</span>.
-            </p>
-            <p className="text-md md:text-lg mb-4">
-              Póntelas, úsalas, siente la diferencia en tu vista y en la calidad
-              de tu sueño. Si no notas mejoría o simplemente no te convencen,
-              puedes{" "}
-              <span className="font-semibold text-fire-dark">
-                devolverlas sin explicaciones
-              </span>
-              .
-            </p>
-            <p className="text-sm lg:text-lg italic">
-              Tu salud visual está primero, y tu compra está 100% protegida. 🛡️
-            </p>
-          </div>
-        </section>
+          <section
+            id="securePurchase"
+            className="py-2 text-text text-center px-3 md:px-12 "
+          >
+            <div className="max-w-3xl p-3 mx-auto md:p-3 shadow-md backdrop-blur-lg bg-white/10 border border-white/10 xl:px-10 rounded-xl items-center">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                Dale una oportunidad real a tu descanso
+              </h2>
+              <p className="text-lg md:text-xl font-medium mb-6">
+                Estamos tan seguros de que nuestras gafas{" "}
+                <span className="font-semibold text-brand">Amber Vision</span>{" "}
+                transformarán tu bienestar, que te damos{" "}
+                <span className="font-semibold">30 días para comprobarlo</span>.
+              </p>
+              <p className="text-md md:text-lg mb-4">
+                Póntelas, úsalas, siente la diferencia en tu vista y en la
+                calidad de tu sueño. Si no notas mejoría o simplemente no te
+                convencen, puedes{" "}
+                <span className="font-semibold text-fire-dark">
+                  devolverlas sin explicaciones
+                </span>
+                .
+              </p>
+              <p className="text-sm lg:text-lg italic">
+                Tu salud visual está primero, y tu compra está 100% protegida.
+                🛡️
+              </p>
+            </div>
+          </section>
         </TrackedSection>
-        
 
         {/* CTA */}
         <div className="CTA-container flex flex-col justify-center mt-6 mb-8 xl:flex xl:justify-center">
